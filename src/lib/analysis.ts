@@ -22,6 +22,7 @@ export interface MatchAnalysis {
   tacticalNote: string
   upsetAlert: string | null
   predictedScoreline: string
+  altScoreline2: string
 }
 
 // ========== STAR PLAYERS ==========
@@ -494,5 +495,6 @@ export function analyzeMatch(home: Team, away: Team, venue: Venue): MatchAnalysi
       : `这是一场谁都不敢轻举妄动的较量。中场的争夺将决定比赛走向——谁能赢得更多二次球权、谁能在转换中更快地找到空档，谁就更接近胜利。`,
     upsetAlert,
     predictedScoreline: scoreData.scoreline,
+    altScoreline2: `${Math.max(0, Math.round(scoreData.home - 1))}-${Math.round(scoreData.away)}`,
   }
 }

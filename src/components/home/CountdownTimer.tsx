@@ -2,53 +2,57 @@
 
 import { useState, useEffect } from 'react'
 
-function pad(n: number): string {
-  return String(n).padStart(2, '0')
-}
-
 export default function CountdownTimer({ targetDate }: { targetDate: string }) {
-  const [remaining, setRemaining] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-  const [mounted, setMounted] = useState(false)
+  const [t, setT] = useState({ d: 0, h: 0, m: 0, s: 0 })
+  const [ready, setReady] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
     const target = new Date(targetDate).getTime()
     const tick = () => {
-      const now = Date.now()
-      const diff = Math.max(0, target - now)
-      setRemaining({
-        days: Math.floor(diff / 86400000),
-        hours: Math.floor((diff % 86400000) / 3600000),
-        minutes: Math.floor((diff % 3600000) / 60000),
-        seconds: Math.floor((diff % 60000) / 1000),
+      const diff = Math.max(0, target - Date.now())
+      setT({
+        d: Math.floor(diff / 86400000),
+        h: Math.floor((diff % 86400000) / 3600000),
+        m: Math.floor((diff % 3600000) / 60000),
+        s: Math.floor((diff % 60000) / 1000),
       })
     }
     tick()
+    setReady(true)
     const id = setInterval(tick, 1000)
     return () => clearInterval(id)
   }, [targetDate])
 
   const items = [
-    { label: '天', value: remaining.days },
-    { label: '时', value: remaining.hours },
-    { label: '分', value: remaining.minutes },
-    { label: '秒', value: remaining.seconds },
+    { v: t.d, l: 'Days' },
+    { v: t.h, l: 'Hours' },
+    { v: t.m, l: 'Minutes' },
+    { v: t.s, l: 'Seconds' },
   ]
 
   return (
-    <div className="flex gap-3 md:gap-5">
+    <div className="flex items-center justify-center gap-4 md:gap-6">
       {items.map((item, i) => (
-        <div key={item.label} className="flex items-center gap-3 md:gap-5">
-          {i > 0 && <span className="text-2xl md:text-4xl text-muted/20 font-light mt-[-20px]">:</span>}
-          <div className="text-center">
-            <div className="relative bg-black/50 backdrop-blur-xl rounded-2xl px-5 py-4 md:px-7 md:py-5 min-w-[72px] md:min-w-[100px] border border-white/10 overflow-hidden animate-pulse-glow">
-              {/* Shine line */}
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-              <span className={`text-4xl md:text-6xl font-black font-mono text-accent tracking-[0.05em] transition-all duration-300 ${mounted ? 'text-glow' : 'text-muted/30'}`}>
-                {pad(item.value)}
+        <div key={item.l} className="flex items-center gap-4 md:gap-6">
+          {i > 0 && (
+            <span className="text-2xl md:text-4xl text-white/8 font-thin -mt-8 select-none">:</span>
+          )}
+          <div className={`flex flex-col items-center gap-3 ${ready ? 'animate-countIn' : 'opacity-0'}`}
+            style={{ animationDelay: `${0.8 + i * 0.1}s` }}>
+            {/* Number box */}
+            <div className="glass-card rounded-2xl px-6 py-5 md:px-9 md:py-7 min-w-[80px] md:min-w-[110px] flex flex-col items-center justify-center relative overflow-hidden group hover:border-accent/30 transition-all duration-300">
+              {/* Top shine */}
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+              {/* Number */}
+              <span className="font-number text-5xl md:text-7xl font-bold text-accent tracking-[0.02em] tabular-nums"
+                style={{ textShadow: '0 0 30px rgba(0,229,255,0.3)' }}>
+                {String(item.v).padStart(2, '0')}
               </span>
             </div>
-            <span className="text-[10px] md:text-xs text-muted/50 mt-2 block tracking-widest uppercase">{item.label}</span>
+            {/* Label */}
+            <span className="text-[10px] md:text-xs text-tertiary tracking-[0.2em] uppercase font-bold">
+              {item.l}
+            </span>
           </div>
         </div>
       ))}
