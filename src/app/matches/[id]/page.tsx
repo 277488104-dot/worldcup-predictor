@@ -2,6 +2,10 @@ import { getMatchById, getTeamById, getVenueById, getAllMatches, getH2H } from '
 import { notFound } from 'next/navigation'
 import { STAGE_LABELS } from '@/lib/constants'
 import type { Metadata } from 'next'
+import RadarCompare from '@/components/matches/RadarCompare'
+import PredictionCard from '@/components/matches/PredictionCard'
+import H2HTimeline from '@/components/matches/H2HTimeline'
+import VenueFactor from '@/components/matches/VenueFactor'
 
 export function generateStaticParams() {
   return getAllMatches().map(m => ({ id: m.id }))
@@ -68,29 +72,22 @@ export default function MatchDetailPage({ params }: { params: { id: string } }) 
         </div>
       </div>
 
-      {/* Analysis grid — using placeholder divs until analysis components are built */}
+      {/* Analysis grid — Radar + Prediction */}
       <div className="grid lg:grid-cols-2 gap-8">
-        <div className="bg-surface rounded-2xl p-6 border border-white/5 min-h-[300px] flex items-center justify-center text-muted">
-          <p>球队对比雷达图 (即将实现)</p>
-        </div>
-        <div className="bg-surface rounded-2xl p-6 border border-white/5 min-h-[300px] flex items-center justify-center text-muted">
-          <p>智能预测 (即将实现)</p>
-        </div>
+        <RadarCompare homeTeam={home} awayTeam={away} />
+        <PredictionCard homeTeam={home} awayTeam={away} venue={venue} />
       </div>
 
+      {/* H2H + Venue */}
       <div className="grid lg:grid-cols-2 gap-8 mt-8">
         {h2h ? (
-          <div className="bg-surface rounded-2xl p-6 border border-white/5 min-h-[200px] flex items-center justify-center text-muted">
-            <p>历史交锋 (即将实现)</p>
-          </div>
+          <H2HTimeline h2h={h2h} homeTeam={home} awayTeam={away} />
         ) : (
           <div className="bg-surface rounded-2xl p-6 border border-white/5 min-h-[200px] flex items-center justify-center text-muted">
             <p>暂无历史交锋数据</p>
           </div>
         )}
-        <div className="bg-surface rounded-2xl p-6 border border-white/5 min-h-[200px] flex items-center justify-center text-muted">
-          <p>场地影响 (即将实现)</p>
-        </div>
+        <VenueFactor venue={venue} homeTeam={home} awayTeam={away} />
       </div>
     </main>
   )
