@@ -74,8 +74,8 @@ export default function BracketPage() {
     { home: sf[2], away: sf[3] },
   ]
 
-  const finalists = sfPairs.map(m => predictWinner(m.home, m.away))
-  const champion = predictWinner(finalists[0], finalists[1])
+  const finalists = sfPairs.map(m => m.home && m.away ? predictWinner(m.home, m.away) : (m.home || m.away))
+  const champion = finalists[0] && finalists[1] ? predictWinner(finalists[0]!, finalists[1]!) : (finalists[0] || finalists[1])
 
   return (
     <main className="max-w-7xl mx-auto px-3 sm:px-5 py-16 sm:py-24">
@@ -110,11 +110,11 @@ export default function BracketPage() {
                     i % 2 === 0 ? 'bg-white/[0.02] border-white/5' : 'bg-white/[0.02] border-white/5'
                   }`}>
                     <span>{m.home.flagUrl} <span className="font-bold text-chalk text-[8px] sm:text-[9px]">{m.home.nameCn.slice(0, 4)}</span></span>
-                    <span className="text-grass-pop font-mono font-bold text-[8px]">{Math.round(predictMatch(m.home, m.away, defaultVenue).homeWin * 100)}%</span>
+                    <span className="text-grass-pop font-mono font-bold text-[8px]">{Math.round((predictMatch(m.home, m.away, defaultVenue)?.homeWin ?? 0.5) * 100)}%</span>
                   </div>
                   <div className="rounded-md px-2 py-1.5 flex justify-between items-center mt-0.5 border bg-white/[0.02] border-white/5">
                     <span>{m.away.flagUrl} <span className="font-bold text-chalk text-[8px] sm:text-[9px]">{m.away.nameCn.slice(0, 4)}</span></span>
-                    <span className="text-gold font-mono font-bold text-[8px]">{Math.round(predictMatch(m.home, m.away, defaultVenue).awayWin * 100)}%</span>
+                    <span className="text-gold font-mono font-bold text-[8px]">{Math.round((predictMatch(m.home, m.away, defaultVenue)?.awayWin ?? 0.5) * 100)}%</span>
                   </div>
                 </div>
               ))}
