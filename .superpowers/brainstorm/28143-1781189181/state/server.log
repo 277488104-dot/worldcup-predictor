@@ -1,0 +1,31 @@
+{"type":"server-started","port":55895,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:55895","screen_dir":"/Users/daijin/web/worldcup-predictor/.superpowers/brainstorm/28143-1781189181/content","state_dir":"/Users/daijin/web/worldcup-predictor/.superpowers/brainstorm/28143-1781189181/state"}
+{"type":"screen-added","file":"/Users/daijin/web/worldcup-predictor/.superpowers/brainstorm/28143-1781189181/content/upgrade-ideas.html"}
+{"source":"user-event","type":"click","text":"A1\n      \n        预测排行榜\n        所有用户的预测汇总成全球排行榜，准确率最高的前10名展示。不需要后端——用 localStorage + 简单后端或supabase。可以截图炫耀","choice":"a1","id":null,"timestamp":1781189250897}
+{"source":"user-event","type":"click","text":"A2\n      \n        预测 PK 对战\n        两个人选同一场比赛各自预测比分，生成 PK 卡片对比。适合朋友之间互怼 —— \"我觉得3-1\" \"放屁，明明是1-2\"","choice":"a2","id":null,"timestamp":1781189251504}
+{"source":"user-event","type":"click","text":"A1\n      \n        预测排行榜\n        所有用户的预测汇总成全球排行榜，准确率最高的前10名展示。不需要后端——用 localStorage + 简单后端或supabase。可以截图炫耀","choice":"a1","id":null,"timestamp":1781189252370}
+{"source":"user-event","type":"click","text":"A2\n      \n        预测 PK 对战\n        两个人选同一场比赛各自预测比分，生成 PK 卡片对比。适合朋友之间互怼 —— \"我觉得3-1\" \"放屁，明明是1-2\"","choice":"a2","id":null,"timestamp":1781189252869}
+{"source":"user-event","type":"click","text":"A2\n      \n        预测 PK 对战\n        两个人选同一场比赛各自预测比分，生成 PK 卡片对比。适合朋友之间互怼 —— \"我觉得3-1\" \"放屁，明明是1-2\"","choice":"a2","id":null,"timestamp":1781189253752}
+{"source":"user-event","type":"click","text":"A1\n      \n        预测排行榜\n        所有用户的预测汇总成全球排行榜，准确率最高的前10名展示。不需要后端——用 localStorage + 简单后端或supabase。可以截图炫耀","choice":"a1","id":null,"timestamp":1781189254235}
+{"source":"user-event","type":"click","text":"A1\n      \n        预测排行榜\n        所有用户的预测汇总成全球排行榜，准确率最高的前10名展示。不需要后端——用 localStorage + 简单后端或supabase。可以截图炫耀","choice":"a1","id":null,"timestamp":1781189310159}
+{"source":"user-event","type":"click","text":"A1\n      \n        预测排行榜\n        所有用户的预测汇总成全球排行榜，准确率最高的前10名展示。不需要后端——用 localStorage + 简单后端或supabase。可以截图炫耀","choice":"a1","id":null,"timestamp":1781189310608}
+{"source":"user-event","type":"click","text":"A1\n      \n        预测排行榜\n        所有用户的预测汇总成全球排行榜，准确率最高的前10名展示。不需要后端——用 localStorage + 简单后端或supabase。可以截图炫耀","choice":"a1","id":null,"timestamp":1781189311241}
+{"source":"user-event","type":"click","text":"A1\n      \n        预测排行榜\n        所有用户的预测汇总成全球排行榜，准确率最高的前10名展示。不需要后端——用 localStorage + 简单后端或supabase。可以截图炫耀","choice":"a1","id":null,"timestamp":1781189312658}
+{"source":"user-event","type":"click","text":"B1\n      \n        模拟比赛引擎\n        点击\"模拟这场比赛\"——用蒙特卡洛随机模拟1000次，展示结果分布直方图。像 Football Manager 的比赛引擎","choice":"b1","id":null,"timestamp":1781189325583}
+{"source":"user-event","type":"click","text":"D1\n      \n        AI 球评生成\n        每场比赛用 AI 写一段 100 字的球评——\"这场比赛的关键在于中场的控球争夺...\"。用 OpenAI API 或本地模型","choice":"d1","id":null,"timestamp":1781189339091}
+{"source":"user-event","type":"click","text":"B2\n      \n        淘汰赛预测路径\n        从小组赛到决赛的完整晋级树，点击预测每场比赛，自动推算谁进16强/8强/决赛。类似 March Madness Bracket","choice":"b2","id":null,"timestamp":1781189374216}
+{"source":"user-event","type":"click","text":"D2\n      \n        智能推荐\"你该看哪场\"\n        根据你的历史浏览/预测记录，推荐你可能感兴趣的比赛。像 Netflix 的推荐算法","choice":"d2","id":null,"timestamp":1781189380733}
+{"source":"user-event","type":"click","text":"D2\n      \n        智能推荐\"你该看哪场\"\n        根据你的历史浏览/预测记录，推荐你可能感兴趣的比赛。像 Netflix 的推荐算法","choice":"d2","id":null,"timestamp":1781189381274}
+{"source":"user-event","type":"click","text":"D1\n      \n        AI 球评生成\n        每场比赛用 AI 写一段 100 字的球评——\"这场比赛的关键在于中场的控球争夺...\"。用 OpenAI API 或本地模型","choice":"d1","id":null,"timestamp":1781189382132}
+{"source":"user-event","type":"click","text":"D1\n      \n        AI 球评生成\n        每场比赛用 AI 写一段 100 字的球评——\"这场比赛的关键在于中场的控球争夺...\"。用 OpenAI API 或本地模型","choice":"d1","id":null,"timestamp":1781189382550}
+{"type":"screen-added","file":"/Users/daijin/web/worldcup-predictor/.superpowers/brainstorm/28143-1781189181/content/shortlist.html"}
+{"type":"screen-added","file":"/Users/daijin/web/worldcup-predictor/.superpowers/brainstorm/28143-1781189181/content/b1-simulation.html"}
+{"type":"screen-added","file":"/Users/daijin/web/worldcup-predictor/.superpowers/brainstorm/28143-1781189181/content/b2-bracket.html"}
+{"type":"screen-added","file":"/Users/daijin/web/worldcup-predictor/.superpowers/brainstorm/28143-1781189181/content/d1-ai-review.html"}
+{"type":"screen-added","file":"/Users/daijin/web/worldcup-predictor/.superpowers/brainstorm/28143-1781189181/content/plan.html"}
+{"source":"user-event","type":"click","text":"1. D1 AI 球评 (1h)\n        模板引擎，5 段段落自动拼接。放在比赛详情页底部\n        最简单 · 今天上线","choice":"d1","id":null,"timestamp":1781189701122}
+{"source":"user-event","type":"click","text":"2. B1 模拟引擎 (2h)\n        蒙特卡洛 1000 次模拟 + 频次直方图。放在比赛详情页\n        中等难度","choice":"b1","id":null,"timestamp":1781189701879}
+{"source":"user-event","type":"click","text":"3. B2 淘汰赛晋级树 (4h)\n        新页面 /bracket，完整晋级路径 + 冠军概率\n        最复杂","choice":"b2","id":null,"timestamp":1781189702529}
+{"source":"user-event","type":"click","text":"2. B1 模拟引擎 (2h)\n        蒙特卡洛 1000 次模拟 + 频次直方图。放在比赛详情页\n        中等难度","choice":"b1","id":null,"timestamp":1781189703038}
+{"source":"user-event","type":"click","text":"3. B2 淘汰赛晋级树 (4h)\n        新页面 /bracket，完整晋级路径 + 冠军概率\n        最复杂","choice":"b2","id":null,"timestamp":1781189703554}
+{"source":"user-event","type":"click","text":"1. D1 AI 球评 (1h)\n        模板引擎，5 段段落自动拼接。放在比赛详情页底部\n        最简单 · 今天上线","choice":"d1","id":null,"timestamp":1781189704071}
+{"source":"user-event","type":"click","text":"2. B1 模拟引擎 (2h)\n        蒙特卡洛 1000 次模拟 + 频次直方图。放在比赛详情页\n        中等难度","choice":"b1","id":null,"timestamp":1781189705279}

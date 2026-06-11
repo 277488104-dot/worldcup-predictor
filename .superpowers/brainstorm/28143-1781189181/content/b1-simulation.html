@@ -1,0 +1,105 @@
+<h2>B1 · 蒙特卡洛比赛模拟引擎</h2>
+<p class="subtitle">1000 次随机模拟 → 概率分布直方图 + 胜率验证</p>
+
+<div class="mockup">
+  <div class="mockup-header">比赛详情页 — 模拟区域 (雷达图下方)</div>
+  <div class="mockup-body" style="background:#0a180a; color:#f5f5f0; font-family:system-ui; padding:24px">
+
+    <div class="card-glass p-6 mb-8">
+      <div class="kicker kicker-green mb-4">MONTE CARLO SIMULATION</div>
+      <h3 class="font-display text-xl font-extrabold mb-6">蒙特卡洛<span class="text-grass-pop">模拟</span></h3>
+
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:24px">
+        <div style="background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.15);border-radius:12px;padding:16px 20px;text-align:center">
+          <div style="font-size:9px;color:#889988;letter-spacing:.1em;margin-bottom:4px">模拟次数</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:900;color:#4ade80">1000</div>
+        </div>
+        <div style="color:#889988;font-size:18px">→</div>
+        <div style="background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.15);border-radius:12px;padding:16px 20px;text-align:center">
+          <div style="font-size:9px;color:#889988;letter-spacing:.1em;margin-bottom:4px">🇦🇷 胜</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:900;color:#4ade80">612</div>
+          <div style="font-size:9px;color:#4ade80;margin-top:2px">61.2%</div>
+        </div>
+        <div style="color:#889988;font-size:18px">·</div>
+        <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:16px 20px;text-align:center">
+          <div style="font-size:9px;color:#889988;letter-spacing:.1em;margin-bottom:4px">平局</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:900;color:#889988">218</div>
+          <div style="font-size:9px;color:#889988;margin-top:2px">21.8%</div>
+        </div>
+        <div style="color:#889988;font-size:18px">·</div>
+        <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:16px 20px;text-align:center">
+          <div style="font-size:9px;color:#889988;letter-spacing:.1em;margin-bottom:4px">🇧🇷 胜</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:900;color:#f0c040">170</div>
+          <div style="font-size:9px;color:#f0c040;margin-top:2px">17.0%</div>
+        </div>
+      </div>
+
+      <!-- Histogram -->
+      <div style="margin-bottom:8px">
+        <div style="font-size:9px;color:#889988;letter-spacing:.1em;margin-bottom:8px">比分频次分布 (Top 5)</div>
+        <div class="space-y-1.5">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-family:'JetBrains Mono';font-size:11px;color:#f5f5f0;width:32px;font-weight:700">2-1</span>
+            <div style="flex:1;height:20px;background:rgba(255,255,255,.03);border-radius:4px;overflow:hidden">
+              <div style="width:18.7%;height:100%;background:linear-gradient(90deg,#4ade80,#22c55e);border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px">
+                <span style="font-size:9px;font-family:'JetBrains Mono';font-weight:700;color:#0a180a">187</span>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-family:'JetBrains Mono';font-size:11px;color:#f5f5f0;width:32px;font-weight:700">1-0</span>
+            <div style="flex:1;height:20px;background:rgba(255,255,255,.03);border-radius:4px;overflow:hidden">
+              <div style="width:14.2%;height:100%;background:linear-gradient(90deg,#4ade80,#22c55e);border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px">
+                <span style="font-size:9px;font-family:'JetBrains Mono';font-weight:700;color:#0a180a">142</span>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-family:'JetBrains Mono';font-size:11px;color:#f5f5f0;width:32px;font-weight:700">1-1</span>
+            <div style="flex:1;height:20px;background:rgba(255,255,255,.03);border-radius:4px;overflow:hidden">
+              <div style="width:11.3%;height:100%;background:linear-gradient(90deg,#889988,#889988);border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px">
+                <span style="font-size:9px;font-family:'JetBrains Mono';font-weight:700;color:#0a180a">113</span>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-family:'JetBrains Mono';font-size:11px;color:#f5f5f0;width:32px;font-weight:700">2-0</span>
+            <div style="flex:1;height:20px;background:rgba(255,255,255,.03);border-radius:4px;overflow:hidden">
+              <div style="width:9.8%;height:100%;background:linear-gradient(90deg,#4ade80,#22c55e);border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px">
+                <span style="font-size:9px;font-family:'JetBrains Mono';font-weight:700;color:#0a180a">98</span>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-family:'JetBrains Mono';font-size:11px;color:#f5f5f0;width:32px;font-weight:700">0-1</span>
+            <div style="flex:1;height:20px;background:rgba(255,255,255,.03);border-radius:4px;overflow:hidden">
+              <div style="width:7.6%;height:100%;background:#f0c040;border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px">
+                <span style="font-size:9px;font-family:'JetBrains Mono';font-weight:700;color:#0a180a">76</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div style="margin-top:20px;padding:12px;background:rgba(74,222,128,.05);border-radius:12px;display:flex;align-items:center;gap:10px">
+        <span style="font-size:20px">🎲</span>
+        <div style="font-size:11px;color:#bbccbb">
+          <span class="text-grass-pop font-bold">公式预测: ARG 58% / DRAW 25% / BRA 17%</span><br>
+          模拟结果与公式预测吻合度高 (±3%)。模型具有较强的统计置信度。
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<h3 style="margin-top:32px">实现细节</h3>
+<div class="section">
+  <ul>
+    <li>基于现有 <code>computeTeamScore</code> + 高斯噪声 (σ=10)</li>
+    <li>1000 次独立采样 → 统计比分频次</li>
+    <li>纯前端，不依赖外部 API</li>
+    <li>放在比赛详情页雷达图下方，用 <code>card-glass</code> 包裹</li>
+  </ul>
+</div>

@@ -1,0 +1,57 @@
+<h2>D1 · AI 球评生成</h2>
+<p class="subtitle">方案 L: 模板引擎 — 基于比赛数据动态拼接</p>
+
+<div class="mockup">
+  <div class="mockup-header">比赛详情页 — 球评区域</div>
+  <div class="mockup-body" style="background:#0a180a; color:#f5f5f0; font-family:system-ui; padding:24px">
+
+    <div class="card-glass p-6">
+      <div class="flex items-center gap-3 mb-4">
+        <span style="font-size:24px">🤖</span>
+        <div>
+          <div class="kicker kicker-gold">AI MATCH PREVIEW</div>
+          <h3 class="font-display text-lg font-extrabold">AI <span class="text-gold">球评</span></h3>
+        </div>
+      </div>
+
+      <div style="border-left:3px solid rgba(240,192,64,.3);padding:12px 16px;background:rgba(255,255,255,.01);border-radius:0 8px 8px 0;line-height:1.8;font-size:13px;color:#bbccbb">
+        <p style="margin-bottom:12px">
+          <span style="color:#f5f5f0;font-weight:700">📊 赛前分析</span><br>
+          阿根廷队目前 FIFA 排名第 1 位，是本届世界杯的夺冠热门。球队的<strong style="color:#4ade80">进攻火力（评分 92）</strong>和<strong style="color:#4ade80">大赛经验（评分 96）</strong>是他们的最大武器。
+        </p>
+        <p style="margin-bottom:12px">
+          巴西队虽然排名第 3 位，但<strong style="color:#f0c040">体能储备（评分 88）</strong>和<strong style="color:#f0c040">控球能力（评分 85）</strong>不容小覷。两队在排名上的差距仅 2 位，实力极为接近。
+        </p>
+        <p style="margin-bottom:12px">
+          <span style="color:#f5f5f0;font-weight:700">🏟️ 场地因素</span><br>
+          比赛在 MetLife Stadium 进行。海拔 2m 的低海拔环境对球员体能影响极小，两队均可正常发挥。82,500 座的大型场馆将为比赛增添巨大的主场氛围。
+        </p>
+        <p style="margin-bottom:12px">
+          <span style="color:#f5f5f0;font-weight:700">📈 交锋历史</span><br>
+          两队历史上交手 13 次，阿根廷 6 胜 3 平 4 负稍占上风。双方多次出现平局表明两队交手常常胶着。
+        </p>
+        <p>
+          <span style="color:#f5f5f0;font-weight:700">🔮 AI 综合判断</span><br>
+          综合 8 项因素分析，<strong style="color:#4ade80">阿根廷以 58% 的胜率被看好</strong>。最可能的比分是 2-1（概率 19%）。模型的置信度为 82%。<br>
+          <span style="font-size:11px;color:#889988;margin-top:4px;display:inline-block">⚠️ 两队排名仅差 2 位，实际比赛走势取决于临场发挥和战术执行，预测仅供参考。</span>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<h3 style="margin-top:32px">模板引擎设计</h3>
+<div class="section">
+  <p>基于比赛数据字段的条件分支 → 生成 5 段段落：</p>
+  <ol style="font-size:13px;color:#bbccbb;line-height:2">
+    <li><b>实力对比</b> — 读排名差距 + 攻击/防守值 → "XX凭借进攻火力占据优势"</li>
+    <li><b>场地因素</b> — 读海拔 + 容量 + 大洲 → "高海拔可能影响未适应的球队"</li>
+    <li><b>交锋历史</b> — 读 H2H 胜率 → "历史上两队交手X次，XX稍占上风"</li>
+    <li><b>关键因素</b> — 读优势因子 Top3 → "控球能力和大赛经验将是决定因素"</li>
+    <li><b>AI 综合判断</b> — 读预测概率 + 比分 → "XX队以XX%胜率被看好"</li>
+  </ol>
+  <p style="margin-top:12px;font-size:12px;color:#4ade80">
+    ✅ 今天就能上线 &nbsp;|&nbsp; ✅ 无 API 成本 &nbsp;|&nbsp; ✅ 可根据需要随时替换为真实 AI
+  </p>
+</div>

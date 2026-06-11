@@ -7,6 +7,8 @@ import PredictionCard from '@/components/matches/PredictionCard'
 import H2HTimeline from '@/components/matches/H2HTimeline'
 import VenueFactor from '@/components/matches/VenueFactor'
 import PostMatchReview from '@/components/matches/PostMatchReview'
+import AIReview from '@/components/matches/AIReview'
+import MonteCarloSim from '@/components/matches/MonteCarloSim'
 import PredictButton from '@/components/shared/PredictButton'
 import { computeTeamScore, computeVenueFactor } from '@/lib/prediction'
 import type { Metadata } from 'next'
@@ -336,6 +338,12 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
           </div>
         </div>
       </div>
+
+      {/* ===== AI REVIEW ===== */}
+      <AIReview homeTeam={home} awayTeam={away} venue={venue} h2h={h2h} />
+
+      {/* ===== MONTE CARLO SIMULATION ===== */}
+      <MonteCarloSim homeTeam={home} awayTeam={away} venue={venue} />
     </main>
   )
 }

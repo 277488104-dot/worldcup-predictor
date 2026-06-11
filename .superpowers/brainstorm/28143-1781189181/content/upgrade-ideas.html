@@ -1,0 +1,156 @@
+<h2>网站升级方向 — 完整版头脑风暴</h2>
+<p class="subtitle">当前已有：7页面 · AI预测 · 预测保存 · 分享卡片 · 赛后复盘 · 实时API · 骨架屏 · 手机适配</p>
+
+<div class="section">
+  <h3>🎮 A. 游戏化 / 社交裂变</h3>
+  <p class="subtitle">让用户留下来、拉朋友来</p>
+  <div class="options" data-multiselect>
+    <div class="option" data-choice="a1" onclick="toggleSelect(this)">
+      <div class="letter">A1</div>
+      <div class="content">
+        <h3>预测排行榜</h3>
+        <p>所有用户的预测汇总成全球排行榜，准确率最高的前10名展示。不需要后端——用 localStorage + 简单后端或supabase。可以截图炫耀</p>
+      </div>
+    </div>
+    <div class="option" data-choice="a2" onclick="toggleSelect(this)">
+      <div class="letter">A2</div>
+      <div class="content">
+        <h3>预测 PK 对战</h3>
+        <p>两个人选同一场比赛各自预测比分，生成 PK 卡片对比。适合朋友之间互怼 —— "我觉得3-1" "放屁，明明是1-2"</p>
+      </div>
+    </div>
+    <div class="option" data-choice="a3" onclick="toggleSelect(this)">
+      <div class="letter">A3</div>
+      <div class="content">
+        <h3>竞猜积分系统</h3>
+        <p>每场比赛预测正确得分，猜对比分额外加分。世界杯全程积分榜，冠军拿奖品/勋章。像 FIFA 游戏里的 Ultimate Team</p>
+      </div>
+    </div>
+    <div class="option" data-choice="a4" onclick="toggleSelect(this)">
+      <div class="letter">A4</div>
+      <div class="content">
+        <h3>"毒奶"排行榜</h3>
+        <p>反向榜单——谁预测错得最多。搞笑属性拉满，适合抖音传播："全网第一毒奶在此"</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>⚽ B. 数据深度</h3>
+  <p class="subtitle">让数据控有东西玩</p>
+  <div class="options" data-multiselect>
+    <div class="option" data-choice="b1" onclick="toggleSelect(this)">
+      <div class="letter">B1</div>
+      <div class="content">
+        <h3>模拟比赛引擎</h3>
+        <p>点击"模拟这场比赛"——用蒙特卡洛随机模拟1000次，展示结果分布直方图。像 Football Manager 的比赛引擎</p>
+      </div>
+    </div>
+    <div class="option" data-choice="b2" onclick="toggleSelect(this)">
+      <div class="letter">B2</div>
+      <div class="content">
+        <h3>淘汰赛预测路径</h3>
+        <p>从小组赛到决赛的完整晋级树，点击预测每场比赛，自动推算谁进16强/8强/决赛。类似 March Madness Bracket</p>
+      </div>
+    </div>
+    <div class="option" data-choice="b3" onclick="toggleSelect(this)">
+      <div class="letter">B3</div>
+      <div class="content">
+        <h3>球队热力图</h3>
+        <p>球场上11个位置的能力值热力图（阵型图），看球队的强侧和弱侧。视觉效果很好看</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>📱 C. 体验升级</h3>
+  <p class="subtitle">润物细无声的细节</p>
+  <div class="options" data-multiselect>
+    <div class="option" data-choice="c1" onclick="toggleSelect(this)">
+      <div class="letter">C1</div>
+      <div class="content">
+        <h3>推送通知</h3>
+        <p>比赛开始前15分钟弹通知，进球弹通知。用 Web Push API + Service Worker。不需要安装 App</p>
+      </div>
+    </div>
+    <div class="option" data-choice="c2" onclick="toggleSelect(this)">
+      <div class="letter">C2</div>
+      <div class="content">
+        <h3>语音播报</h3>
+        <p>比赛进行时自动文字转语音："阿根廷进球了！梅西！2:1！"。像收音机解说。用 Web Speech API</p>
+      </div>
+    </div>
+    <div class="option" data-choice="c3" onclick="toggleSelect(this)">
+      <div class="letter">C3</div>
+      <div class="content">
+        <h3>PWA 安装</h3>
+        <p>把网站变成手机上的"App"——添加到桌面、离线可用、全屏模式。只需要 manifest.json + service worker</p>
+      </div>
+    </div>
+    <div class="option" data-choice="c4" onclick="toggleSelect(this)">
+      <div class="letter">C4</div>
+      <div class="content">
+        <h3>深色/浅色模式切换</h3>
+        <p>现在只有深色。加一个绿色草坪浅色模式——白色底 + 绿色条纹，像真实球场。一键切换</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>🤖 D. AI 智能化</h3>
+  <p class="subtitle">让 AI 不只是预测</p>
+  <div class="options" data-multiselect>
+    <div class="option" data-choice="d1" onclick="toggleSelect(this)">
+      <div class="letter">D1</div>
+      <div class="content">
+        <h3>AI 球评生成</h3>
+        <p>每场比赛用 AI 写一段 100 字的球评——"这场比赛的关键在于中场的控球争夺..."。用 OpenAI API 或本地模型</p>
+      </div>
+    </div>
+    <div class="option" data-choice="d2" onclick="toggleSelect(this)">
+      <div class="letter">D2</div>
+      <div class="content">
+        <h3>智能推荐"你该看哪场"</h3>
+        <p>根据你的历史浏览/预测记录，推荐你可能感兴趣的比赛。像 Netflix 的推荐算法</p>
+      </div>
+    </div>
+    <div class="option" data-choice="d3" onclick="toggleSelect(this)">
+      <div class="letter">D3</div>
+      <div class="content">
+        <h3>AI 聊天机器人</h3>
+        <p>"阿根廷能夺冠吗？""梅西会进几个球？"——用户用自然语言问，AI 基于数据回答。像 ChatGPT + 你的数据</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>🌍 E. 内容 / 传播</h3>
+  <p class="subtitle">让网站自己会说话</p>
+  <div class="options" data-multiselect>
+    <div class="option" data-choice="e1" onclick="toggleSelect(this)">
+      <div class="letter">E1</div>
+      <div class="content">
+        <h3>每日战报</h3>
+        <p>自动生成的日报——"昨天3场比赛，AI命中了2场"。一键生成海报图片，适合发朋友圈/抖音</p>
+      </div>
+    </div>
+    <div class="option" data-choice="e2" onclick="toggleSelect(this)">
+      <div class="letter">E2</div>
+      <div class="content">
+        <h3>球队故事卡片</h3>
+        <p>每支球队生成一张信息图——国旗、核心球员、历史战绩、AI 预测排名。可以下载分享</p>
+      </div>
+    </div>
+    <div class="option" data-choice="e3" onclick="toggleSelect(this)">
+      <div class="letter">E3</div>
+      <div class="content">
+        <h3>多语言支持</h3>
+        <p>英文/中文/西班牙语/阿拉伯语切换。世界杯是全球赛事，英文版能覆盖更多用户</p>
+      </div>
+    </div>
+  </div>
+</div>
