@@ -1,4 +1,4 @@
-import type { Team, Venue, Match } from '@/types/worldcup'
+import type { Team, Venue } from '@/types/worldcup'
 import { getH2H } from '@/lib/data'
 
 // ==========================================

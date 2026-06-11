@@ -29,11 +29,6 @@ export default function PredictionCard({ homeTeam, awayTeam, venue }: { homeTeam
   const prediction = useMemo(() => predictMatch(homeTeam, awayTeam, venue), [homeTeam, awayTeam, venue])
   const analysis = useMemo(() => analyzeMatch(homeTeam, awayTeam, venue), [homeTeam, awayTeam, venue])
 
-  const winner = prediction.homeWin > prediction.awayWin
-    ? homeTeam.nameCn
-    : prediction.awayWin > prediction.homeWin
-      ? awayTeam.nameCn
-      : '可能平局'
   const wColor = prediction.homeWin > prediction.awayWin ? '#00d4ff' : prediction.awayWin > prediction.homeWin ? '#ff6b35' : '#f0c040'
 
   useEffect(() => {
