@@ -2,12 +2,14 @@ import HeroBanner from '@/components/home/HeroBanner'
 import TodayMatches from '@/components/home/TodayMatches'
 import GroupStandings from '@/components/home/GroupStandings'
 import LiveTicker from '@/components/shared/LiveTicker'
+import LiveScoreBar from '@/components/shared/LiveScoreBar'
 
 export default function HomePage() {
   return (
     <main>
       <HeroBanner />
-      <div className="max-w-7xl mx-auto px-5 -mt-16 relative z-20">
+      <div className="max-w-7xl mx-auto px-5 -mt-16 relative z-20 space-y-4">
+        <LiveScoreBar />
         <LiveTicker />
       </div>
       <TodayMatches />
