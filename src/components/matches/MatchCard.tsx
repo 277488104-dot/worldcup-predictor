@@ -21,18 +21,18 @@ export default function MatchCard({ match, index }: MatchCardProps) {
 
   useEffect(() => {
     if (!ref.current) return
-    gsap.from(ref.current, {
-      y: 30, opacity: 0, scale: 0.97,
-      duration: 0.4, delay: index * 0.05, ease: 'power2.out',
-    })
+    gsap.fromTo(ref.current,
+      { y: 30, opacity: 0, scale: 0.97 },
+      { y: 0, opacity: 1, scale: 1, duration: 0.4, delay: index * 0.05, ease: 'power2.out' },
+    )
   }, [index])
 
   if (!home || !away || !venue) return null
 
   return (
-    <div ref={ref}>
+    <div ref={ref} style={{ opacity: 1 }}>
       <Link href={`/matches/${match.id}`}
-        className="block no-underline group bg-[#0d220d] border border-white/20 rounded-2xl p-5 hover:border-grass-pop/40 transition-all hover:bg-[#0f280f]">
+        className="block no-underline group bg-[#0d220d] border border-white/15 rounded-2xl p-5 hover:border-grass-pop/30 transition-all hover:bg-[#0f280f]">
 
         {/* Top row */}
         <div className="flex items-center justify-between mb-4 text-xs">
