@@ -1,18 +1,20 @@
 'use client'
 
 import { useState, useRef, useCallback } from 'react'
-import type { Team, Venue } from '@/types/worldcup'
+import type { Team, Venue, Player } from '@/types/worldcup'
 
 interface AIAnalysisProps {
   homeTeam: Team
   awayTeam: Team
   venue: Venue
   h2hSummary: string
+  homePlayers: Player[]
+  awayPlayers: Player[]
 }
 
 type Status = 'idle' | 'loading' | 'streaming' | 'done' | 'error'
 
-export default function AIAnalysis({ homeTeam, awayTeam, venue, h2hSummary }: AIAnalysisProps) {
+export default function AIAnalysis({ homeTeam, awayTeam, venue, h2hSummary, homePlayers, awayPlayers }: AIAnalysisProps) {
   const [status, setStatus] = useState<Status>('idle')
   const [html, setHtml] = useState('')
   const [error, setError] = useState('')
@@ -28,7 +30,7 @@ export default function AIAnalysis({ homeTeam, awayTeam, venue, h2hSummary }: AI
       const res = await fetch('/api/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ homeTeam, awayTeam, venue, h2hSummary }),
+        body: JSON.stringify({ homeTeam, awayTeam, venue, h2hSummary, homePlayers, awayPlayers }),
         signal: abortRef.current.signal,
       })
 
@@ -81,20 +83,20 @@ export default function AIAnalysis({ homeTeam, awayTeam, venue, h2hSummary }: AI
       setError(error.message || '网络错误')
       setStatus('error')
     }
-  }, [homeTeam, awayTeam, venue, h2hSummary])
+  }, [homeTeam, awayTeam, venue, h2hSummary, homePlayers, awayPlayers])
 
   return (
     <div className="card-glass p-4 sm:p-6 mb-6 sm:mb-8">
       <div className="flex items-center gap-3 mb-4">
         <span className="text-2xl">🧠</span>
         <div>
-          <div className="kicker kicker-gold">DEEPSEEK AI ANALYSIS</div>
+          <div className="kicker kicker-gold">DEEPSEEK AI · 6维分析</div>
           <h3 className="font-display text-lg sm:text-xl font-extrabold">
             AI 深度<span className="text-gold">分析</span>
           </h3>
         </div>
         <div className="ml-auto text-[10px] text-dim bg-white/[0.03] rounded-full px-3 py-1">
-          预测 + 蒙特卡洛 + 结论
+          球员 · 场地 · 交锋 · 模型
         </div>
       </div>
 

@@ -150,7 +150,7 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
           <h3 className="font-display text-lg sm:text-xl font-extrabold mb-4 sm:mb-6">战力<span className="text-grass-pop">雷达</span></h3>
           <RadarCompare homeTeam={home} awayTeam={away} />
         </div>
-        <AIAnalysis homeTeam={home} awayTeam={away} venue={venue} h2hSummary={h2hSummary} />
+        <AIAnalysis homeTeam={home} awayTeam={away} venue={venue} h2hSummary={h2hSummary} homePlayers={homePlayers} awayPlayers={awayPlayers} />
       </div>
 
       {/* ===== SECTION 2: Match Outlook ===== */}
