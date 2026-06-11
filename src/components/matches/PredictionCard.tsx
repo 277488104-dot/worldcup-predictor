@@ -114,38 +114,51 @@ export default function PredictionCard({ homeTeam, awayTeam, venue }: { homeTeam
           ))}
         </div>
 
-        {/* Expand button */}
+                {/* Expand button */}
         <div className="pred-row mb-4">
           <button
             onClick={() => setExpanded(!expanded)}
-            className="w-full py-2 rounded-lg border border-white/10 text-muted text-xs hover:text-white hover:border-accent/30 transition-colors"
+            className="w-full py-2.5 rounded-xl bg-accent/10 hover:bg-accent/20 text-accent text-sm font-semibold transition-colors border border-accent/20"
           >
-            {expanded ? '收起详细分析 ▲' : '展开详细分析 ▼'}
+            {expanded ? '收起详细分析 ▲' : '📊 展开详细分析（11维度 + 比分预测） ▼'}
           </button>
         </div>
 
         {/* Detailed analysis (expandable) */}
         {expanded && (
-          <div className="border-t border-white/5 pt-4 mb-4 space-y-4">
+          <div className="border-t border-white/5 pt-4 mb-4 space-y-5">
             {/* Overview */}
-            <div className="pred-row bg-surface-light/30 rounded-xl p-4">
-              <p className="text-xs text-muted mb-1">综合分析</p>
+            <div className="bg-accent/5 border border-accent/10 rounded-xl p-4">
+              <p className="text-xs text-accent mb-2 font-semibold">📋 综合评估</p>
               <p className="text-sm leading-relaxed">{analysis.overview}</p>
+            </div>
+
+            {/* Score Prediction Card */}
+            <div className="bg-gradient-to-r from-accent/10 to-cta/10 border border-accent/20 rounded-xl p-4">
+              <p className="text-xs text-accent mb-2 font-semibold">🎯 比分预测</p>
+              <div className="flex items-center justify-center gap-6 mb-3">
+                <span className="text-xl font-bold">{homeTeam.nameCn}</span>
+                <span className="text-3xl font-black font-mono text-accent text-glow">{analysis.predictedScoreline}</span>
+                <span className="text-xl font-bold">{awayTeam.nameCn}</span>
+              </div>
+              <p className="text-xs text-muted leading-relaxed">{analysis.scoreReasoning}</p>
             </div>
 
             {/* Upset alert */}
             {analysis.upsetAlert && (
-              <div className="pred-row bg-cta/10 border border-cta/20 rounded-xl p-4">
+              <div className="bg-cta/10 border border-cta/20 rounded-xl p-4">
                 <p className="text-sm font-semibold text-cta">{analysis.upsetAlert}</p>
               </div>
             )}
 
             {/* Analysis points with score badges */}
-            {analysis.points.map((pt, i) => (
-              <div key={i} className="pred-row flex gap-3 items-start">
+            <div className="space-y-4">
+              <p className="text-xs text-muted font-semibold tracking-wide">📊 11维度详细分析</p>
+              {analysis.points.map((pt, i) => (
+              <div key={i} className="flex gap-3 items-start">
                 <span className="text-lg mt-0.5">{pt.icon}</span>
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-0.5">
+                  <div className="flex items-center gap-2 mb-1">
                     <p className="text-sm font-semibold">{pt.title}</p>
                     <span className="text-[10px] px-1.5 py-0.5 rounded-full font-mono font-bold"
                       style={{
@@ -166,18 +179,13 @@ export default function PredictionCard({ homeTeam, awayTeam, venue }: { homeTeam
                   {isHome(pt.advantage) ? '↑ ' + homeTeam.nameCn : isAway(pt.advantage) ? '↑ ' + awayTeam.nameCn : '均等'}
                 </span>
               </div>
-            ))}
-
-            {/* Tactical note */}
-            <div className="pred-row bg-surface-light/30 rounded-xl p-4">
-              <p className="text-xs text-muted mb-1">战术建议</p>
-              <p className="text-sm leading-relaxed">{analysis.tacticalNote}</p>
+              ))}
             </div>
 
-            {/* Head-to-head summary */}
-            <div className="pred-row bg-surface-light/30 rounded-xl p-4">
-              <p className="text-xs text-muted mb-1">交锋记录</p>
-              <p className="text-sm leading-relaxed">{analysis.headToHeadNote}</p>
+            {/* Tactical note */}
+            <div className="bg-surface-light/30 rounded-xl p-4">
+              <p className="text-xs text-muted mb-1 font-semibold">🎯 战术建议</p>
+              <p className="text-sm leading-relaxed">{analysis.tacticalNote}</p>
             </div>
           </div>
         )}
