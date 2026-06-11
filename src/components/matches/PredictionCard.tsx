@@ -1,9 +1,10 @@
 'use client'
 
-import { useRef, useEffect, useMemo } from 'react'
+import { useRef, useEffect, useMemo, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { predictMatch } from '@/lib/prediction'
+import { analyzeMatch } from '@/lib/analysis'
 import type { Team, Venue } from '@/types/worldcup'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -12,22 +13,28 @@ function pctStr(v: number): string {
   return `${(v * 100).toFixed(1)}%`
 }
 
-function probabilityColor(advantage: 'home' | 'away' | 'neutral'): string {
-  if (advantage === 'home') return '#00d4ff'
-  if (advantage === 'away') return '#ff6b35'
-  return '#64748b'
+function isHome(a: string) {
+  return a === 'home'
+}
+function isAway(a: string) {
+  return a === 'away'
 }
 
 export default function PredictionCard({ homeTeam, awayTeam, venue }: { homeTeam: Team; awayTeam: Team; venue: Venue }) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const prediction = useMemo(() => predictMatch(homeTeam, awayTeam, venue), [homeTeam, awayTeam, venue])
+  const [expanded, setExpanded] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const [userPick, setUserPick] = useState<'home' | 'draw' | 'away' | null>(null)
 
-  const winner =
-    prediction.homeWin > prediction.awayWin
-      ? homeTeam.nameCn
-      : prediction.awayWin > prediction.homeWin
-        ? awayTeam.nameCn
-        : '平局'
+  const prediction = useMemo(() => predictMatch(homeTeam, awayTeam, venue), [homeTeam, awayTeam, venue])
+  const analysis = useMemo(() => analyzeMatch(homeTeam, awayTeam, venue), [homeTeam, awayTeam, venue])
+
+  const winner = prediction.homeWin > prediction.awayWin
+    ? homeTeam.nameCn
+    : prediction.awayWin > prediction.homeWin
+      ? awayTeam.nameCn
+      : '可能平局'
+  const wColor = prediction.homeWin > prediction.awayWin ? '#00d4ff' : prediction.awayWin > prediction.homeWin ? '#ff6b35' : '#f0c040'
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -36,95 +43,159 @@ export default function PredictionCard({ homeTeam, awayTeam, venue }: { homeTeam
         scrollTrigger: { trigger: containerRef.current, start: 'top 85%' },
       })
       gsap.from('.pred-row', {
-        y: 20, opacity: 0, duration: 0.5, stagger: 0.08,
+        y: 20, opacity: 0, duration: 0.5, stagger: 0.06,
         scrollTrigger: { trigger: containerRef.current, start: 'top 85%' },
       })
     }, containerRef)
     return () => ctx.revert()
   }, [])
 
+  const handlePredict = (pick: 'home' | 'draw' | 'away') => {
+    setUserPick(pick)
+    setSubmitted(true)
+  }
+
   return (
     <section className="bg-surface rounded-2xl p-6 border border-white/5">
-      <h3 className="text-lg font-bold mb-4">智能预测</h3>
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-lg font-bold">智能预测</h3>
+        <span className="text-xs text-muted bg-surface-light px-2 py-1 rounded">
+          置信度 {(prediction.confidence * 100).toFixed(0)}%
+        </span>
+      </div>
 
       <div ref={containerRef}>
-        {/* Winner highlight */}
-        <div className="pred-row text-center mb-6">
-          <p className="text-xs text-muted mb-1">预测结果</p>
-          <p className="text-2xl font-extrabold" style={{ color: prediction.homeWin > prediction.awayWin ? '#00d4ff' : '#ff6b35' }}>
-            {winner} 优势
-          </p>
-          <p className="text-xs text-muted mt-1">
-            置信度 {(prediction.confidence * 100).toFixed(0)}%
-          </p>
-        </div>
-
-        {/* Probability bars */}
-        <div className="space-y-3 mb-6">
+        {/* Win probabilities with gauge-style bars */}
+        <div className="space-y-4 mb-4">
           <div className="pred-row">
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-xs text-muted">{homeTeam.nameCn} 胜</span>
-              <span className="text-xs font-mono text-accent">{pctStr(prediction.homeWin)}</span>
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-sm font-medium">{homeTeam.nameCn} 胜</span>
+              <span className="text-sm font-mono text-accent">{pctStr(prediction.homeWin)}</span>
             </div>
-            <div className="h-2 bg-surface-light rounded-full overflow-hidden">
-              <div
-                className="pred-bar h-full rounded-full"
-                style={{ width: pctStr(prediction.homeWin), backgroundColor: '#00d4ff' }}
-              />
+            <div className="h-3 bg-surface-light rounded-full overflow-hidden">
+              <div className="pred-bar h-full rounded-full" style={{ width: pctStr(prediction.homeWin), backgroundColor: '#00d4ff' }} />
             </div>
           </div>
           <div className="pred-row">
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-xs text-muted">平局</span>
-              <span className="text-xs font-mono" style={{ color: '#64748b' }}>{pctStr(prediction.draw)}</span>
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-sm font-medium">平局</span>
+              <span className="text-sm font-mono text-muted">{pctStr(prediction.draw)}</span>
             </div>
-            <div className="h-2 bg-surface-light rounded-full overflow-hidden">
-              <div
-                className="pred-bar h-full rounded-full"
-                style={{ width: pctStr(prediction.draw), backgroundColor: '#64748b' }}
-              />
+            <div className="h-3 bg-surface-light rounded-full overflow-hidden">
+              <div className="pred-bar h-full rounded-full" style={{ width: pctStr(prediction.draw), backgroundColor: '#64748b' }} />
             </div>
           </div>
           <div className="pred-row">
-            <div className="flex items-center justify-between mb-1">
-              <span className="text-xs text-muted">{awayTeam.nameCn} 胜</span>
-              <span className="text-xs font-mono text-cta">{pctStr(prediction.awayWin)}</span>
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-sm font-medium">{awayTeam.nameCn} 胜</span>
+              <span className="text-sm font-mono text-cta">{pctStr(prediction.awayWin)}</span>
             </div>
-            <div className="h-2 bg-surface-light rounded-full overflow-hidden">
-              <div
-                className="pred-bar h-full rounded-full"
-                style={{ width: pctStr(prediction.awayWin), backgroundColor: '#ff6b35' }}
-              />
+            <div className="h-3 bg-surface-light rounded-full overflow-hidden">
+              <div className="pred-bar h-full rounded-full" style={{ width: pctStr(prediction.awayWin), backgroundColor: '#ff6b35' }} />
             </div>
           </div>
         </div>
 
-        {/* Factor breakdown */}
-        <div className="space-y-2 mb-6">
-          <p className="text-xs text-muted mb-2">关键因素</p>
-          {prediction.factors.map((f) => (
-            <div key={f.name} className="pred-row flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div
-                  className="w-2 h-2 rounded-full"
-                  style={{ backgroundColor: probabilityColor(f.advantage) }}
-                />
-                <span className="text-sm">{f.name}</span>
-              </div>
-              <span className="text-xs text-muted">权重 {(f.weight * 100).toFixed(0)}%</span>
-            </div>
+        {/* Score prediction */}
+        <div className="pred-row bg-surface-light/50 rounded-xl p-4 mb-4 text-center">
+          <p className="text-xs text-muted mb-2">预期比分</p>
+          <p className="text-2xl font-black font-mono" style={{ color: wColor }}>
+            {analysis.scorePrediction.home} - {analysis.scorePrediction.away}
+          </p>
+        </div>
+
+        {/* Quick factor chips */}
+        <div className="pred-row flex flex-wrap gap-2 mb-4">
+          {prediction.factors.map(f => (
+            <span key={f.name}
+              className="text-xs px-2.5 py-1 rounded-full"
+              style={{
+                background: isHome(f.advantage) ? 'rgba(0,212,255,.15)' : isAway(f.advantage) ? 'rgba(255,107,53,.15)' : 'rgba(100,116,139,.15)',
+                color: isHome(f.advantage) ? '#00d4ff' : isAway(f.advantage) ? '#ff6b35' : '#8892b0',
+              }}
+            >
+              {isHome(f.advantage) ? '↑' : isAway(f.advantage) ? '↓' : '='} {f.name}
+            </span>
           ))}
         </div>
 
-        {/* Disabled prediction button */}
-        <div className="pred-row">
+        {/* Expand button */}
+        <div className="pred-row mb-4">
           <button
-            disabled
-            className="w-full py-3 rounded-xl bg-accent/10 text-accent/50 font-semibold text-sm cursor-not-allowed"
+            onClick={() => setExpanded(!expanded)}
+            className="w-full py-2 rounded-lg border border-white/10 text-muted text-xs hover:text-white hover:border-accent/30 transition-colors"
           >
-            预测功能即将上线
+            {expanded ? '收起详细分析 ▲' : '展开详细分析 ▼'}
           </button>
         </div>
+
+        {/* Detailed analysis (expandable) */}
+        {expanded && (
+          <div className="border-t border-white/5 pt-4 mb-4 space-y-4">
+            {/* Overview */}
+            <div className="pred-row bg-surface-light/30 rounded-xl p-4">
+              <p className="text-xs text-muted mb-1">综合分析</p>
+              <p className="text-sm leading-relaxed">{analysis.overview}</p>
+            </div>
+
+            {/* Analysis points */}
+            {analysis.points.map((pt, i) => (
+              <div key={i} className="pred-row flex gap-3 items-start">
+                <span className="text-lg mt-0.5">{pt.icon}</span>
+                <div className="flex-1">
+                  <p className="text-sm font-semibold">{pt.title}</p>
+                  <p className="text-xs text-muted mt-0.5">{pt.detail}</p>
+                </div>
+                <span
+                  className="text-[10px] px-1.5 py-0.5 rounded-full font-medium"
+                  style={{
+                    background: isHome(pt.advantage) ? 'rgba(0,212,255,.15)' : isAway(pt.advantage) ? 'rgba(255,107,53,.15)' : 'rgba(100,116,139,.15)',
+                    color: isHome(pt.advantage) ? '#00d4ff' : isAway(pt.advantage) ? '#ff6b35' : '#8892b0',
+                  }}
+                >
+                  {isHome(pt.advantage) ? homeTeam.nameCn : isAway(pt.advantage) ? awayTeam.nameCn : '均等'}
+                </span>
+              </div>
+            ))}
+
+            {/* Tactical note */}
+            <div className="pred-row bg-surface-light/30 rounded-xl p-4">
+              <p className="text-xs text-muted mb-1">战术建议</p>
+              <p className="text-sm leading-relaxed">{analysis.tacticalNote}</p>
+            </div>
+          </div>
+        )}
+
+        {/* User prediction buttons */}
+        {!submitted ? (
+          <div className="pred-row flex gap-2">
+            <button
+              onClick={() => handlePredict('home')}
+              className="flex-1 py-3 rounded-xl bg-accent/10 hover:bg-accent/20 text-accent font-semibold text-sm transition-colors border border-accent/20"
+            >
+              {homeTeam.nameCn} 胜
+            </button>
+            <button
+              onClick={() => handlePredict('draw')}
+              className="flex-1 py-3 rounded-xl bg-muted/10 hover:bg-muted/20 text-muted font-semibold text-sm transition-colors border border-white/10"
+            >
+              平局
+            </button>
+            <button
+              onClick={() => handlePredict('away')}
+              className="flex-1 py-3 rounded-xl bg-cta/10 hover:bg-cta/20 text-cta font-semibold text-sm transition-colors border border-cta/20"
+            >
+              {awayTeam.nameCn} 胜
+            </button>
+          </div>
+        ) : (
+          <div className="pred-row text-center bg-accent/5 rounded-xl p-4 border border-accent/10">
+            <p className="text-sm text-accent font-medium">
+              ✓ 你预测了 {userPick === 'home' ? homeTeam.nameCn + ' 胜' : userPick === 'draw' ? '平局' : awayTeam.nameCn + ' 胜'}
+            </p>
+            <p className="text-xs text-muted mt-1">预测已记录，赛后将公布准确率统计</p>
+          </div>
+        )}
       </div>
     </section>
   )
