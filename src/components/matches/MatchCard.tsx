@@ -18,14 +18,16 @@ export default function MatchCard({ match, index }: MatchCardProps) {
   const home = getTeamById(match.homeTeamId)
   const away = getTeamById(match.awayTeamId)
   const venue = getVenueById(match.venueId)
-  if (!home || !away || !venue) return null
 
   useEffect(() => {
+    if (!ref.current) return
     gsap.from(ref.current, {
       y: 30, opacity: 0, scale: 0.97,
       duration: 0.4, delay: index * 0.05, ease: 'power2.out',
     })
   }, [index])
+
+  if (!home || !away || !venue) return null
 
   return (
     <div ref={ref}>
@@ -47,7 +49,7 @@ export default function MatchCard({ match, index }: MatchCardProps) {
             ) : match.status === 'live' ? (
               <span className="font-mono text-2xl font-black text-danger">{match.homeScore}-{match.awayScore}</span>
             ) : (
-              <span className="text-lg font-black text-muted/20">VS</span>
+              <span className="text-lg font-black text-muted/50">VS</span>
             )}
           </div>
           <div className="flex flex-col items-center gap-1 flex-1 min-w-0">
@@ -56,7 +58,7 @@ export default function MatchCard({ match, index }: MatchCardProps) {
           </div>
         </div>
 
-        <div className="mt-4 pt-3 border-t border-white/5 text-[10px] text-dim text-center">
+        <div className="mt-4 pt-3 border-t border-white/10 text-[10px] text-muted text-center">
           📍 {venue.city} · {venue.name}
         </div>
       </Link>

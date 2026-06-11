@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getLiveMatches, getTeamById } from '@/lib/data'
 
 export default function LiveTicker() {
@@ -25,7 +25,7 @@ export default function LiveTicker() {
           return (
             <span key={`${m.id}-${i}`} className="inline-flex items-center gap-3 mx-6 text-xs whitespace-nowrap">
               <span className="badge badge-live">
-                <span className="live-dot" /> LIVE {m.homeScore}-{m.awayScore}'
+                <span className="live-dot" /> LIVE {m.homeScore}-{m.awayScore}&apos;
               </span>
               <span className="text-chalk/80 font-semibold">{home.fifaCode}</span>
               <span className="font-mono font-bold text-grass-pop num-glow">{m.homeScore}</span>

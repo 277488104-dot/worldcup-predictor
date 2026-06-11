@@ -7,7 +7,7 @@ interface ScoreBadgeProps {
   minute?: number
 }
 
-export default function ScoreBadge({ homeCode, awayCode, homeScore, awayScore, status, minute }: ScoreBadgeProps) {
+export default function ScoreBadge({ homeCode, awayCode, homeScore, awayScore, status }: ScoreBadgeProps) {
   const isLive = status === 'live'
   const hasScore = homeScore !== undefined && awayScore !== undefined
 
