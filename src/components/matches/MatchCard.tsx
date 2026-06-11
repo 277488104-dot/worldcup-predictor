@@ -7,16 +7,18 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import type { Match } from '@/types/worldcup'
 import { getTeamById, getVenueById } from '@/lib/data'
 import { STAGE_LABELS } from '@/lib/constants'
+import { toBeijingDate, toBeijingTime } from '@/lib/date'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function MatchCard({ match, index }: { match: Match; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null)
-  const home = getTeamById(match.homeTeamId)!
-  const away = getTeamById(match.awayTeamId)!
-  const venue = getVenueById(match.venueId)!
+  const home = getTeamById(match.homeTeamId)
+  const away = getTeamById(match.awayTeamId)
+  const venue = getVenueById(match.venueId)
 
   useEffect(() => {
+    if (!cardRef.current) return
     const ctx = gsap.context(() => {
       gsap.from(cardRef.current, {
         y: 40, opacity: 0, duration: 0.5, delay: index * 0.05,
@@ -26,13 +28,15 @@ export default function MatchCard({ match, index }: { match: Match; index: numbe
     return () => ctx.revert()
   }, [index])
 
+  if (!home || !away || !venue) return null
+
   return (
     <Link href={`/matches/${match.id}`}>
       <div ref={cardRef} className="bg-surface rounded-2xl p-6 border border-white/5 hover:border-accent/30 transition-all group">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <span className="text-xs text-muted">{new Date(match.date).toLocaleDateString('zh-CN', { month: 'short', day: 'numeric' })}</span>
-            <span className="text-xs text-muted ml-2">{new Date(match.date).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })}</span>
+            <span className="text-xs text-muted">{toBeijingDate(match.date)}</span>
+            <span className="text-xs text-muted ml-2">{toBeijingTime(match.date)} 北京时间</span>
           </div>
           <span className={`text-xs px-2 py-0.5 rounded ${match.stage === 'group' ? 'bg-accent/10 text-accent' : 'bg-knockout/10 text-knockout'}`}>
             {STAGE_LABELS[match.stage]}

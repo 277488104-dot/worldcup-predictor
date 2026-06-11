@@ -2254,5 +2254,25 @@
       "pan-96",
       "pan-98"
     ]
+  },
+  {
+    "id": "tbd",
+    "name": "TBD",
+    "nameCn": "待定",
+    "fifaCode": "TBD",
+    "flagUrl": "❓",
+    "fifaRank": 0,
+    "confederation": "UEFA",
+    "coach": "-",
+    "groupId": "KO",
+    "stats": {
+      "attack": 50,
+      "defense": 50,
+      "possession": 50,
+      "fitness": 50,
+      "experience": 50,
+      "recentForm": 50
+    },
+    "playerIds": []
   }
 ]

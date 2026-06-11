@@ -1,6 +1,7 @@
 import { getTeamById, getPlayersByTeam, getMatchesByTeam, getGroupByTeamId, getAllTeams } from '@/lib/data'
 import { notFound } from 'next/navigation'
 import { STAGE_LABELS, STAT_LABELS } from '@/lib/constants'
+import { toBeijingDate } from '@/lib/date'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
@@ -113,7 +114,7 @@ export default async function TeamDetailPage({ params }: { params: Promise<{ id:
                 className="flex items-center gap-4 bg-surface rounded-xl p-4 border border-white/5 hover:border-accent/30 transition-colors"
               >
                 <span className="text-xs text-muted w-24">
-                  {new Date(m.date).toLocaleDateString('zh-CN')}
+                  {toBeijingDate(m.date)}
                 </span>
                 <span className="text-xs bg-accent/10 text-accent px-2 py-0.5 rounded">
                   {STAGE_LABELS[m.stage]}

@@ -1,6 +1,7 @@
 import { getMatchById, getTeamById, getVenueById, getAllMatches, getH2H } from '@/lib/data'
 import { notFound } from 'next/navigation'
 import { STAGE_LABELS } from '@/lib/constants'
+import { toBeijingDate, toBeijingTime } from '@/lib/date'
 import type { Metadata } from 'next'
 import RadarCompare from '@/components/matches/RadarCompare'
 import PredictionCard from '@/components/matches/PredictionCard'
@@ -33,9 +34,9 @@ export default function MatchDetailPage({ params }: { params: { id: string } }) 
       {/* Match header */}
       <div className="bg-surface rounded-3xl p-8 md:p-12 mb-12 border border-white/5 text-center">
         <div className="text-sm text-muted mb-2">
-          {new Date(match.date).toLocaleDateString('zh-CN', { weekday: 'long', month: 'long', day: 'numeric' })}
+          {toBeijingDate(match.date)}
           {' · '}
-          {new Date(match.date).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })}
+          {toBeijingTime(match.date)}
         </div>
         <div className="text-xs mb-4">
           <span className={`px-3 py-1 rounded-full text-xs ${match.stage === 'group' ? 'bg-accent/10 text-accent' : 'bg-knockout/10 text-knockout'}`}>

@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Link from 'next/link'
 import { getTodayMatches, getTeamById, getVenueById } from '@/lib/data'
 import { STAGE_LABELS } from '@/lib/constants'
+import { toBeijingDate, toBeijingTime } from '@/lib/date'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -52,9 +53,8 @@ export default function TodayMatches() {
               const venue = getVenueById(match.venueId)
               if (!homeTeam || !awayTeam || !venue) return null
 
-              const matchTime = new Date(match.date)
-              const timeStr = matchTime.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit', hour12: false })
-              const dateStr = matchTime.toLocaleDateString('zh-CN', { month: 'numeric', day: 'numeric' })
+              const timeStr = toBeijingTime(match.date)
+              const dateStr = toBeijingDate(match.date).slice(5)
 
               return (
                 <Link key={match.id} href={`/matches/${match.id}`}

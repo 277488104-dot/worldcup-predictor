@@ -2,6 +2,7 @@ import { getVenueById, getAllVenues, getAllMatches, getTeamById } from '@/lib/da
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { STAGE_LABELS } from '@/lib/constants'
+import { toBeijingDate, toBeijingTime } from '@/lib/date'
 import type { Metadata } from 'next'
 
 export function generateStaticParams() {
@@ -78,7 +79,7 @@ export default function VenueDetailPage({ params }: { params: { id: string } }) 
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
                         <span className="text-xs text-muted">
-                          {new Date(match.date).toLocaleDateString('zh-CN', { month: 'short', day: 'numeric' })}
+                          {toBeijingDate(match.date)}
                         </span>
                         <span className={`text-xs px-2 py-0.5 rounded ${match.stage === 'group' ? 'bg-accent/10 text-accent' : 'bg-knockout/10 text-knockout'}`}>
                           {STAGE_LABELS[match.stage]}
@@ -92,7 +93,7 @@ export default function VenueDetailPage({ params }: { params: { id: string } }) 
                       </div>
 
                       <span className="text-xs text-muted">
-                        {new Date(match.date).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })}
+                        {toBeijingTime(match.date)}
                       </span>
                     </div>
                   </div>
