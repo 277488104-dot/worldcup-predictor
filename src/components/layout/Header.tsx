@@ -17,7 +17,10 @@ export default function Header() {
   const headerRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    gsap.from(headerRef.current, { y: -80, opacity: 0, duration: 0.6, ease: 'power3.out' })
+    const ctx = gsap.context(() => {
+      gsap.from(headerRef.current, { y: -80, opacity: 0, duration: 0.6, ease: 'power3.out' })
+    }, headerRef)
+    return () => ctx.revert()
   }, [])
 
   return (
