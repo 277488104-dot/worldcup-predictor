@@ -2,7 +2,7 @@ import { getGroups, getTeamsByGroup } from '@/lib/data'
 import { getRankTier } from '@/lib/constants'
 
 export default function GroupStandings() {
-  const groups = getGroups().slice(0, 6)
+  const groups = getGroups() // Show all 12 groups
 
   return (
     <section className="py-24 px-5 max-w-7xl mx-auto">
