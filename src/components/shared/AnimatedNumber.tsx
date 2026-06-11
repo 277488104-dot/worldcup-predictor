@@ -1,25 +1,47 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
+import { useEffect, useRef, useState } from 'react'
 
-export default function AnimatedNumber({ value, className }: { value: number; className?: string }) {
-  const containerRef = useRef<HTMLSpanElement>(null)
-  const prev = useRef(value)
+interface AnimatedNumberProps {
+  value: number
+  duration?: number
+  className?: string
+  prefix?: string
+  suffix?: string
+}
+
+export default function AnimatedNumber({ value, duration = 800, className = '', prefix, suffix }: AnimatedNumberProps) {
+  const [display, setDisplay] = useState(0)
+  const ref = useRef<HTMLSpanElement>(null)
+  const started = useRef(false)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      if (prev.current !== value && containerRef.current) {
-        gsap.fromTo(containerRef.current,
-          { textContent: prev.current, duration: 0 },
-          { textContent: value, duration: 0.4, snap: { textContent: 1 }, ease: 'power2.out' }
-        )
-      }
-    }, containerRef)
+    const el = ref.current
+    if (!el || started.current) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          started.current = true
+          const start = performance.now()
+          const animate = (now: number) => {
+            const elapsed = now - start
+            const progress = Math.min(elapsed / duration, 1)
+            const eased = 1 - Math.pow(1 - progress, 3)
+            setDisplay(Math.round(eased * value))
+            if (progress < 1) requestAnimationFrame(animate)
+          }
+          requestAnimationFrame(animate)
+        }
+      },
+      { threshold: 0.3 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [value, duration])
 
-    prev.current = value
-    return () => ctx.revert()
-  }, [value])
-
-  return <span ref={containerRef} className={className}>{value}</span>
+  return (
+    <span ref={ref} className={`font-mono font-bold tabular-nums ${className}`}>
+      {prefix}{display}{suffix}
+    </span>
+  )
 }
