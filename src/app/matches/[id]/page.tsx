@@ -43,7 +43,7 @@ export default function MatchDetailPage({ params }: { params: { id: string } }) 
           </span>
         </div>
 
-        <div className="flex items-center justify-center gap-4 md:gap-12">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12">
           <div className="flex flex-col items-center gap-2">
             <span className="text-5xl md:text-7xl">{home.flagUrl}</span>
             <h2 className="text-lg md:text-2xl font-bold">{home.nameCn}</h2>

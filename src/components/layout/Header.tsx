@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 
 const NAV = [
@@ -15,6 +15,12 @@ const NAV = [
 export default function Header() {
   const pathname = usePathname()
   const headerRef = useRef<HTMLElement>(null)
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileOpen(false)
+  }, [pathname])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -31,7 +37,9 @@ export default function Header() {
           <span className="text-white">2026</span>
           <span className="text-muted">·世界杯</span>
         </Link>
-        <ul className="flex gap-1">
+
+        {/* Desktop nav */}
+        <ul className="hidden md:flex gap-1">
           {NAV.map(item => (
             <li key={item.href}>
               <Link
@@ -47,6 +55,56 @@ export default function Header() {
             </li>
           ))}
         </ul>
+
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden p-2 text-muted hover:text-white transition-colors"
+          onClick={() => setMobileOpen(v => !v)}
+          aria-label="菜单"
+        >
+          {mobileOpen ? (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          ) : (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="4" y1="6" x2="20" y2="6" />
+              <line x1="4" y1="12" x2="20" y2="12" />
+              <line x1="4" y1="18" x2="20" y2="18" />
+            </svg>
+          )}
+        </button>
+
+        {/* Mobile drawer overlay */}
+        {mobileOpen && (
+          <div className="fixed inset-0 z-40 md:hidden" onClick={() => setMobileOpen(false)}>
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/60" />
+            {/* Panel */}
+            <div
+              className="absolute top-0 right-0 h-full w-64 bg-bg border-l border-white/10 p-6 pt-20"
+              onClick={e => e.stopPropagation()}
+            >
+              <ul className="flex flex-col gap-2">
+                {NAV.map(item => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors ${
+                        pathname === item.href
+                          ? 'bg-accent/10 text-accent'
+                          : 'text-muted hover:text-white hover:bg-surface'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
       </nav>
     </header>
   )
