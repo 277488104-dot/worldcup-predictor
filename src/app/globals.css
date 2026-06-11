@@ -2,26 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap');
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-bg: #1a1a2e;
+  --color-accent: #00d4ff;
+  --color-cta: #ff6b35;
+  --color-knockout: #7c3aed;
+  --color-surface: #16213e;
+  --color-surface-light: #1f3460;
+  --color-muted: #8892b0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-light);
+  border-radius: 3px;
+}
+
+/* GSAP will-change optimization */
+.gsap-animated {
+  will-change: transform, opacity;
 }
