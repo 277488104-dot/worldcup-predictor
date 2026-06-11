@@ -3006,15 +3006,6 @@
     "teamId": "usa"
   },
   {
-    "id": "usa-7",
-    "name": "Christian Pulisic",
-    "position": "FW",
-    "age": 27,
-    "club": "AC Milan",
-    "number": 7,
-    "teamId": "usa"
-  },
-  {
     "id": "usa-22",
     "name": "Tim Weah",
     "position": "FW",
@@ -3843,15 +3834,6 @@
     "teamId": "ger"
   },
   {
-    "id": "ger-6",
-    "name": "Joshua Kimmich",
-    "position": "MF",
-    "age": 31,
-    "club": "Bayern Munich",
-    "number": 6,
-    "teamId": "ger"
-  },
-  {
     "id": "ger-17",
     "name": "Felix Nmecha",
     "position": "MF",
@@ -3939,15 +3921,6 @@
     "age": 23,
     "club": "Bayern Munich",
     "number": 11,
-    "teamId": "ger"
-  },
-  {
-    "id": "ger-19",
-    "name": "Leroy Sane",
-    "position": "FW",
-    "age": 30,
-    "club": "Galatasaray",
-    "number": 19,
     "teamId": "ger"
   },
   {
@@ -4758,15 +4731,6 @@
     "age": 25,
     "club": "Tottenham Hotspur",
     "number": 6,
-    "teamId": "ned"
-  },
-  {
-    "id": "ned-4",
-    "name": "Virgil van Dijk",
-    "position": "DF",
-    "age": 34,
-    "club": "Liverpool",
-    "number": 4,
     "teamId": "ned"
   },
   {
