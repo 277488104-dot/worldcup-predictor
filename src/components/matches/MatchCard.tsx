@@ -1,72 +1,65 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import type { Match } from '@/types/worldcup'
 import { getTeamById, getVenueById } from '@/lib/data'
 import { STAGE_LABELS } from '@/lib/constants'
 import { toBeijingDate, toBeijingTime } from '@/lib/date'
+import type { Match } from '@/types/worldcup'
 
-gsap.registerPlugin(ScrollTrigger)
+interface MatchCardProps {
+  match: Match
+  index: number
+}
 
-export default function MatchCard({ match, index }: { match: Match; index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null)
+export default function MatchCard({ match, index }: MatchCardProps) {
+  const ref = useRef<HTMLDivElement>(null)
   const home = getTeamById(match.homeTeamId)
   const away = getTeamById(match.awayTeamId)
   const venue = getVenueById(match.venueId)
-
-  useEffect(() => {
-    if (!cardRef.current) return
-    const ctx = gsap.context(() => {
-      gsap.from(cardRef.current, {
-        y: 40, opacity: 0, duration: 0.5, delay: index * 0.05,
-        scrollTrigger: { trigger: cardRef.current, start: 'top 90%' },
-      })
-    }, cardRef)
-    return () => ctx.revert()
-  }, [index])
-
   if (!home || !away || !venue) return null
 
+  useEffect(() => {
+    gsap.from(ref.current, {
+      y: 30, opacity: 0, scale: 0.97,
+      duration: 0.4, delay: index * 0.05, ease: 'power2.out',
+    })
+  }, [index])
+
   return (
-    <Link href={`/matches/${match.id}`}>
-      <div ref={cardRef} className="bg-surface rounded-2xl p-6 border border-white/5 hover:border-accent/30 transition-all group">
-        <div className="flex items-center justify-between mb-4">
-          <div>
-            <span className="text-xs text-muted">{toBeijingDate(match.date)}</span>
-            <span className="text-xs text-muted ml-2">{toBeijingTime(match.date)} 北京时间</span>
-          </div>
-          <span className={`text-xs px-2 py-0.5 rounded ${match.stage === 'group' ? 'bg-accent/10 text-accent' : 'bg-knockout/10 text-knockout'}`}>
-            {STAGE_LABELS[match.stage]}
-          </span>
+    <div ref={ref}>
+      <Link href={`/matches/${match.id}`} className="card-glass p-5 block no-underline group">
+        <div className="flex items-center justify-between mb-4 text-[10px]">
+          <span className="text-dim">{toBeijingDate(match.date)}</span>
+          <span className="font-mono font-bold text-grass-pop">{toBeijingTime(match.date)}</span>
+          <span className="badge badge-stage">{STAGE_LABELS[match.stage]}</span>
         </div>
 
-        <div className="flex items-center justify-between">
-          <div className="text-center flex-1">
-            <span className="text-3xl block mb-1">{home.flagUrl}</span>
-            <span className="text-sm font-semibold">{home.nameCn}</span>
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex flex-col items-center gap-1 flex-1 min-w-0">
+            <span className="text-3xl group-hover:scale-110 transition-transform">{home.flagUrl}</span>
+            <span className="text-xs font-bold text-chalk truncate w-full text-center">{home.nameCn}</span>
           </div>
-
-          <div className="text-center px-4">
+          <div className="flex-shrink-0 text-center px-3">
             {match.status === 'finished' ? (
-              <span className="text-2xl font-bold text-accent font-mono">{match.homeScore}-{match.awayScore}</span>
+              <span className="font-mono text-2xl font-black text-grass-pop">{match.homeScore}-{match.awayScore}</span>
+            ) : match.status === 'live' ? (
+              <span className="font-mono text-2xl font-black text-danger">{match.homeScore}-{match.awayScore}</span>
             ) : (
-              <span className="text-lg font-bold text-muted">VS</span>
+              <span className="text-lg font-black text-muted/20">VS</span>
             )}
           </div>
-
-          <div className="text-center flex-1">
-            <span className="text-3xl block mb-1">{away.flagUrl}</span>
-            <span className="text-sm font-semibold">{away.nameCn}</span>
+          <div className="flex flex-col items-center gap-1 flex-1 min-w-0">
+            <span className="text-3xl group-hover:scale-110 transition-transform">{away.flagUrl}</span>
+            <span className="text-xs font-bold text-chalk truncate w-full text-center">{away.nameCn}</span>
           </div>
         </div>
 
-        <div className="mt-4 text-xs text-muted text-center">
-          {venue.name} · {venue.city}
+        <div className="mt-4 pt-3 border-t border-white/5 text-[10px] text-dim text-center">
+          📍 {venue.city} · {venue.name}
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   )
 }
