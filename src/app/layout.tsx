@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import ScrollRefresh from '@/components/layout/ScrollRefresh'
 
 export const metadata: Metadata = {
   title: '2026 世界杯预测分析',
@@ -13,6 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="zh-CN">
       <body>
         <Header />
+        <ScrollRefresh />
         {children}
         <Footer />
       </body>

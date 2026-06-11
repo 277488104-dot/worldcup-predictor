@@ -1,5 +1,6 @@
 import { getAllVenues } from '@/lib/data'
 import VenueCard from '@/components/venues/VenueCard'
+import PageTransitionWrapper from '@/components/layout/PageTransitionWrapper'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -10,6 +11,7 @@ export default function VenuesPage() {
   const venues = getAllVenues()
 
   return (
+    <PageTransitionWrapper>
     <main className="max-w-7xl mx-auto px-6 py-16">
       <h1 className="text-3xl font-extrabold mb-2">比赛场馆</h1>
       <p className="text-muted mb-10">{venues.length} 个场馆 · 美国、加拿大、墨西哥</p>
@@ -29,5 +31,6 @@ export default function VenuesPage() {
         ))}
       </div>
     </main>
+    </PageTransitionWrapper>
   )
 }
