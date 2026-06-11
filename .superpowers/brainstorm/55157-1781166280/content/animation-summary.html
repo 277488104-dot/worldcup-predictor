@@ -1,0 +1,187 @@
+<h2>动效系统 + 完整设计总结</h2>
+<p class="subtitle">GSAP 动画体系 + 特效清单 + 实施路线</p>
+
+<div class="section">
+  <h3>🎬 动画清单（按页面）</h3>
+
+  <div style="background: #0d260d; border-radius: 16px; padding: 24px; border: 1px solid rgba(255,255,255,0.05);">
+
+    <div style="margin-bottom: 20px;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+        <span style="background: #4ade80; color: #0a180a; padding: 3px 10px; border-radius: 100px; font-size: 10px; font-weight: 700;">首页</span>
+        <span style="color: #f5f5f0; font-weight: 700;">Hero + Dashboard + Pitch</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; font-size: 11px;">
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #4ade80;">Hero 文字入场</span>
+          <span style="color: #889988; margin-left: 4px;">分段飞入 + stagger</span>
+        </div>
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #4ade80;">球场条纹视差</span>
+          <span style="color: #889988; margin-left: 4px;">ScrollTrigger scrub</span>
+        </div>
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #4ade80;">倒计时数字</span>
+          <span style="color: #889988; margin-left: 4px;">AnimatedNumber 跳动</span>
+        </div>
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #4ade80;">比分跑马灯</span>
+          <span style="color: #889988; margin-left: 4px;">无限横向滚动</span>
+        </div>
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #f0c040;">比赛卡片入场</span>
+          <span style="color: #889988; margin-left: 4px;">ScrollTrigger stagger</span>
+        </div>
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #f0c040;">光晕浮动</span>
+          <span style="color: #889988; margin-left: 4px;">大球体缓慢漂移</span>
+        </div>
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #f0c040;">滚动指示器</span>
+          <span style="color: #889988; margin-left: 4px;">渐隐 + 脉冲点</span>
+        </div>
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #f0c040;">CTA hover 效果</span>
+          <span style="color: #889988; margin-left: 4px;">scale + glow shadow</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+        <span style="background: #22c55e; color: #fff; padding: 3px 10px; border-radius: 100px; font-size: 10px; font-weight: 700;">比赛详情</span>
+        <span style="color: #f5f5f0; font-weight: 700;">专家·冷静·数据驱动</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; font-size: 11px;">
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #4ade80;">LIVE 脉冲标签</span>
+          <span style="color: #889988; margin-left: 4px;">CSS pulse 动画</span>
+        </div>
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #4ade80;">雷达图动画</span>
+          <span style="color: #889988; margin-left: 4px;">ECharts 入场绘制</span>
+        </div>
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #4ade80;">概率条填充</span>
+          <span style="color: #889988; margin-left: 4px;">宽度从 0 到目标值</span>
+        </div>
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #4ade80;">比分数字切换</span>
+          <span style="color: #889988; margin-left: 4px;">翻牌/滚动效果</span>
+        </div>
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #f0c040;">H2H 时间线</span>
+          <span style="color: #889988; margin-left: 4px;">ScrollTrigger 逐条出现</span>
+        </div>
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #f0c040;">场馆数据卡片</span>
+          <span style="color: #889988; margin-left: 4px;">hover 3D tilt</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+        <span style="background: #f0c040; color: #0a180a; padding: 3px 10px; border-radius: 100px; font-size: 10px; font-weight: 700;">全局</span>
+        <span style="color: #f5f5f0; font-weight: 700;">所有页面共享</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; font-size: 11px;">
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #4ade80;">页面过渡</span>
+          <span style="color: #889988; margin-left: 4px;">fade + slideUp</span>
+        </div>
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #4ade80;">Header 显示/隐藏</span>
+          <span style="color: #889988; margin-left: 4px;">滚动方向检测</span>
+        </div>
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #4ade80;">光标跟踪</span>
+          <span style="color: #889988; margin-left: 4px;">卡片上微光跟随鼠标</span>
+        </div>
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #4ade80;">数字滚动</span>
+          <span style="color: #889988; margin-left: 4px;">AnimatedNumber 组件</span>
+        </div>
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #f0c040;">卡片 hover</span>
+          <span style="color: #889988; margin-left: 4px;">translateY + border glow</span>
+        </div>
+        <div style="padding: 8px 12px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+          <span style="color: #f0c040;">背景粒子</span>
+          <span style="color: #889988; margin-left: 4px;">Canvas 浮点 (可选)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>📋 设计决策汇总</h3>
+  <div style="background: #0d260d; border-radius: 16px; padding: 24px; border: 1px solid rgba(255,255,255,0.05);">
+
+    <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <td style="padding: 10px; color: #889988; font-weight: 600; width: 160px;">视觉方向</td>
+        <td style="padding: 10px; color: #f5f5f0;">体育媒体风（ESPN/The Athletic）+ 绿茵场色调</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <td style="padding: 10px; color: #889988; font-weight: 600;">主色调</td>
+        <td style="padding: 10px; color: #f5f5f0;">深绿底 (#0a180a) · 草绿强调 (#4ade80) · 金色高亮 (#f0c040)</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <td style="padding: 10px; color: #889988; font-weight: 600;">页面范围</td>
+        <td style="padding: 10px; color: #f5f5f0;">全部 7 个页面重设计</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <td style="padding: 10px; color: #889988; font-weight: 600;">视觉记忆点</td>
+        <td style="padding: 10px; color: #f5f5f0;">三层叙事：封面大图 → 数据仪表盘 → 球场纹理</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <td style="padding: 10px; color: #889988; font-weight: 600;">动画策略</td>
+        <td style="padding: 10px; color: #f5f5f0;">炫技拉满：视差·粒子·3D·数字动画·跑马灯·光标效果</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <td style="padding: 10px; color: #889988; font-weight: 600;">人格策略</td>
+        <td style="padding: 10px; color: #f5f5f0;">首页=球迷激情 ｜ 比赛/球队详情=专家冷静</td>
+      </tr>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <td style="padding: 10px; color: #889988; font-weight: 600;">实施策略</td>
+        <td style="padding: 10px; color: #f5f5f0;">Foundation 先行 → 首页第一 → 逐页冲刺</td>
+      </tr>
+      <tr>
+        <td style="padding: 10px; color: #889988; font-weight: 600;">技术栈</td>
+        <td style="padding: 10px; color: #f5f5f0;">Next.js 14 · Tailwind CSS 3 · GSAP · ECharts · TypeScript</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="section">
+  <h3>🗂️ 实施文件清单</h3>
+  <div style="background: #0d260d; border-radius: 16px; padding: 24px; border: 1px solid rgba(255,255,255,0.05);">
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; font-size: 11px;">
+      <div style="padding: 10px; background: rgba(74,222,128,0.03); border-radius: 8px;">
+        <span style="color: #4ade80; font-weight: 700;">Phase 1: Foundation</span>
+        <div style="color: #889988; margin-top: 4px;">tailwind.config.ts</div>
+        <div style="color: #889988;">globals.css (重写)</div>
+        <div style="color: #889988;">Shared components</div>
+      </div>
+      <div style="padding: 10px; background: rgba(240,192,64,0.03); border-radius: 8px;">
+        <span style="color: #f0c040; font-weight: 700;">Phase 2: Homepage</span>
+        <div style="color: #889988; margin-top: 4px;">page.tsx (重写)</div>
+        <div style="color: #889988;">HeroBanner (新)</div>
+        <div style="color: #889988;">TodayMatches (新)</div>
+        <div style="color: #889988;">CountdownTimer</div>
+        <div style="color: #889988;">LiveTicker (新)</div>
+      </div>
+      <div style="padding: 10px; background: rgba(255,255,255,0.02); border-radius: 8px;">
+        <span style="color: #889988; font-weight: 700;">Phase 3-5: 内页</span>
+        <div style="color: #889988; margin-top: 4px;">MatchDetail 重写</div>
+        <div style="color: #889988;">TeamList + Detail</div>
+        <div style="color: #889988;">Venue pages</div>
+        <div style="color: #889988;">Compare page</div>
+      </div>
+    </div>
+  </div>
+</div>

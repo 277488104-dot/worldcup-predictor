@@ -1,0 +1,40 @@
+<h2>设计方案对比</h2>
+<p class="subtitle">全部页面重设计 · 三层叙事 · 炫技动画 — 三种落地方式</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>设计系统先行 · 全组件库</h3>
+      <p>先建立完整的设计 Token 系统（颜色/间距/阴影/动效曲线），然后重写所有基础组件（Button/Card/Badge/Ticker/StatBar），最后用组件拼出所有页面。类似构建一个 mini FIFA UI Kit。</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>优势</h4><ul><li>风格绝对一致</li><li>后续改色调只需改 Token</li><li>组件可复用</li></ul></div>
+        <div class="cons"><h4>劣势</h4><ul><li>前期看不到页面效果</li><li>组件过度设计风险</li><li>开发周期 ~2 周</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>页面冲刺 · 一页一页来</h3>
+      <p>从首页开始，把这一个页面做到极致（全部动画、所有细节），然后复制风格到赛程页、球队页。每个页面保持独立，不抽抽象组件库。</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>优势</h4><ul><li>第一天就能看到成品级首页</li><li>随时可以调整方向</li><li>每个页面有自己的个性</li></ul></div>
+        <div class="cons"><h4>劣势</h4><ul><li>页面间可能风格漂移</li><li>改一个元素要改 N 个文件</li><li>后期维护成本高</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>推荐：Foundation + 纵向切片</h3>
+      <p>第一阶段：建立设计 Foundation（Tailwind 主题 + CSS 变量 + 3-5 个"标志性组件"）。第二阶段：从首页开始一页一页构建，边做边把新出现的模式沉淀回 Foundation。既有体系又灵活。</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>优势</h4><ul><li>2 天出 Foundation + 首页雏形</li><li>既有体系约束又有页面灵活性</li><li>自然生长不强迫抽象</li></ul></div>
+        <div class="cons"><h4>劣势</h4><ul><li>需要判断何时抽象何时重复</li><li>Foundation 初期可能不够用</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>

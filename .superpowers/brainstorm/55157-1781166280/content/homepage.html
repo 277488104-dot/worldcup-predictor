@@ -1,0 +1,244 @@
+<h2>首页 — 三层叙事结构</h2>
+<p class="subtitle">封面大图 → 数据仪表盘 → 球场纹理</p>
+
+<div class="mockup" style="margin-top: 16px;">
+  <div class="mockup-header">Homepage — Full Layout</div>
+  <div class="mockup-body" style="background: #0a180a; color: #f5f5f0; font-family: system-ui; padding: 0;">
+
+    <!-- SECTION 0: NAVIGATION -->
+    <div style="padding: 12px 20px; background: rgba(13,38,13,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(74,222,128,0.06); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="width: 24px; height: 24px; background: linear-gradient(135deg, #4ade80, #22c55e); border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 12px;">⚽</div>
+        <span style="font-weight: 800; font-size: 14px; letter-spacing: -0.02em; color: #f5f5f0;">WC<span style="color: #4ade80;">26</span></span>
+      </div>
+      <div style="display: flex; gap: 2px; font-size: 11px;">
+        <span style="color: #4ade80; padding: 6px 12px; font-weight: 600;">首页</span>
+        <span style="color: #889988; padding: 6px 12px;">赛程</span>
+        <span style="color: #889988; padding: 6px 12px;">球队</span>
+        <span style="color: #889988; padding: 6px 12px;">场馆</span>
+        <span style="color: #f0c040; padding: 6px 12px; font-weight: 600;">⚡ 对比</span>
+      </div>
+      <div>
+        <div style="width: 28px; height: 28px; background: rgba(255,255,255,0.05); border-radius: 50%; font-size: 12px; display: flex; align-items: center; justify-content: center;">🌐</div>
+      </div>
+    </div>
+
+    <!-- SECTION 1: HERO — Full-screen cover with photo -->
+    <div style="position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+      <!-- Background img placeholder -->
+      <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,24,10,0.3) 0%, rgba(10,24,10,0.6) 50%, rgba(10,24,10,0.95) 100%), linear-gradient(135deg, #0a180a 0%, #0d260d 50%, #0a1a0a 100%);">
+        <!-- Fake photo grain -->
+        <div style="position: absolute; inset: 0; opacity: 0.03; background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22/></filter><rect fill=%22%23fff%22 filter=%22url(#n)%22 opacity=%22.5%22/></svg>');"></div>
+      </div>
+      <!-- Pitch stripes -->
+      <div style="position: absolute; inset: 0; opacity: 0.015; background: repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(74,222,128,0.5) 60px, rgba(74,222,128,0.5) 61px);"></div>
+
+      <div style="position: relative; z-index: 1; text-align: center; padding: 0 24px;">
+        <div style="font-size: 10px; letter-spacing: 0.4em; color: #4ade80; font-weight: 700; margin-bottom: 16px;">
+          JUNE 11 — JULY 19 · UNITED STATES · MEXICO · CANADA
+        </div>
+        <div style="font-size: clamp(48px, 12vw, 120px); font-weight: 900; line-height: 0.82; letter-spacing: -0.04em;">
+          <span style="color: #f5f5f0;">THE</span><br>
+          <span style="background: linear-gradient(135deg, #4ade80 0%, #22c55e 40%, #f0c040 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 30px rgba(74,222,128,0.3));">BEAUTIFUL</span><br>
+          <span style="color: #f5f5f0;">GAME</span>
+        </div>
+        <div style="margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 16px; color: #889988; font-size: 12px; letter-spacing: 0.1em;">
+          <div style="width: 40px; height: 1px; background: #4ade80; opacity: 0.5;"></div>
+          48 NATIONS · 16 VENUES · 104 MATCHES
+          <div style="width: 40px; height: 1px; background: #4ade80; opacity: 0.5;"></div>
+        </div>
+
+        <!-- COUNTDOWN -->
+        <div style="margin-top: 32px; display: flex; gap: 12px; justify-content: center;">
+          <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(74,222,128,0.1); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 70px;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 900; color: #4ade80;">00</div>
+            <div style="font-size: 8px; color: #889988; letter-spacing: 0.2em; margin-top: 4px;">DAYS</div>
+          </div>
+          <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(74,222,128,0.1); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 70px;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 900; color: #4ade80;">00</div>
+            <div style="font-size: 8px; color: #889988; letter-spacing: 0.2em; margin-top: 4px;">HOURS</div>
+          </div>
+          <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(74,222,128,0.1); border-radius: 12px; padding: 16px 20px; text-align: center; min-width: 70px;">
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 900; color: #4ade80;">00</div>
+            <div style="font-size: 8px; color: #889988; letter-spacing: 0.2em; margin-top: 4px;">MINS</div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div style="margin-top: 36px; display: flex; gap: 10px; justify-content: center;">
+          <a style="background: #4ade80; color: #0a180a; padding: 14px 28px; border-radius: 100px; font-size: 14px; font-weight: 700; text-decoration: none;">📅 今日赛程</a>
+          <a style="background: rgba(255,255,255,0.05); color: #f5f5f0; border: 1px solid rgba(255,255,255,0.1); padding: 14px 28px; border-radius: 100px; font-size: 14px; font-weight: 600; text-decoration: none;">🎯 AI 预测</a>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div style="position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); text-align: center;">
+        <div style="font-size: 8px; letter-spacing: 0.3em; color: #889988;">SCROLL</div>
+        <div style="width: 1px; height: 32px; background: linear-gradient(180deg, rgba(74,222,128,0.3), transparent); margin: 8px auto 0;"></div>
+      </div>
+    </div>
+
+    <!-- DIVIDER — pitch line -->
+    <div style="height: 1px; background: linear-gradient(90deg, transparent, rgba(74,222,128,0.15), transparent); margin: 0 24px;"></div>
+
+    <!-- SECTION 2: DATA DASHBOARD — Live Ticker + Today's Matches -->
+    <div style="padding: 60px 20px; max-width: 1100px; margin: 0 auto;">
+
+      <!-- LIVE TICKER BAR -->
+      <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(74,222,128,0.08); border-radius: 16px; padding: 14px 20px; margin-bottom: 48px; display: flex; align-items: center; gap: 20px; overflow: hidden;">
+        <span style="display: flex; align-items: center; gap: 4px; background: rgba(239,68,68,0.15); color: #ef4444; padding: 3px 10px; border-radius: 100px; font-size: 9px; font-weight: 800; letter-spacing: 0.05em;">
+          <span style="width: 6px; height: 6px; background: #ef4444; border-radius: 50%; animation: pulse 1.5s infinite;"></span> LIVE
+        </span>
+        <div style="display: flex; gap: 20px; font-size: 11px; overflow: hidden;">
+          <span style="color: #f5f5f0; font-weight: 700;">🇦🇷 ARG <span style="color: #4ade80;">2</span>-1 BRA 🇧🇷 <span style="color: #889988; font-weight: 400;">78'</span></span>
+          <span style="color: #889988;">🇫🇷 FRA <span style="color: #4ade80;">1</span>-0 JPN 🇯🇵 <span style="color: #889988;">65'</span></span>
+          <span style="color: #889988;">🇩🇪 GER 0-0 ESP 🇪🇸 <span style="color: #889988;">HT</span></span>
+          <span style="color: #889988;">🏴󠁧󠁢󠁥󠁮󠁧󠁿 ENG 1-1 POR 🇵🇹 <span style="color: #889988;">32'</span></span>
+        </div>
+        <span style="margin-left: auto; font-size: 9px; color: #889988; letter-spacing: 0.1em;">全部比分 →</span>
+      </div>
+
+      <!-- TODAY'S MATCHES heading -->
+      <div style="display: flex; align-items: flex-end; gap: 12px; margin-bottom: 24px;">
+        <div style="width: 4px; height: 28px; background: #4ade80; border-radius: 2px;"></div>
+        <div>
+          <div style="font-size: 9px; letter-spacing: 0.3em; color: #4ade80; font-weight: 700; margin-bottom: 4px;">TODAY · JUNE 11</div>
+          <div style="font-size: 28px; font-weight: 900; letter-spacing: -0.02em; color: #f5f5f0;">今日<span style="color: #4ade80;">焦点</span></div>
+        </div>
+        <span style="margin-left: auto; font-size: 11px; color: #889988;">3 场比赛</span>
+      </div>
+
+      <!-- Match Cards Grid -->
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 48px;">
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 24px 20px; text-align: center; transition: all 0.3s;">
+          <div style="font-size: 10px; color: #889988; margin-bottom: 16px; display: flex; justify-content: center; gap: 12px;">
+            <span>6月11日</span><span style="color: #4ade80; font-weight: 700;">21:00</span><span>小组赛</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <div style="text-align: center;">
+              <div style="font-size: 32px; margin-bottom: 4px;">🇺🇸</div>
+              <div style="font-size: 13px; font-weight: 700;">美国</div>
+              <div style="font-size: 9px; color: #889988;">FIFA #11</div>
+            </div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 900; color: #889988; padding: 0 8px;">VS</div>
+            <div style="text-align: center;">
+              <div style="font-size: 32px; margin-bottom: 4px;">🇩🇪</div>
+              <div style="font-size: 13px; font-weight: 700;">德国</div>
+              <div style="font-size: 9px; color: #889988;">FIFA #4</div>
+            </div>
+          </div>
+          <div style="margin-top: 16px; font-size: 10px; color: #889988;">📍 MetLife Stadium · 82k</div>
+          <div style="margin-top: 12px; display: flex; justify-content: center; gap: 6px;">
+            <span style="background: rgba(74,222,128,0.1); color: #4ade80; padding: 3px 12px; border-radius: 100px; font-size: 10px; font-weight: 600;">41%</span>
+            <span style="background: rgba(255,255,255,0.05); color: #889988; padding: 3px 12px; border-radius: 100px; font-size: 10px;">26%</span>
+            <span style="background: rgba(240,192,64,0.1); color: #f0c040; padding: 3px 12px; border-radius: 100px; font-size: 10px; font-weight: 600;">33%</span>
+          </div>
+        </div>
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 24px 20px; text-align: center;">
+          <div style="font-size: 10px; color: #889988; margin-bottom: 16px; display: flex; justify-content: center; gap: 12px;">
+            <span>6月11日</span><span style="color: #4ade80; font-weight: 700;">23:30</span><span>小组赛</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <div style="text-align: center;">
+              <div style="font-size: 32px; margin-bottom: 4px;">🇫🇷</div>
+              <div style="font-size: 13px; font-weight: 700;">法国</div>
+            </div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 900; color: #889988; padding: 0 8px;">VS</div>
+            <div style="text-align: center;">
+              <div style="font-size: 32px; margin-bottom: 4px;">🇯🇵</div>
+              <div style="font-size: 13px; font-weight: 700;">日本</div>
+            </div>
+          </div>
+          <div style="margin-top: 16px; font-size: 10px; color: #889988;">📍 AT&T Stadium · 80k</div>
+          <div style="margin-top: 12px; display: flex; justify-content: center; gap: 6px;">
+            <span style="background: rgba(74,222,128,0.1); color: #4ade80; padding: 3px 12px; border-radius: 100px; font-size: 10px; font-weight: 600;">58%</span>
+            <span style="background: rgba(255,255,255,0.05); color: #889988; padding: 3px 12px; border-radius: 100px; font-size: 10px;">24%</span>
+            <span style="background: rgba(240,192,64,0.1); color: #f0c040; padding: 3px 12px; border-radius: 100px; font-size: 10px;">18%</span>
+          </div>
+        </div>
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 24px 20px; text-align: center;">
+          <div style="font-size: 10px; color: #889988; margin-bottom: 16px; display: flex; justify-content: center; gap: 12px;">
+            <span>6月12日</span><span style="color: #4ade80; font-weight: 700;">03:00</span><span>小组赛</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <div style="text-align: center;">
+              <div style="font-size: 32px; margin-bottom: 4px;">🇦🇷</div>
+              <div style="font-size: 13px; font-weight: 700;">阿根廷</div>
+            </div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 900; color: #889988; padding: 0 8px;">VS</div>
+            <div style="text-align: center;">
+              <div style="font-size: 32px; margin-bottom: 4px;">🇲🇽</div>
+              <div style="font-size: 13px; font-weight: 700;">墨西哥</div>
+            </div>
+          </div>
+          <div style="margin-top: 16px; font-size: 10px; color: #889988;">📍 SoFi Stadium · 70k</div>
+          <div style="margin-top: 12px; display: flex; justify-content: center; gap: 6px;">
+            <span style="background: rgba(74,222,128,0.15); color: #4ade80; padding: 3px 12px; border-radius: 100px; font-size: 10px; font-weight: 600;">68%</span>
+            <span style="background: rgba(255,255,255,0.05); color: #889988; padding: 3px 12px; border-radius: 100px; font-size: 10px;">20%</span>
+            <span style="background: rgba(240,192,64,0.1); color: #f0c040; padding: 3px 12px; border-radius: 100px; font-size: 10px;">12%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- GROUP STANDINGS QUICK VIEW -->
+      <div style="display: flex; align-items: flex-end; gap: 12px; margin-bottom: 20px;">
+        <div style="width: 4px; height: 28px; background: #f0c040; border-radius: 2px;"></div>
+        <div>
+          <div style="font-size: 9px; letter-spacing: 0.3em; color: #f0c040; font-weight: 700; margin-bottom: 4px;">STANDINGS</div>
+          <div style="font-size: 28px; font-weight: 900; letter-spacing: -0.02em; color: #f5f5f0;">小组<span style="color: #f0c040;">积分榜</span></div>
+        </div>
+        <span style="margin-left: auto; font-size: 11px; color: #889988;">A-F 组</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 16px;">
+          <div style="font-size: 9px; font-weight: 700; color: #4ade80; margin-bottom: 12px; letter-spacing: 0.1em;">GROUP A</div>
+          <div style="display: flex; flex-direction: column; gap: 6px; font-size: 10px;">
+            <div style="display: flex; justify-content: space-between; color: #f5f5f0;"><span>🇺🇸 USA</span><span>6pts</span></div>
+            <div style="display: flex; justify-content: space-between; color: #889988;"><span>🇲🇽 MEX</span><span>4pts</span></div>
+            <div style="display: flex; justify-content: space-between; color: #889988;"><span>🇵🇱 POL</span><span>1pt</span></div>
+            <div style="display: flex; justify-content: space-between; color: #889988;"><span>🇨🇲 CMR</span><span>0pt</span></div>
+          </div>
+        </div>
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 16px;">
+          <div style="font-size: 9px; font-weight: 700; color: #4ade80; margin-bottom: 12px; letter-spacing: 0.1em;">GROUP B</div>
+          <div style="display: flex; flex-direction: column; gap: 6px; font-size: 10px;">
+            <div style="display: flex; justify-content: space-between; color: #f5f5f0;"><span>🇫🇷 FRA</span><span>7pts</span></div>
+            <div style="display: flex; justify-content: space-between; color: #889988;"><span>🏴󠁧󠁢󠁥󠁮󠁧󠁿 ENG</span><span>5pts</span></div>
+            <div style="display: flex; justify-content: space-between; color: #889988;"><span>🇯🇵 JPN</span><span>2pt</span></div>
+            <div style="display: flex; justify-content: space-between; color: #889988;"><span>🇸🇦 KSA</span><span>1pt</span></div>
+          </div>
+        </div>
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 16px;">
+          <div style="font-size: 9px; font-weight: 700; color: #4ade80; margin-bottom: 12px; letter-spacing: 0.1em;">GROUP C</div>
+          <div style="display: flex; flex-direction: column; gap: 6px; font-size: 10px;">
+            <div style="display: flex; justify-content: space-between; color: #f5f5f0;"><span>🇦🇷 ARG</span><span>9pts</span></div>
+            <div style="display: flex; justify-content: space-between; color: #889988;"><span>🇩🇪 GER</span><span>6pts</span></div>
+            <div style="display: flex; justify-content: space-between; color: #889988;"><span>🇰🇷 KOR</span><span>3pt</span></div>
+            <div style="display: flex; justify-content: space-between; color: #889988;"><span>🇪🇬 EGY</span><span>0pt</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DIVIDER -->
+    <div style="height: 1px; background: linear-gradient(90deg, transparent, rgba(74,222,128,0.15), transparent); margin: 0 24px;"></div>
+
+    <!-- SECTION 3: BOTTOM — Pitch texture transition + Footer -->
+    <div style="padding: 80px 20px 40px; position: relative; overflow: hidden;">
+      <div style="position: absolute; inset: 0; opacity: 0.02; background-image: repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(255,255,255,0.3) 30px, rgba(255,255,255,0.3) 31px), repeating-linear-gradient(90deg, transparent, transparent 200px, rgba(255,255,255,0.1) 200px, rgba(255,255,255,0.1) 201px);"></div>
+
+      <div style="position: relative; z-index: 1; max-width: 600px; margin: 0 auto; text-align: center;">
+        <div style="font-size: 24px; margin-bottom: 16px;">⚽</div>
+        <div style="font-size: 28px; font-weight: 900; color: #f5f5f0; margin-bottom: 8px;">准备好迎接<span style="color: #4ade80;">盛夏狂欢</span></div>
+        <div style="font-size: 13px; color: #889988; line-height: 1.6; margin-bottom: 24px;">AI 预测模型结合历史数据、球队状态、场馆因素<br>为每一场比赛提供精准预测</div>
+        <a style="display: inline-block; background: linear-gradient(135deg, #4ade80, #22c55e); color: #0a180a; padding: 14px 32px; border-radius: 100px; font-size: 14px; font-weight: 700; text-decoration: none;">🎯 开始预测</a>
+        <div style="margin-top: 40px; font-size: 10px; color: #556655; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px;">
+          2026 FIFA World Cup Predictor · 数据仅供娱乐参考
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,172 @@
+<h2>Foundation — 核心设计 Token 与组件</h2>
+<p class="subtitle">设计系统的"原子" — 所有页面共享的基因</p>
+
+<div class="section">
+  <h3>🎨 配色系统（CSS 变量）</h3>
+  <div style="background: #0d260d; border-radius: 16px; padding: 24px; border: 1px solid rgba(255,255,255,0.05); margin-top: 16px;">
+
+    <div style="margin-bottom: 20px;">
+      <div style="color: #4ade80; font-size: 10px; letter-spacing: 0.2em; margin-bottom: 10px;">背景层级</div>
+      <div style="display: flex; gap: 8px;">
+        <div style="flex: 1; background: #0a180a; border-radius: 8px; padding: 12px; text-align: center; font-size: 10px; color: #999;">
+          <div style="color: #f5f5f0; font-weight: 700;">Pitch</div>
+          <div>#0a180a</div>
+          <div style="margin-top: 2px; color: #666;">根背景</div>
+        </div>
+        <div style="flex: 1; background: #0d260d; border-radius: 8px; padding: 12px; text-align: center; font-size: 10px; color: #999;">
+          <div style="color: #f5f5f0; font-weight: 700;">Turf</div>
+          <div>#0d260d</div>
+          <div style="margin-top: 2px; color: #666;">主背景</div>
+        </div>
+        <div style="flex: 1; background: #112d11; border-radius: 8px; padding: 12px; text-align: center; font-size: 10px; color: #999;">
+          <div style="color: #f5f5f0; font-weight: 700;">Grass</div>
+          <div>#112d11</div>
+          <div style="margin-top: 2px; color: #666;">卡片</div>
+        </div>
+        <div style="flex: 1; background: #1a3d1a; border-radius: 8px; padding: 12px; text-align: center; font-size: 10px; color: #999;">
+          <div style="color: #f5f5f0; font-weight: 700;">Field</div>
+          <div>#1a3d1a</div>
+          <div style="margin-top: 2px; color: #666;">悬浮态</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <div style="color: #4ade80; font-size: 10px; letter-spacing: 0.2em; margin-bottom: 10px;">强调色</div>
+      <div style="display: flex; gap: 8px;">
+        <div style="flex: 1; background: #4ade80; border-radius: 8px; padding: 12px; text-align: center; font-size: 10px;">
+          <div style="color: #0d260d; font-weight: 700;">Grass</div>
+          <div style="color: #0d260d;">#4ade80</div>
+          <div style="margin-top: 2px; color: #0d260d; opacity: 0.7;">主强调</div>
+        </div>
+        <div style="flex: 1; background: #22c55e; border-radius: 8px; padding: 12px; text-align: center; font-size: 10px;">
+          <div style="color: #fff; font-weight: 700;">Emerald</div>
+          <div style="color: #fff;">#22c55e</div>
+          <div style="margin-top: 2px; color: rgba(255,255,255,0.7);">深强调</div>
+        </div>
+        <div style="flex: 1; background: #f0c040; border-radius: 8px; padding: 12px; text-align: center; font-size: 10px;">
+          <div style="color: #0d260d; font-weight: 700;">Gold</div>
+          <div style="color: #0d260d;">#f0c040</div>
+          <div style="margin-top: 2px; color: #0d260d; opacity: 0.7;">高亮/CTA</div>
+        </div>
+        <div style="flex: 1; background: #ef4444; border-radius: 8px; padding: 12px; text-align: center; font-size: 10px;">
+          <div style="color: #fff; font-weight: 700;">Danger</div>
+          <div style="color: #fff;">#ef4444</div>
+          <div style="margin-top: 2px; color: rgba(255,255,255,0.7);">LIVE</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div style="color: #4ade80; font-size: 10px; letter-spacing: 0.2em; margin-bottom: 10px;">文字</div>
+      <div style="display: flex; gap: 8px;">
+        <div style="flex: 1; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 12px; text-align: center; font-size: 10px;">
+          <div style="color: #f5f5f0; font-weight: 700; font-size: 16px;">Primary</div>
+          <div style="color: #f5f5f0;">#f5f5f0</div>
+        </div>
+        <div style="flex: 1; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 12px; text-align: center; font-size: 10px;">
+          <div style="color: #889988; font-weight: 700; font-size: 16px;">Muted</div>
+          <div style="color: #889988;">#889988</div>
+        </div>
+        <div style="flex: 1; background: rgba(255,255,255,0.03); border-radius: 8px; padding: 12px; text-align: center; font-size: 10px;">
+          <div style="color: #bbccbb; font-weight: 700; font-size: 16px;">Dim</div>
+          <div style="color: #bbccbb;">#bbccbb</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>🔤 排版层级</h3>
+  <div style="background: #0d260d; border-radius: 16px; padding: 24px; border: 1px solid rgba(255,255,255,0.05);">
+
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <div style="font-size: 80px; font-weight: 900; line-height: 0.85; letter-spacing: -0.04em; color: #f5f5f0;">Hero Title</div>
+        <div style="font-size: 10px; color: #4ade80; margin-top: 4px;">font-display / 900 / 7xl-10xl / tracking-tight / leading-tight</div>
+      </div>
+      <div style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <div style="font-size: 36px; font-weight: 800; letter-spacing: -0.02em; color: #f5f5f0;">Section Heading</div>
+        <div style="font-size: 10px; color: #4ade80; margin-top: 4px;">font-display / 800 / 3xl-5xl / tracking-tight</div>
+      </div>
+      <div style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: #4ade80;">42,195</div>
+        <div style="font-size: 10px; color: #4ade80; margin-top: 4px;">font-mono / 700 / 动画数字 / 比分 / 统计数据</div>
+      </div>
+      <div style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <div style="font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #4ade80; font-weight: 700;">KICKOFF IN 3 DAYS</div>
+        <div style="font-size: 10px; color: #4ade80; margin-top: 4px;">kicker / label / 10px / 700 / tracking-[0.3em] / uppercase</div>
+      </div>
+      <div style="padding: 8px 0;">
+        <div style="font-size: 15px; color: #bbccbb; line-height: 1.6; max-width: 480px;">正文段落。体育媒体的文字不啰嗦，短句，高信息密度。像 ESPN 的报道一样直接有力。</div>
+        <div style="font-size: 10px; color: #4ade80; margin-top: 4px;">body / 15px / medium / leading-relaxed / text-dim</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>🧩 标志性组件</h3>
+  <div style="background: #0d260d; border-radius: 16px; padding: 24px; border: 1px solid rgba(255,255,255,0.05);">
+
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+      <!-- Score Badge -->
+      <div style="background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px; text-align: center;">
+        <div style="font-size: 9px; letter-spacing: 0.2em; color: #889988; margin-bottom: 8px;">MATCH SCORE</div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+          <span style="font-size: 24px; font-weight: 800; color: #f5f5f0;">ARG</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 900; color: #4ade80; text-shadow: 0 0 20px rgba(74,222,128,.3);">3</span>
+          <span style="color: #889988;">:</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 900; color: #f5f5f0;">1</span>
+          <span style="font-size: 24px; font-weight: 800; color: #f5f5f0;">BRA</span>
+        </div>
+        <div style="margin-top: 8px; padding: 2px 10px; background: rgba(239,68,68,0.15); color: #ef4444; border-radius: 100px; display: inline-block; font-size: 9px; font-weight: 700;">● LIVE 78'</div>
+      </div>
+
+      <!-- Prediction Bar -->
+      <div style="background: rgba(255,255,255,0.03); border-radius: 12px; padding: 16px;">
+        <div style="font-size: 9px; letter-spacing: 0.2em; color: #889988; margin-bottom: 12px;">WIN PROBABILITY</div>
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+          <span style="font-size: 11px; color: #f5f5f0; width: 32px; font-weight: 700;">ARG</span>
+          <div style="flex: 1; height: 8px; background: rgba(255,255,255,0.05); border-radius: 100px; overflow: hidden;">
+            <div style="width: 62%; height: 100%; background: linear-gradient(90deg, #4ade80, #22c55e); border-radius: 100px;"></div>
+          </div>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4ade80; font-weight: 700;">62%</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+          <span style="font-size: 11px; color: #f5f5f0; width: 32px; font-weight: 700;">DRAW</span>
+          <div style="flex: 1; height: 8px; background: rgba(255,255,255,0.05); border-radius: 100px; overflow: hidden;">
+            <div style="width: 22%; height: 100%; background: #889988; border-radius: 100px;"></div>
+          </div>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #889988; font-weight: 700;">22%</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 11px; color: #f5f5f0; width: 32px; font-weight: 700;">BRA</span>
+          <div style="flex: 1; height: 8px; background: rgba(255,255,255,0.05); border-radius: 100px; overflow: hidden;">
+            <div style="width: 16%; height: 100%; background: #f0c040; border-radius: 100px;"></div>
+          </div>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #f0c040; font-weight: 700;">16%</span>
+        </div>
+      </div>
+
+      <!-- Stat Pill -->
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <div style="background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.15); border-radius: 100px; padding: 6px 14px; font-size: 11px; color: #4ade80; font-weight: 600;">⚽ 进攻 88</div>
+        <div style="background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.15); border-radius: 100px; padding: 6px 14px; font-size: 11px; color: #4ade80; font-weight: 600;">🛡️ 防守 76</div>
+        <div style="background: rgba(240,192,64,0.08); border: 1px solid rgba(240,192,64,0.15); border-radius: 100px; padding: 6px 14px; font-size: 11px; color: #f0c040; font-weight: 600;">⭐ 经验 92</div>
+      </div>
+
+      <!-- Live Ticker -->
+      <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(74,222,128,0.08); border-radius: 8px; padding: 8px 12px; overflow: hidden;">
+        <div style="display: flex; gap: 20px; font-size: 10px; align-items: center;">
+          <span style="background: #ef4444; color: #fff; padding: 1px 6px; border-radius: 100px; font-size: 8px; font-weight: 700;">LIVE</span>
+          <span style="color: #f5f5f0; font-weight: 700;">ARG 2-1 BRA 78'</span>
+          <span style="color: #889988;">FRA 1-0 JPN 65'</span>
+          <span style="color: #889988;">GER 0-0 ESP HT</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
