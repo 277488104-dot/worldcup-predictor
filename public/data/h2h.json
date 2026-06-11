@@ -1,0 +1,730 @@
+[
+  {
+    "team1Id": "arg",
+    "team2Id": "bra",
+    "matches": [
+      {
+        "date": "1974-06-30",
+        "tournament": "1974 World Cup",
+        "homeTeamId": "arg",
+        "awayTeamId": "bra",
+        "homeScore": 1,
+        "awayScore": 2
+      },
+      {
+        "date": "1978-06-18",
+        "tournament": "1978 World Cup",
+        "homeTeamId": "arg",
+        "awayTeamId": "bra",
+        "homeScore": 0,
+        "awayScore": 0
+      },
+      {
+        "date": "1982-07-02",
+        "tournament": "1982 World Cup",
+        "homeTeamId": "arg",
+        "awayTeamId": "bra",
+        "homeScore": 1,
+        "awayScore": 3
+      },
+      {
+        "date": "1990-06-24",
+        "tournament": "1990 World Cup",
+        "homeTeamId": "arg",
+        "awayTeamId": "bra",
+        "homeScore": 1,
+        "awayScore": 0
+      },
+      {
+        "date": "2021-07-10",
+        "tournament": "2021 Copa America Final",
+        "homeTeamId": "arg",
+        "awayTeamId": "bra",
+        "homeScore": 1,
+        "awayScore": 0
+      },
+      {
+        "date": "2023-11-21",
+        "tournament": "2026 World Cup Qualifier",
+        "homeTeamId": "bra",
+        "awayTeamId": "arg",
+        "homeScore": 0,
+        "awayScore": 1
+      }
+    ]
+  },
+  {
+    "team1Id": "arg",
+    "team2Id": "ger",
+    "matches": [
+      {
+        "date": "1958-06-08",
+        "tournament": "1958 World Cup",
+        "homeTeamId": "arg",
+        "awayTeamId": "ger",
+        "homeScore": 1,
+        "awayScore": 3
+      },
+      {
+        "date": "1966-07-16",
+        "tournament": "1966 World Cup",
+        "homeTeamId": "arg",
+        "awayTeamId": "ger",
+        "homeScore": 0,
+        "awayScore": 0
+      },
+      {
+        "date": "1986-06-29",
+        "tournament": "1986 World Cup Final",
+        "homeTeamId": "arg",
+        "awayTeamId": "ger",
+        "homeScore": 3,
+        "awayScore": 2
+      },
+      {
+        "date": "1990-07-08",
+        "tournament": "1990 World Cup Final",
+        "homeTeamId": "arg",
+        "awayTeamId": "ger",
+        "homeScore": 0,
+        "awayScore": 1
+      },
+      {
+        "date": "2006-06-30",
+        "tournament": "2006 World Cup Quarter",
+        "homeTeamId": "arg",
+        "awayTeamId": "ger",
+        "homeScore": 1,
+        "awayScore": 1
+      },
+      {
+        "date": "2010-07-03",
+        "tournament": "2010 World Cup Quarter",
+        "homeTeamId": "arg",
+        "awayTeamId": "ger",
+        "homeScore": 0,
+        "awayScore": 4
+      },
+      {
+        "date": "2014-07-13",
+        "tournament": "2014 World Cup Final",
+        "homeTeamId": "arg",
+        "awayTeamId": "ger",
+        "homeScore": 0,
+        "awayScore": 1
+      }
+    ]
+  },
+  {
+    "team1Id": "bra",
+    "team2Id": "fra",
+    "matches": [
+      {
+        "date": "1958-06-24",
+        "tournament": "1958 World Cup Semi",
+        "homeTeamId": "bra",
+        "awayTeamId": "fra",
+        "homeScore": 5,
+        "awayScore": 2
+      },
+      {
+        "date": "1986-06-21",
+        "tournament": "1986 World Cup Quarter",
+        "homeTeamId": "bra",
+        "awayTeamId": "fra",
+        "homeScore": 1,
+        "awayScore": 1
+      },
+      {
+        "date": "1998-07-12",
+        "tournament": "1998 World Cup Final",
+        "homeTeamId": "bra",
+        "awayTeamId": "fra",
+        "homeScore": 0,
+        "awayScore": 3
+      },
+      {
+        "date": "2006-07-01",
+        "tournament": "2006 World Cup Quarter",
+        "homeTeamId": "bra",
+        "awayTeamId": "fra",
+        "homeScore": 0,
+        "awayScore": 1
+      }
+    ]
+  },
+  {
+    "team1Id": "eng",
+    "team2Id": "arg",
+    "matches": [
+      {
+        "date": "1966-07-23",
+        "tournament": "1966 World Cup Quarter",
+        "homeTeamId": "eng",
+        "awayTeamId": "arg",
+        "homeScore": 1,
+        "awayScore": 0
+      },
+      {
+        "date": "1986-06-22",
+        "tournament": "1986 World Cup Quarter",
+        "homeTeamId": "arg",
+        "awayTeamId": "eng",
+        "homeScore": 2,
+        "awayScore": 1
+      },
+      {
+        "date": "1998-06-30",
+        "tournament": "1998 World Cup Round of 16",
+        "homeTeamId": "arg",
+        "awayTeamId": "eng",
+        "homeScore": 2,
+        "awayScore": 2
+      },
+      {
+        "date": "2002-06-07",
+        "tournament": "2002 World Cup Group",
+        "homeTeamId": "arg",
+        "awayTeamId": "eng",
+        "homeScore": 0,
+        "awayScore": 1
+      }
+    ]
+  },
+  {
+    "team1Id": "eng",
+    "team2Id": "ger",
+    "matches": [
+      {
+        "date": "1966-07-30",
+        "tournament": "1966 World Cup Final",
+        "homeTeamId": "eng",
+        "awayTeamId": "ger",
+        "homeScore": 4,
+        "awayScore": 2
+      },
+      {
+        "date": "1970-06-14",
+        "tournament": "1970 World Cup Quarter",
+        "homeTeamId": "eng",
+        "awayTeamId": "ger",
+        "homeScore": 2,
+        "awayScore": 3
+      },
+      {
+        "date": "1990-07-04",
+        "tournament": "1990 World Cup Semi",
+        "homeTeamId": "eng",
+        "awayTeamId": "ger",
+        "homeScore": 1,
+        "awayScore": 1
+      },
+      {
+        "date": "2010-06-27",
+        "tournament": "2010 World Cup Round of 16",
+        "homeTeamId": "eng",
+        "awayTeamId": "ger",
+        "homeScore": 1,
+        "awayScore": 4
+      },
+      {
+        "date": "2021-06-29",
+        "tournament": "EURO 2020 Round of 16",
+        "homeTeamId": "eng",
+        "awayTeamId": "ger",
+        "homeScore": 2,
+        "awayScore": 0
+      }
+    ]
+  },
+  {
+    "team1Id": "esp",
+    "team2Id": "ned",
+    "matches": [
+      {
+        "date": "2010-07-11",
+        "tournament": "2010 World Cup Final",
+        "homeTeamId": "esp",
+        "awayTeamId": "ned",
+        "homeScore": 1,
+        "awayScore": 0
+      },
+      {
+        "date": "2014-06-13",
+        "tournament": "2014 World Cup Group",
+        "homeTeamId": "esp",
+        "awayTeamId": "ned",
+        "homeScore": 1,
+        "awayScore": 5
+      }
+    ]
+  },
+  {
+    "team1Id": "ger",
+    "team2Id": "esp",
+    "matches": [
+      {
+        "date": "1966-07-20",
+        "tournament": "1966 World Cup Group",
+        "homeTeamId": "ger",
+        "awayTeamId": "esp",
+        "homeScore": 2,
+        "awayScore": 1
+      },
+      {
+        "date": "1982-07-02",
+        "tournament": "1982 World Cup",
+        "homeTeamId": "ger",
+        "awayTeamId": "esp",
+        "homeScore": 2,
+        "awayScore": 1
+      },
+      {
+        "date": "2008-06-29",
+        "tournament": "EURO 2008 Final",
+        "homeTeamId": "esp",
+        "awayTeamId": "ger",
+        "homeScore": 1,
+        "awayScore": 0
+      },
+      {
+        "date": "2010-07-07",
+        "tournament": "2010 World Cup Semi",
+        "homeTeamId": "ger",
+        "awayTeamId": "esp",
+        "homeScore": 0,
+        "awayScore": 1
+      },
+      {
+        "date": "2024-07-05",
+        "tournament": "EURO 2024 Quarter",
+        "homeTeamId": "ger",
+        "awayTeamId": "esp",
+        "homeScore": 1,
+        "awayScore": 2
+      }
+    ]
+  },
+  {
+    "team1Id": "usa",
+    "team2Id": "mex",
+    "matches": [
+      {
+        "date": "2002-06-17",
+        "tournament": "2002 World Cup Round of 16",
+        "homeTeamId": "usa",
+        "awayTeamId": "mex",
+        "homeScore": 2,
+        "awayScore": 0
+      },
+      {
+        "date": "2011-06-25",
+        "tournament": "2011 Gold Cup Final",
+        "homeTeamId": "usa",
+        "awayTeamId": "mex",
+        "homeScore": 2,
+        "awayScore": 4
+      },
+      {
+        "date": "2019-07-07",
+        "tournament": "2019 Gold Cup Final",
+        "homeTeamId": "usa",
+        "awayTeamId": "mex",
+        "homeScore": 0,
+        "awayScore": 1
+      },
+      {
+        "date": "2021-08-01",
+        "tournament": "2021 Gold Cup Final",
+        "homeTeamId": "usa",
+        "awayTeamId": "mex",
+        "homeScore": 1,
+        "awayScore": 0
+      },
+      {
+        "date": "2024-03-24",
+        "tournament": "2024 CONCACAF Nations League",
+        "homeTeamId": "usa",
+        "awayTeamId": "mex",
+        "homeScore": 2,
+        "awayScore": 0
+      }
+    ]
+  },
+  {
+    "team1Id": "por",
+    "team2Id": "esp",
+    "matches": [
+      {
+        "date": "2010-06-29",
+        "tournament": "2010 World Cup Round of 16",
+        "homeTeamId": "por",
+        "awayTeamId": "esp",
+        "homeScore": 0,
+        "awayScore": 1
+      },
+      {
+        "date": "2018-06-15",
+        "tournament": "2018 World Cup Group",
+        "homeTeamId": "por",
+        "awayTeamId": "esp",
+        "homeScore": 3,
+        "awayScore": 3
+      },
+      {
+        "date": "2012-06-27",
+        "tournament": "EURO 2012 Semi",
+        "homeTeamId": "por",
+        "awayTeamId": "esp",
+        "homeScore": 0,
+        "awayScore": 0
+      }
+    ]
+  },
+  {
+    "team1Id": "fra",
+    "team2Id": "por",
+    "matches": [
+      {
+        "date": "2006-07-05",
+        "tournament": "2006 World Cup Semi",
+        "homeTeamId": "fra",
+        "awayTeamId": "por",
+        "homeScore": 1,
+        "awayScore": 0
+      },
+      {
+        "date": "2016-07-10",
+        "tournament": "EURO 2016 Final",
+        "homeTeamId": "fra",
+        "awayTeamId": "por",
+        "homeScore": 0,
+        "awayScore": 1
+      },
+      {
+        "date": "2021-06-23",
+        "tournament": "EURO 2020 Group",
+        "homeTeamId": "fra",
+        "awayTeamId": "por",
+        "homeScore": 2,
+        "awayScore": 2
+      }
+    ]
+  },
+  {
+    "team1Id": "ned",
+    "team2Id": "arg",
+    "matches": [
+      {
+        "date": "1978-06-25",
+        "tournament": "1978 World Cup Final",
+        "homeTeamId": "ned",
+        "awayTeamId": "arg",
+        "homeScore": 1,
+        "awayScore": 3
+      },
+      {
+        "date": "1998-07-04",
+        "tournament": "1998 World Cup Quarter",
+        "homeTeamId": "ned",
+        "awayTeamId": "arg",
+        "homeScore": 2,
+        "awayScore": 1
+      },
+      {
+        "date": "2006-06-21",
+        "tournament": "2006 World Cup Group",
+        "homeTeamId": "ned",
+        "awayTeamId": "arg",
+        "homeScore": 0,
+        "awayScore": 0
+      },
+      {
+        "date": "2014-07-09",
+        "tournament": "2014 World Cup Semi",
+        "homeTeamId": "ned",
+        "awayTeamId": "arg",
+        "homeScore": 0,
+        "awayScore": 0
+      },
+      {
+        "date": "2022-12-09",
+        "tournament": "2022 World Cup Quarter",
+        "homeTeamId": "ned",
+        "awayTeamId": "arg",
+        "homeScore": 2,
+        "awayScore": 2
+      }
+    ]
+  },
+  {
+    "team1Id": "bra",
+    "team2Id": "ned",
+    "matches": [
+      {
+        "date": "1974-07-03",
+        "tournament": "1974 World Cup",
+        "homeTeamId": "bra",
+        "awayTeamId": "ned",
+        "homeScore": 0,
+        "awayScore": 2
+      },
+      {
+        "date": "1994-07-09",
+        "tournament": "1994 World Cup Quarter",
+        "homeTeamId": "bra",
+        "awayTeamId": "ned",
+        "homeScore": 3,
+        "awayScore": 2
+      },
+      {
+        "date": "1998-07-07",
+        "tournament": "1998 World Cup Semi",
+        "homeTeamId": "bra",
+        "awayTeamId": "ned",
+        "homeScore": 1,
+        "awayScore": 1
+      },
+      {
+        "date": "2010-07-02",
+        "tournament": "2010 World Cup Quarter",
+        "homeTeamId": "bra",
+        "awayTeamId": "ned",
+        "homeScore": 1,
+        "awayScore": 2
+      }
+    ]
+  },
+  {
+    "team1Id": "eng",
+    "team2Id": "fra",
+    "matches": [
+      {
+        "date": "1966-07-20",
+        "tournament": "1966 World Cup Group",
+        "homeTeamId": "eng",
+        "awayTeamId": "fra",
+        "homeScore": 2,
+        "awayScore": 0
+      },
+      {
+        "date": "1982-06-16",
+        "tournament": "1982 World Cup Group",
+        "homeTeamId": "eng",
+        "awayTeamId": "fra",
+        "homeScore": 3,
+        "awayScore": 1
+      },
+      {
+        "date": "2022-12-10",
+        "tournament": "2022 World Cup Quarter",
+        "homeTeamId": "eng",
+        "awayTeamId": "fra",
+        "homeScore": 1,
+        "awayScore": 2
+      }
+    ]
+  },
+  {
+    "team1Id": "ger",
+    "team2Id": "ned",
+    "matches": [
+      {
+        "date": "1974-07-07",
+        "tournament": "1974 World Cup Final",
+        "homeTeamId": "ger",
+        "awayTeamId": "ned",
+        "homeScore": 2,
+        "awayScore": 1
+      },
+      {
+        "date": "1988-06-21",
+        "tournament": "EURO 1988 Semi",
+        "homeTeamId": "ger",
+        "awayTeamId": "ned",
+        "homeScore": 1,
+        "awayScore": 2
+      },
+      {
+        "date": "1990-06-24",
+        "tournament": "1990 World Cup Round of 16",
+        "homeTeamId": "ger",
+        "awayTeamId": "ned",
+        "homeScore": 2,
+        "awayScore": 1
+      }
+    ]
+  },
+  {
+    "team1Id": "jpn",
+    "team2Id": "kor",
+    "matches": [
+      {
+        "date": "2011-01-25",
+        "tournament": "2011 Asian Cup Semi",
+        "homeTeamId": "jpn",
+        "awayTeamId": "kor",
+        "homeScore": 2,
+        "awayScore": 2
+      },
+      {
+        "date": "2019-01-15",
+        "tournament": "2019 Asian Cup Group",
+        "homeTeamId": "jpn",
+        "awayTeamId": "kor",
+        "homeScore": 0,
+        "awayScore": 1
+      },
+      {
+        "date": "2022-07-27",
+        "tournament": "2022 EAFF Championship",
+        "homeTeamId": "jpn",
+        "awayTeamId": "kor",
+        "homeScore": 3,
+        "awayScore": 0
+      }
+    ]
+  },
+  {
+    "team1Id": "uru",
+    "team2Id": "arg",
+    "matches": [
+      {
+        "date": "1930-07-30",
+        "tournament": "1930 World Cup Final",
+        "homeTeamId": "uru",
+        "awayTeamId": "arg",
+        "homeScore": 4,
+        "awayScore": 2
+      },
+      {
+        "date": "1986-06-16",
+        "tournament": "1986 World Cup Round of 16",
+        "homeTeamId": "arg",
+        "awayTeamId": "uru",
+        "homeScore": 1,
+        "awayScore": 0
+      },
+      {
+        "date": "2023-11-16",
+        "tournament": "2026 World Cup Qualifier",
+        "homeTeamId": "arg",
+        "awayTeamId": "uru",
+        "homeScore": 0,
+        "awayScore": 2
+      }
+    ]
+  },
+  {
+    "team1Id": "esp",
+    "team2Id": "por",
+    "matches": [
+      {
+        "date": "2010-06-29",
+        "tournament": "2010 World Cup Round of 16",
+        "homeTeamId": "esp",
+        "awayTeamId": "por",
+        "homeScore": 1,
+        "awayScore": 0
+      },
+      {
+        "date": "2012-06-27",
+        "tournament": "EURO 2012 Semi",
+        "homeTeamId": "esp",
+        "awayTeamId": "por",
+        "homeScore": 0,
+        "awayScore": 0
+      },
+      {
+        "date": "2018-06-15",
+        "tournament": "2018 World Cup Group",
+        "homeTeamId": "por",
+        "awayTeamId": "esp",
+        "homeScore": 3,
+        "awayScore": 3
+      }
+    ]
+  },
+  {
+    "team1Id": "bra",
+    "team2Id": "ger",
+    "matches": [
+      {
+        "date": "2002-06-30",
+        "tournament": "2002 World Cup Final",
+        "homeTeamId": "bra",
+        "awayTeamId": "ger",
+        "homeScore": 2,
+        "awayScore": 0
+      },
+      {
+        "date": "2014-07-08",
+        "tournament": "2014 World Cup Semi",
+        "homeTeamId": "bra",
+        "awayTeamId": "ger",
+        "homeScore": 1,
+        "awayScore": 7
+      }
+    ]
+  },
+  {
+    "team1Id": "fra",
+    "team2Id": "esp",
+    "matches": [
+      {
+        "date": "2006-06-27",
+        "tournament": "2006 World Cup Round of 16",
+        "homeTeamId": "fra",
+        "awayTeamId": "esp",
+        "homeScore": 3,
+        "awayScore": 1
+      },
+      {
+        "date": "2021-10-10",
+        "tournament": "2021 UEFA Nations League Final",
+        "homeTeamId": "fra",
+        "awayTeamId": "esp",
+        "homeScore": 2,
+        "awayScore": 1
+      },
+      {
+        "date": "2024-07-09",
+        "tournament": "EURO 2024 Semi",
+        "homeTeamId": "fra",
+        "awayTeamId": "esp",
+        "homeScore": 1,
+        "awayScore": 2
+      }
+    ]
+  },
+  {
+    "team1Id": "por",
+    "team2Id": "ned",
+    "matches": [
+      {
+        "date": "2006-06-25",
+        "tournament": "2006 World Cup Round of 16",
+        "homeTeamId": "por",
+        "awayTeamId": "ned",
+        "homeScore": 1,
+        "awayScore": 0
+      },
+      {
+        "date": "2012-06-17",
+        "tournament": "EURO 2012 Group",
+        "homeTeamId": "por",
+        "awayTeamId": "ned",
+        "homeScore": 2,
+        "awayScore": 1
+      },
+      {
+        "date": "2019-06-09",
+        "tournament": "2019 UEFA Nations League Final",
+        "homeTeamId": "por",
+        "awayTeamId": "ned",
+        "homeScore": 1,
+        "awayScore": 0
+      }
+    ]
+  }
+]

@@ -1,0 +1,1010 @@
+[
+  {
+    "id": "match-001",
+    "homeTeamId": "mex",
+    "awayTeamId": "rsa",
+    "date": "2026-06-11T20:00:00Z",
+    "stage": "group",
+    "groupId": "A",
+    "venueId": "estadio-azteca",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-002",
+    "homeTeamId": "kor",
+    "awayTeamId": "cze",
+    "date": "2026-06-12T17:00:00Z",
+    "stage": "group",
+    "groupId": "A",
+    "venueId": "estadio-akron",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-003",
+    "homeTeamId": "cze",
+    "awayTeamId": "rsa",
+    "date": "2026-06-18T19:00:00Z",
+    "stage": "group",
+    "groupId": "A",
+    "venueId": "mercedes-benz-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-004",
+    "homeTeamId": "mex",
+    "awayTeamId": "kor",
+    "date": "2026-06-18T22:00:00Z",
+    "stage": "group",
+    "groupId": "A",
+    "venueId": "estadio-akron",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-005",
+    "homeTeamId": "mex",
+    "awayTeamId": "cze",
+    "date": "2026-06-24T20:00:00Z",
+    "stage": "group",
+    "groupId": "A",
+    "venueId": "estadio-azteca",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-006",
+    "homeTeamId": "rsa",
+    "awayTeamId": "kor",
+    "date": "2026-06-24T20:00:00Z",
+    "stage": "group",
+    "groupId": "A",
+    "venueId": "estadio-bbva",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-007",
+    "homeTeamId": "can",
+    "awayTeamId": "bih",
+    "date": "2026-06-12T22:00:00Z",
+    "stage": "group",
+    "groupId": "B",
+    "venueId": "bmo-field",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-008",
+    "homeTeamId": "qat",
+    "awayTeamId": "sui",
+    "date": "2026-06-13T19:00:00Z",
+    "stage": "group",
+    "groupId": "B",
+    "venueId": "levis-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-009",
+    "homeTeamId": "sui",
+    "awayTeamId": "bih",
+    "date": "2026-06-18T17:00:00Z",
+    "stage": "group",
+    "groupId": "B",
+    "venueId": "sofi-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-010",
+    "homeTeamId": "can",
+    "awayTeamId": "qat",
+    "date": "2026-06-18T22:00:00Z",
+    "stage": "group",
+    "groupId": "B",
+    "venueId": "bc-place",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-011",
+    "homeTeamId": "sui",
+    "awayTeamId": "can",
+    "date": "2026-06-24T17:00:00Z",
+    "stage": "group",
+    "groupId": "B",
+    "venueId": "bc-place",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-012",
+    "homeTeamId": "bih",
+    "awayTeamId": "qat",
+    "date": "2026-06-24T17:00:00Z",
+    "stage": "group",
+    "groupId": "B",
+    "venueId": "lumen-field",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-013",
+    "homeTeamId": "bra",
+    "awayTeamId": "mar",
+    "date": "2026-06-13T22:00:00Z",
+    "stage": "group",
+    "groupId": "C",
+    "venueId": "metlife-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-014",
+    "homeTeamId": "hai",
+    "awayTeamId": "sco",
+    "date": "2026-06-13T17:00:00Z",
+    "stage": "group",
+    "groupId": "C",
+    "venueId": "gillette-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-015",
+    "homeTeamId": "sco",
+    "awayTeamId": "mar",
+    "date": "2026-06-19T19:00:00Z",
+    "stage": "group",
+    "groupId": "C",
+    "venueId": "gillette-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-016",
+    "homeTeamId": "bra",
+    "awayTeamId": "hai",
+    "date": "2026-06-19T22:00:00Z",
+    "stage": "group",
+    "groupId": "C",
+    "venueId": "lincoln-financial-field",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-017",
+    "homeTeamId": "sco",
+    "awayTeamId": "bra",
+    "date": "2026-06-24T22:00:00Z",
+    "stage": "group",
+    "groupId": "C",
+    "venueId": "hard-rock-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-018",
+    "homeTeamId": "mar",
+    "awayTeamId": "hai",
+    "date": "2026-06-24T22:00:00Z",
+    "stage": "group",
+    "groupId": "C",
+    "venueId": "mercedes-benz-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-019",
+    "homeTeamId": "usa",
+    "awayTeamId": "par",
+    "date": "2026-06-12T19:00:00Z",
+    "stage": "group",
+    "groupId": "D",
+    "venueId": "sofi-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-020",
+    "homeTeamId": "aus",
+    "awayTeamId": "tur",
+    "date": "2026-06-13T17:00:00Z",
+    "stage": "group",
+    "groupId": "D",
+    "venueId": "bc-place",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-021",
+    "homeTeamId": "usa",
+    "awayTeamId": "aus",
+    "date": "2026-06-19T17:00:00Z",
+    "stage": "group",
+    "groupId": "D",
+    "venueId": "lumen-field",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-022",
+    "homeTeamId": "tur",
+    "awayTeamId": "par",
+    "date": "2026-06-19T19:00:00Z",
+    "stage": "group",
+    "groupId": "D",
+    "venueId": "levis-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-023",
+    "homeTeamId": "usa",
+    "awayTeamId": "tur",
+    "date": "2026-06-25T19:00:00Z",
+    "stage": "group",
+    "groupId": "D",
+    "venueId": "sofi-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-024",
+    "homeTeamId": "par",
+    "awayTeamId": "aus",
+    "date": "2026-06-25T19:00:00Z",
+    "stage": "group",
+    "groupId": "D",
+    "venueId": "levis-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-025",
+    "homeTeamId": "ger",
+    "awayTeamId": "cuw",
+    "date": "2026-06-14T17:00:00Z",
+    "stage": "group",
+    "groupId": "E",
+    "venueId": "nrg-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-026",
+    "homeTeamId": "civ",
+    "awayTeamId": "ecu",
+    "date": "2026-06-14T19:00:00Z",
+    "stage": "group",
+    "groupId": "E",
+    "venueId": "lincoln-financial-field",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-027",
+    "homeTeamId": "ger",
+    "awayTeamId": "civ",
+    "date": "2026-06-20T17:00:00Z",
+    "stage": "group",
+    "groupId": "E",
+    "venueId": "bmo-field",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-028",
+    "homeTeamId": "ecu",
+    "awayTeamId": "cuw",
+    "date": "2026-06-20T19:00:00Z",
+    "stage": "group",
+    "groupId": "E",
+    "venueId": "arrowhead-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-029",
+    "homeTeamId": "ger",
+    "awayTeamId": "ecu",
+    "date": "2026-06-25T22:00:00Z",
+    "stage": "group",
+    "groupId": "E",
+    "venueId": "metlife-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-030",
+    "homeTeamId": "cuw",
+    "awayTeamId": "civ",
+    "date": "2026-06-25T22:00:00Z",
+    "stage": "group",
+    "groupId": "E",
+    "venueId": "lincoln-financial-field",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-031",
+    "homeTeamId": "ned",
+    "awayTeamId": "jpn",
+    "date": "2026-06-14T22:00:00Z",
+    "stage": "group",
+    "groupId": "F",
+    "venueId": "att-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-032",
+    "homeTeamId": "swe",
+    "awayTeamId": "tun",
+    "date": "2026-06-14T17:00:00Z",
+    "stage": "group",
+    "groupId": "F",
+    "venueId": "estadio-bbva",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-033",
+    "homeTeamId": "ned",
+    "awayTeamId": "swe",
+    "date": "2026-06-20T22:00:00Z",
+    "stage": "group",
+    "groupId": "F",
+    "venueId": "nrg-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-034",
+    "homeTeamId": "tun",
+    "awayTeamId": "jpn",
+    "date": "2026-06-20T22:00:00Z",
+    "stage": "group",
+    "groupId": "F",
+    "venueId": "estadio-bbva",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-035",
+    "homeTeamId": "ned",
+    "awayTeamId": "tun",
+    "date": "2026-06-25T17:00:00Z",
+    "stage": "group",
+    "groupId": "F",
+    "venueId": "arrowhead-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-036",
+    "homeTeamId": "jpn",
+    "awayTeamId": "swe",
+    "date": "2026-06-25T17:00:00Z",
+    "stage": "group",
+    "groupId": "F",
+    "venueId": "att-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-037",
+    "homeTeamId": "bel",
+    "awayTeamId": "egy",
+    "date": "2026-06-15T19:00:00Z",
+    "stage": "group",
+    "groupId": "G",
+    "venueId": "lumen-field",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-038",
+    "homeTeamId": "irn",
+    "awayTeamId": "nzl",
+    "date": "2026-06-15T22:00:00Z",
+    "stage": "group",
+    "groupId": "G",
+    "venueId": "sofi-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-039",
+    "homeTeamId": "bel",
+    "awayTeamId": "irn",
+    "date": "2026-06-21T17:00:00Z",
+    "stage": "group",
+    "groupId": "G",
+    "venueId": "sofi-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-040",
+    "homeTeamId": "nzl",
+    "awayTeamId": "egy",
+    "date": "2026-06-21T22:00:00Z",
+    "stage": "group",
+    "groupId": "G",
+    "venueId": "bc-place",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-041",
+    "homeTeamId": "bel",
+    "awayTeamId": "nzl",
+    "date": "2026-06-26T19:00:00Z",
+    "stage": "group",
+    "groupId": "G",
+    "venueId": "bc-place",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-042",
+    "homeTeamId": "egy",
+    "awayTeamId": "irn",
+    "date": "2026-06-26T19:00:00Z",
+    "stage": "group",
+    "groupId": "G",
+    "venueId": "lumen-field",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-043",
+    "homeTeamId": "esp",
+    "awayTeamId": "cpv",
+    "date": "2026-06-15T17:00:00Z",
+    "stage": "group",
+    "groupId": "H",
+    "venueId": "mercedes-benz-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-044",
+    "homeTeamId": "ksa",
+    "awayTeamId": "uru",
+    "date": "2026-06-15T19:00:00Z",
+    "stage": "group",
+    "groupId": "H",
+    "venueId": "hard-rock-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-045",
+    "homeTeamId": "esp",
+    "awayTeamId": "ksa",
+    "date": "2026-06-21T19:00:00Z",
+    "stage": "group",
+    "groupId": "H",
+    "venueId": "mercedes-benz-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-046",
+    "homeTeamId": "uru",
+    "awayTeamId": "cpv",
+    "date": "2026-06-21T19:00:00Z",
+    "stage": "group",
+    "groupId": "H",
+    "venueId": "hard-rock-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-047",
+    "homeTeamId": "esp",
+    "awayTeamId": "uru",
+    "date": "2026-06-26T22:00:00Z",
+    "stage": "group",
+    "groupId": "H",
+    "venueId": "estadio-bbva",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-048",
+    "homeTeamId": "ksa",
+    "awayTeamId": "cpv",
+    "date": "2026-06-26T22:00:00Z",
+    "stage": "group",
+    "groupId": "H",
+    "venueId": "nrg-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-049",
+    "homeTeamId": "fra",
+    "awayTeamId": "sen",
+    "date": "2026-06-16T22:00:00Z",
+    "stage": "group",
+    "groupId": "I",
+    "venueId": "metlife-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-050",
+    "homeTeamId": "irq",
+    "awayTeamId": "nor",
+    "date": "2026-06-16T19:00:00Z",
+    "stage": "group",
+    "groupId": "I",
+    "venueId": "gillette-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-051",
+    "homeTeamId": "fra",
+    "awayTeamId": "irq",
+    "date": "2026-06-22T19:00:00Z",
+    "stage": "group",
+    "groupId": "I",
+    "venueId": "lincoln-financial-field",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-052",
+    "homeTeamId": "nor",
+    "awayTeamId": "sen",
+    "date": "2026-06-22T22:00:00Z",
+    "stage": "group",
+    "groupId": "I",
+    "venueId": "metlife-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-053",
+    "homeTeamId": "fra",
+    "awayTeamId": "nor",
+    "date": "2026-06-26T17:00:00Z",
+    "stage": "group",
+    "groupId": "I",
+    "venueId": "gillette-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-054",
+    "homeTeamId": "sen",
+    "awayTeamId": "irq",
+    "date": "2026-06-26T17:00:00Z",
+    "stage": "group",
+    "groupId": "I",
+    "venueId": "bmo-field",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-055",
+    "homeTeamId": "arg",
+    "awayTeamId": "alg",
+    "date": "2026-06-16T17:00:00Z",
+    "stage": "group",
+    "groupId": "J",
+    "venueId": "arrowhead-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-056",
+    "homeTeamId": "aut",
+    "awayTeamId": "jor",
+    "date": "2026-06-16T17:00:00Z",
+    "stage": "group",
+    "groupId": "J",
+    "venueId": "levis-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-057",
+    "homeTeamId": "arg",
+    "awayTeamId": "aut",
+    "date": "2026-06-22T17:00:00Z",
+    "stage": "group",
+    "groupId": "J",
+    "venueId": "att-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-058",
+    "homeTeamId": "jor",
+    "awayTeamId": "alg",
+    "date": "2026-06-22T17:00:00Z",
+    "stage": "group",
+    "groupId": "J",
+    "venueId": "levis-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-059",
+    "homeTeamId": "arg",
+    "awayTeamId": "jor",
+    "date": "2026-06-27T19:00:00Z",
+    "stage": "group",
+    "groupId": "J",
+    "venueId": "att-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-060",
+    "homeTeamId": "alg",
+    "awayTeamId": "aut",
+    "date": "2026-06-27T19:00:00Z",
+    "stage": "group",
+    "groupId": "J",
+    "venueId": "arrowhead-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-061",
+    "homeTeamId": "por",
+    "awayTeamId": "cod",
+    "date": "2026-06-17T22:00:00Z",
+    "stage": "group",
+    "groupId": "K",
+    "venueId": "nrg-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-062",
+    "homeTeamId": "uzb",
+    "awayTeamId": "col",
+    "date": "2026-06-17T17:00:00Z",
+    "stage": "group",
+    "groupId": "K",
+    "venueId": "estadio-azteca",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-063",
+    "homeTeamId": "por",
+    "awayTeamId": "uzb",
+    "date": "2026-06-23T19:00:00Z",
+    "stage": "group",
+    "groupId": "K",
+    "venueId": "nrg-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-064",
+    "homeTeamId": "col",
+    "awayTeamId": "cod",
+    "date": "2026-06-23T17:00:00Z",
+    "stage": "group",
+    "groupId": "K",
+    "venueId": "estadio-akron",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-065",
+    "homeTeamId": "por",
+    "awayTeamId": "col",
+    "date": "2026-06-27T22:00:00Z",
+    "stage": "group",
+    "groupId": "K",
+    "venueId": "hard-rock-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-066",
+    "homeTeamId": "cod",
+    "awayTeamId": "uzb",
+    "date": "2026-06-27T22:00:00Z",
+    "stage": "group",
+    "groupId": "K",
+    "venueId": "mercedes-benz-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-067",
+    "homeTeamId": "eng",
+    "awayTeamId": "cro",
+    "date": "2026-06-17T19:00:00Z",
+    "stage": "group",
+    "groupId": "L",
+    "venueId": "att-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-068",
+    "homeTeamId": "gha",
+    "awayTeamId": "pan",
+    "date": "2026-06-17T17:00:00Z",
+    "stage": "group",
+    "groupId": "L",
+    "venueId": "bmo-field",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-069",
+    "homeTeamId": "eng",
+    "awayTeamId": "gha",
+    "date": "2026-06-23T22:00:00Z",
+    "stage": "group",
+    "groupId": "L",
+    "venueId": "gillette-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-070",
+    "homeTeamId": "pan",
+    "awayTeamId": "cro",
+    "date": "2026-06-23T22:00:00Z",
+    "stage": "group",
+    "groupId": "L",
+    "venueId": "bmo-field",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-071",
+    "homeTeamId": "eng",
+    "awayTeamId": "pan",
+    "date": "2026-06-27T17:00:00Z",
+    "stage": "group",
+    "groupId": "L",
+    "venueId": "metlife-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-072",
+    "homeTeamId": "cro",
+    "awayTeamId": "gha",
+    "date": "2026-06-27T17:00:00Z",
+    "stage": "group",
+    "groupId": "L",
+    "venueId": "lincoln-financial-field",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-073",
+    "homeTeamId": "arg",
+    "awayTeamId": "fra",
+    "date": "2026-06-28T17:00:00Z",
+    "stage": "round32",
+    "venueId": "metlife-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-074",
+    "homeTeamId": "bra",
+    "awayTeamId": "eng",
+    "date": "2026-06-28T20:00:00Z",
+    "stage": "round32",
+    "venueId": "att-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-075",
+    "homeTeamId": "ger",
+    "awayTeamId": "esp",
+    "date": "2026-06-29T17:00:00Z",
+    "stage": "round32",
+    "venueId": "sofi-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-076",
+    "homeTeamId": "por",
+    "awayTeamId": "ned",
+    "date": "2026-06-29T20:00:00Z",
+    "stage": "round32",
+    "venueId": "hard-rock-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-077",
+    "homeTeamId": "uru",
+    "awayTeamId": "jpn",
+    "date": "2026-06-30T17:00:00Z",
+    "stage": "round32",
+    "venueId": "estadio-azteca",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-078",
+    "homeTeamId": "kor",
+    "awayTeamId": "usa",
+    "date": "2026-06-30T20:00:00Z",
+    "stage": "round32",
+    "venueId": "arrowhead-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-079",
+    "homeTeamId": "mex",
+    "awayTeamId": "mar",
+    "date": "2026-07-01T17:00:00Z",
+    "stage": "round32",
+    "venueId": "nrg-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-080",
+    "homeTeamId": "cro",
+    "awayTeamId": "bel",
+    "date": "2026-07-01T20:00:00Z",
+    "stage": "round32",
+    "venueId": "lincoln-financial-field",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-081",
+    "homeTeamId": "sen",
+    "awayTeamId": "col",
+    "date": "2026-07-02T17:00:00Z",
+    "stage": "round32",
+    "venueId": "gillette-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-082",
+    "homeTeamId": "sui",
+    "awayTeamId": "aut",
+    "date": "2026-07-02T20:00:00Z",
+    "stage": "round32",
+    "venueId": "mercedes-benz-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-083",
+    "homeTeamId": "nor",
+    "awayTeamId": "tur",
+    "date": "2026-07-03T17:00:00Z",
+    "stage": "round32",
+    "venueId": "lumen-field",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-084",
+    "homeTeamId": "ecu",
+    "awayTeamId": "irn",
+    "date": "2026-07-03T20:00:00Z",
+    "stage": "round32",
+    "venueId": "levis-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-085",
+    "homeTeamId": "egy",
+    "awayTeamId": "aus",
+    "date": "2026-06-28T22:00:00Z",
+    "stage": "round32",
+    "venueId": "bmo-field",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-086",
+    "homeTeamId": "swe",
+    "awayTeamId": "civ",
+    "date": "2026-06-29T22:00:00Z",
+    "stage": "round32",
+    "venueId": "bc-place",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-087",
+    "homeTeamId": "alg",
+    "awayTeamId": "par",
+    "date": "2026-07-01T22:00:00Z",
+    "stage": "round32",
+    "venueId": "estadio-bbva",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-088",
+    "homeTeamId": "cze",
+    "awayTeamId": "sco",
+    "date": "2026-07-02T22:00:00Z",
+    "stage": "round32",
+    "venueId": "estadio-akron",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-089",
+    "homeTeamId": "arg",
+    "awayTeamId": "bra",
+    "date": "2026-07-04T17:00:00Z",
+    "stage": "round16",
+    "venueId": "metlife-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-090",
+    "homeTeamId": "fra",
+    "awayTeamId": "eng",
+    "date": "2026-07-04T20:00:00Z",
+    "stage": "round16",
+    "venueId": "att-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-091",
+    "homeTeamId": "esp",
+    "awayTeamId": "ger",
+    "date": "2026-07-05T17:00:00Z",
+    "stage": "round16",
+    "venueId": "sofi-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-092",
+    "homeTeamId": "por",
+    "awayTeamId": "ned",
+    "date": "2026-07-05T20:00:00Z",
+    "stage": "round16",
+    "venueId": "hard-rock-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-093",
+    "homeTeamId": "uru",
+    "awayTeamId": "jpn",
+    "date": "2026-07-06T17:00:00Z",
+    "stage": "round16",
+    "venueId": "estadio-azteca",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-094",
+    "homeTeamId": "kor",
+    "awayTeamId": "usa",
+    "date": "2026-07-06T20:00:00Z",
+    "stage": "round16",
+    "venueId": "arrowhead-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-095",
+    "homeTeamId": "mex",
+    "awayTeamId": "mar",
+    "date": "2026-07-07T17:00:00Z",
+    "stage": "round16",
+    "venueId": "nrg-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-096",
+    "homeTeamId": "cro",
+    "awayTeamId": "bel",
+    "date": "2026-07-07T20:00:00Z",
+    "stage": "round16",
+    "venueId": "lincoln-financial-field",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-097",
+    "homeTeamId": "arg",
+    "awayTeamId": "bra",
+    "date": "2026-07-09T17:00:00Z",
+    "stage": "quarter",
+    "venueId": "sofi-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-098",
+    "homeTeamId": "fra",
+    "awayTeamId": "ger",
+    "date": "2026-07-09T20:00:00Z",
+    "stage": "quarter",
+    "venueId": "gillette-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-099",
+    "homeTeamId": "esp",
+    "awayTeamId": "por",
+    "date": "2026-07-10T17:00:00Z",
+    "stage": "quarter",
+    "venueId": "arrowhead-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-100",
+    "homeTeamId": "eng",
+    "awayTeamId": "ned",
+    "date": "2026-07-10T20:00:00Z",
+    "stage": "quarter",
+    "venueId": "hard-rock-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-101",
+    "homeTeamId": "arg",
+    "awayTeamId": "fra",
+    "date": "2026-07-14T20:00:00Z",
+    "stage": "semi",
+    "venueId": "att-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-102",
+    "homeTeamId": "eng",
+    "awayTeamId": "esp",
+    "date": "2026-07-15T20:00:00Z",
+    "stage": "semi",
+    "venueId": "mercedes-benz-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-103",
+    "homeTeamId": "bra",
+    "awayTeamId": "por",
+    "date": "2026-07-18T17:00:00Z",
+    "stage": "third",
+    "venueId": "hard-rock-stadium",
+    "status": "scheduled"
+  },
+  {
+    "id": "match-104",
+    "homeTeamId": "arg",
+    "awayTeamId": "eng",
+    "date": "2026-07-19T20:00:00Z",
+    "stage": "final",
+    "venueId": "metlife-stadium",
+    "status": "scheduled"
+  }
+]

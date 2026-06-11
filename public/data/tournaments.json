@@ -1,0 +1,11 @@
+{
+  "id": "wc2026",
+  "name": "2026 FIFA World Cup",
+  "startDate": "2026-06-11",
+  "endDate": "2026-07-19",
+  "hostNations": [
+    "United States",
+    "Canada",
+    "Mexico"
+  ]
+}
