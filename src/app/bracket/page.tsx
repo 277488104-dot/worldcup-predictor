@@ -166,14 +166,14 @@ export default function BracketPage() {
             <div className="flex flex-col justify-center items-center mt-[130px]">
               <div className="rounded-xl border-2 border-gold bg-gold/[0.04] p-3 sm:p-4 text-center w-full">
                 <div className="text-xl sm:text-3xl mb-1">🏆</div>
-                <div className="font-display text-sm sm:text-lg font-extrabold text-gold">{champion.nameCn}</div>
-                <div className="text-[8px] sm:text-[9px] text-dim mt-1">{champion.flagUrl} FIFA #{champion.fifaRank}</div>
+                <div className="font-display text-sm sm:text-lg font-extrabold text-gold">{champion?.nameCn ?? '待定'}</div>
+                <div className="text-[8px] sm:text-[9px] text-dim mt-1">{champion?.flagUrl ?? '🏆'} FIFA #{champion?.fifaRank ?? '—'}</div>
               </div>
 
               <div className="mt-4 p-2 sm:p-3 bg-grass-pop/5 rounded-lg text-center">
                 <div className="text-[8px] text-dim">AI 预测冠军</div>
                 <div className="font-mono text-xs sm:text-sm font-black text-grass-pop">
-                  {Math.round(predictMatch(finalists[0], finalists[1], defaultVenue).homeWin * 100)}% 概率
+                  {finalists[0] && finalists[1] ? Math.round(predictMatch(finalists[0]!, finalists[1]!, defaultVenue).homeWin * 100) : '—'}% 概率
                 </div>
               </div>
             </div>
