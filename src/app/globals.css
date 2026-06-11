@@ -1,17 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --color-bg: #1a1a2e;
+  --color-bg: #0a0a1a;
+  --color-bg2: #1a1a2e;
   --color-accent: #00d4ff;
   --color-cta: #ff6b35;
   --color-knockout: #7c3aed;
   --color-surface: #16213e;
   --color-surface-light: #1f3460;
   --color-muted: #8892b0;
+  --color-gold: #f0c040;
 }
 
 * {
@@ -22,21 +24,79 @@ body {
   background: var(--color-bg);
   color: #e2e8f0;
   font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-bg);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-surface-light);
-  border-radius: 3px;
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-surface-light); border-radius: 3px; }
+
+/* GSAP optimization */
+.gsap-animated { will-change: transform, opacity; }
+
+/* ========== Global Animations ========== */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0,212,255,0.1); }
+  50% { box-shadow: 0 0 40px rgba(0,212,255,0.3); }
 }
 
-/* GSAP will-change optimization */
-.gsap-animated {
-  will-change: transform, opacity;
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes stadium-light {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.08; }
+}
+
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-gradient { animation: gradient-shift 8s ease infinite; background-size: 200% 200%; }
+
+/* ========== Card Hover Effects ========== */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(0,212,255,0.08);
+  border-color: rgba(0,212,255,0.3);
+}
+
+/* ========== Glow Text ========== */
+.text-glow {
+  text-shadow: 0 0 20px rgba(0,212,255,0.5), 0 0 40px rgba(0,212,255,0.2);
+}
+
+.text-glow-cta {
+  text-shadow: 0 0 20px rgba(255,107,53,0.5), 0 0 40px rgba(255,107,53,0.2);
+}
+
+/* ========== Stadium Grid Background ========== */
+.bg-stadium {
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.015) 2px, rgba(255,255,255,0.015) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.015) 2px, rgba(255,255,255,0.015) 4px);
+}
+
+/* ========== Flag Bounce ========== */
+.flag-display {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  line-height: 1;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+  transition: transform 0.2s ease;
+}
+.group:hover .flag-display {
+  transform: scale(1.15);
 }
