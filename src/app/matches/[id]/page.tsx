@@ -7,6 +7,7 @@ import PredictionCard from '@/components/matches/PredictionCard'
 import H2HTimeline from '@/components/matches/H2HTimeline'
 import VenueFactor from '@/components/matches/VenueFactor'
 import PostMatchReview from '@/components/matches/PostMatchReview'
+import PredictButton from '@/components/shared/PredictButton'
 import { computeTeamScore, computeVenueFactor } from '@/lib/prediction'
 import type { Metadata } from 'next'
 
@@ -128,6 +129,9 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
           <span>{venue.capacity.toLocaleString()} seats</span>
         </div>
       </div>
+
+      {/* User prediction widget */}
+      <PredictButton match={match} homeTeam={home} awayTeam={away} />
 
       {/* ===== SECTION 1: Radar + Prediction ===== */}
       <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
