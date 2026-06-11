@@ -3,12 +3,11 @@ import { notFound } from 'next/navigation'
 import { STAGE_LABELS, STAT_LABELS } from '@/lib/constants'
 import { toBeijingDate, toBeijingTime } from '@/lib/date'
 import RadarCompare from '@/components/matches/RadarCompare'
-import PredictionCard from '@/components/matches/PredictionCard'
+import AIAnalysis from '@/components/matches/AIAnalysis'
+import AIReview from '@/components/matches/AIReview'
 import H2HTimeline from '@/components/matches/H2HTimeline'
 import VenueFactor from '@/components/matches/VenueFactor'
 import PostMatchReview from '@/components/matches/PostMatchReview'
-import AIReview from '@/components/matches/AIReview'
-import MonteCarloSim from '@/components/matches/MonteCarloSim'
 import PredictButton from '@/components/shared/PredictButton'
 import { computeTeamScore, computeVenueFactor } from '@/lib/prediction'
 import type { Metadata } from 'next'
@@ -50,6 +49,15 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
   const isLive = match.status === 'live'
   const isFinished = match.status === 'finished'
   const hasScore = match.homeScore !== undefined && match.awayScore !== undefined
+
+  // Build H2H summary for AI
+  const h2hSummary = h2h?.matches?.length
+    ? h2h.matches.map(m => {
+        const ht = m.homeTeamId === home.id ? home.nameCn : away.nameCn
+        const at = m.awayTeamId === home.id ? home.nameCn : away.nameCn
+        return `${m.date.slice(0,4)} ${ht} ${m.homeScore}-${m.awayScore} ${at}`
+      }).join('; ')
+    : '无历史交锋记录'
 
   const homeScore = computeTeamScore(home.stats)
   const awayScore = computeTeamScore(away.stats)
@@ -135,18 +143,14 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
       {/* User prediction widget */}
       <PredictButton match={match} homeTeam={home} awayTeam={away} />
 
-      {/* ===== SECTION 1: Radar + Prediction ===== */}
+      {/* ===== SECTION 1: Radar + AI Analysis ===== */}
       <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
         <div className="card-glass p-4 sm:p-6">
           <div className="kicker kicker-green mb-3 sm:mb-4">TEAM COMPARISON</div>
           <h3 className="font-display text-lg sm:text-xl font-extrabold mb-4 sm:mb-6">战力<span className="text-grass-pop">雷达</span></h3>
           <RadarCompare homeTeam={home} awayTeam={away} />
         </div>
-        <div className="card-glass p-4 sm:p-6">
-          <div className="kicker kicker-gold mb-3 sm:mb-4">AI PREDICTION</div>
-          <h3 className="font-display text-lg sm:text-xl font-extrabold mb-4 sm:mb-6">智能<span className="text-gold">预测</span></h3>
-          <PredictionCard homeTeam={home} awayTeam={away} venue={venue} />
-        </div>
+        <AIAnalysis homeTeam={home} awayTeam={away} venue={venue} h2hSummary={h2hSummary} />
       </div>
 
       {/* ===== SECTION 2: Match Outlook ===== */}
@@ -341,9 +345,6 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
 
       {/* ===== AI REVIEW ===== */}
       <AIReview homeTeam={home} awayTeam={away} venue={venue} h2h={h2h} />
-
-      {/* ===== MONTE CARLO SIMULATION ===== */}
-      <MonteCarloSim homeTeam={home} awayTeam={away} venue={venue} />
     </main>
   )
 }
