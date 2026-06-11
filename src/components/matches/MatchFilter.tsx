@@ -1,7 +1,6 @@
 'use client'
 
 import { STAGE_LABELS } from '@/lib/constants'
-import type { MatchStage } from '@/types/worldcup'
 
 interface Props {
   selectedStage: string

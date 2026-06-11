@@ -102,7 +102,7 @@ export default function PredictionCard({ homeTeam, awayTeam, venue }: { homeTeam
         {/* Factor breakdown */}
         <div className="space-y-2 mb-6">
           <p className="text-xs text-muted mb-2">关键因素</p>
-          {prediction.factors.map((f, i) => (
+          {prediction.factors.map((f) => (
             <div key={f.name} className="pred-row flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <div

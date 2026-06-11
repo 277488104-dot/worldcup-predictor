@@ -4,18 +4,22 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 
 export default function AnimatedNumber({ value, className }: { value: number; className?: string }) {
-  const ref = useRef<HTMLSpanElement>(null)
+  const containerRef = useRef<HTMLSpanElement>(null)
   const prev = useRef(value)
 
   useEffect(() => {
-    if (prev.current !== value && ref.current) {
-      gsap.fromTo(ref.current,
-        { textContent: prev.current, duration: 0 },
-        { textContent: value, duration: 0.4, snap: { textContent: 1 }, ease: 'power2.out' }
-      )
-    }
+    const ctx = gsap.context(() => {
+      if (prev.current !== value && containerRef.current) {
+        gsap.fromTo(containerRef.current,
+          { textContent: prev.current, duration: 0 },
+          { textContent: value, duration: 0.4, snap: { textContent: 1 }, ease: 'power2.out' }
+        )
+      }
+    }, containerRef)
+
     prev.current = value
+    return () => ctx.revert()
   }, [value])
 
-  return <span ref={ref} className={className}>{value}</span>
+  return <span ref={containerRef} className={className}>{value}</span>
 }

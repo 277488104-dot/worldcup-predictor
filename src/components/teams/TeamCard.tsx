@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import gsap from 'gsap'
 import type { Team } from '@/types/worldcup'
@@ -8,18 +8,28 @@ import { CONFEDERATION_COLORS, STAT_LABELS } from '@/lib/constants'
 
 export default function TeamCard({ team }: { team: Team }) {
   const cardRef = useRef<HTMLDivElement>(null)
+  const ctxRef = useRef<gsap.Context | null>(null)
+
+  useEffect(() => {
+    ctxRef.current = gsap.context(() => {}, cardRef)
+    return () => ctxRef.current?.revert()
+  }, [])
 
   const handleMouseEnter = () => {
-    gsap.to(cardRef.current, { rotateY: 180, duration: 0.6, ease: 'power2.inOut' })
+    ctxRef.current?.add(() => {
+      gsap.to(cardRef.current, { rotateY: 180, duration: 0.6, ease: 'power2.inOut' })
+    })
   }
   const handleMouseLeave = () => {
-    gsap.to(cardRef.current, { rotateY: 0, duration: 0.6, ease: 'power2.inOut' })
+    ctxRef.current?.add(() => {
+      gsap.to(cardRef.current, { rotateY: 0, duration: 0.6, ease: 'power2.inOut' })
+    })
   }
 
   const confColor = CONFEDERATION_COLORS[team.confederation] || '#888'
 
   return (
-    <Link href={`/teams/${team.id}`}>
+    <Link href={`/teams/${team.id}`} aria-label={`${team.nameCn} (${team.name}) - FIFA #${team.fifaRank}`}>
       <div
         className="relative h-64 cursor-pointer"
         style={{ perspective: '800px' }}

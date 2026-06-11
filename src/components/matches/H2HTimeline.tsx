@@ -23,7 +23,7 @@ function getResultLabel(
   return { label: '平', color: '#64748b' }
 }
 
-export default function H2HTimeline({ h2h, homeTeam, awayTeam }: { h2h: H2HRecord; homeTeam: Team; awayTeam: Team }) {
+export default function H2HTimeline({ h2h, homeTeam }: { h2h: H2HRecord; homeTeam: Team; awayTeam: Team }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const recent = h2h.matches.slice(-5).reverse()
 

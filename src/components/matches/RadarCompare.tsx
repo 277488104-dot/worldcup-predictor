@@ -16,7 +16,8 @@ export default function RadarCompare({ homeTeam, awayTeam }: { homeTeam: Team; a
   const sectionRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!chartRef.current) return
+    if (!chartRef.current || !sectionRef.current) return
+
     const chart = echarts.init(chartRef.current)
 
     chart.setOption({
@@ -61,14 +62,17 @@ export default function RadarCompare({ homeTeam, awayTeam }: { homeTeam: Team; a
       }],
     })
 
-    // GSAP entrance
-    gsap.from(chartRef.current, { opacity: 0, scale: 0.95, duration: 0.6, delay: 0.3,
-      scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' } })
+    // GSAP entrance with gsap.context for proper cleanup
+    const ctx = gsap.context(() => {
+      gsap.from(chartRef.current, { opacity: 0, scale: 0.95, duration: 0.6, delay: 0.3,
+        scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' } })
+    }, sectionRef)
 
     const handleResize = () => chart.resize()
     window.addEventListener('resize', handleResize)
     return () => {
       window.removeEventListener('resize', handleResize)
+      ctx.revert()
       chart.dispose()
     }
   }, [homeTeam, awayTeam])
