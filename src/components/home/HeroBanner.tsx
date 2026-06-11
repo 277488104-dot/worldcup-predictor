@@ -7,11 +7,7 @@ import CountdownTimer from '@/components/home/CountdownTimer'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const HOSTS = [
-  { flag: '🇺🇸', name: 'United States', cn: '美国' },
-  { flag: '🇲🇽', name: 'Mexico', cn: '墨西哥' },
-  { flag: '🇨🇦', name: 'Canada', cn: '加拿大' },
-]
+const HOSTS = ['🇺🇸 美国', '🇲🇽 墨西哥', '🇨🇦 加拿大']
 
 export default function HeroBanner() {
   const ref = useRef<HTMLElement>(null)
@@ -19,120 +15,72 @@ export default function HeroBanner() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+      tl.from('.hero-kicker', { y: 30, opacity: 0, duration: 0.7 }, '+=0.3')
+      tl.from('.hero-title-line', { y: 60, opacity: 0, duration: 0.9, stagger: 0.15 }, '-=0.3')
+      tl.from('.hero-hosts', { y: 20, opacity: 0, duration: 0.6 }, '-=0.2')
+      tl.from('.hero-countdown', { y: 30, opacity: 0, scale: 0.95, duration: 0.7 }, '-=0.2')
+      tl.from('.hero-cta', { y: 20, opacity: 0, duration: 0.6 }, '-=0.2')
 
-      tl.from('.hero-reveal', {
-        y: 60, opacity: 0, duration: 0.9, stagger: 0.15,
-      }, '+=0.2')
-
-      tl.from('.hero-flag', {
-        y: 30, opacity: 0, scale: 0.7, duration: 0.6, stagger: 0.1,
-      }, '-=0.3')
-
-      tl.from('.hero-cta', {
-        y: 20, opacity: 0, duration: 0.7,
-      }, '-=0.2')
-
-      // Parallax scroll effect on background orbs
-      gsap.to('.hero-orb', {
-        y: -80,
+      gsap.to('.hero-stripes', {
+        y: -120,
         ease: 'none',
-        scrollTrigger: {
-          trigger: ref.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 0.8,
-        },
+        scrollTrigger: { trigger: ref.current, start: 'top top', end: 'bottom top', scrub: 0.6 },
+      })
+
+      gsap.to('.hero-orb', {
+        y: -60, scale: 1.1,
+        ease: 'none',
+        scrollTrigger: { trigger: ref.current, start: 'top top', end: 'bottom top', scrub: 0.4 },
       })
     }, ref)
     return () => ctx.revert()
   }, [])
 
   return (
-    <section ref={ref}
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-5 py-28"
-      style={{ background: 'var(--bg-deep)' }}
-    >
-      {/* Ambient glow orbs */}
-      <div className="hero-orb absolute top-[-10%] left-[-15%] w-[70vw] h-[70vw] rounded-full bg-accent/8 blur-[150px] animate-floatSlow pointer-events-none" />
-      <div className="hero-orb absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-purple/6 blur-[120px] animate-floatSlow pointer-events-none" style={{ animationDelay: '-4s' }} />
-      <div className="hero-orb absolute top-[40%] left-[30%] w-[40vw] h-[40vw] rounded-full bg-passion/4 blur-[100px] animate-floatSlow pointer-events-none" style={{ animationDelay: '-2s' }} />
+    <section ref={ref} className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-5 py-28">
+      <div className="hero-orb absolute top-[-15%] left-[-20%] w-[80vw] h-[80vw] rounded-full bg-grass-pop/4 blur-[180px] pointer-events-none" />
+      <div className="hero-orb absolute bottom-[-15%] right-[-15%] w-[60vw] h-[60vw] rounded-full bg-gold/3 blur-[150px] pointer-events-none" style={{ animationDelay: '-3s' }} />
+      <div className="hero-orb absolute top-[30%] left-[25%] w-[50vw] h-[50vw] rounded-full bg-emerald/3 blur-[120px] pointer-events-none" style={{ animationDelay: '-6s' }} />
 
-      {/* Subtle grid */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)`,
-          backgroundSize: '80px 80px',
-        }}
-      />
+      <div className="hero-stripes absolute inset-0 pitch-stripes opacity-40 pointer-events-none" />
 
-      {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center text-center gap-12 max-w-6xl">
+      <div className="relative z-10 flex flex-col items-center text-center gap-10 max-w-5xl">
+        <p className="hero-kicker kicker kicker-green">
+          June 11 — July 19 · United States · Mexico · Canada
+        </p>
 
-        {/* ===== Top: Host Flags Row ===== */}
-        <div className="flex items-center gap-8 md:gap-16">
-          {HOSTS.map(h => (
-            <div key={h.cn} className="hero-flag flex flex-col items-center gap-2">
-              <span className="flag-premium text-4xl md:text-5xl">{h.flag}</span>
-              <div className="flex flex-col items-center gap-0.5">
-                <span className="text-[10px] text-secondary tracking-[0.2em] uppercase font-semibold">{h.name}</span>
-                <span className="text-[9px] text-tertiary">{h.cn}</span>
-              </div>
-            </div>
-          ))}
+        <h1>
+          <span className="hero-title-line block font-display text-6xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-black tracking-[-0.04em] leading-[0.82] text-chalk">
+            THE
+          </span>
+          <span className="hero-title-line block font-display text-6xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-black tracking-[-0.04em] leading-[0.82] text-gradient-green">
+            BEAUTIFUL
+          </span>
+          <span className="hero-title-line block font-display text-6xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-black tracking-[-0.04em] leading-[0.82] text-chalk">
+            GAME
+          </span>
+        </h1>
+
+        <div className="hero-hosts flex items-center gap-6 text-sm text-muted/50 font-medium tracking-wide">
+          <span className="h-px w-10 bg-grass-pop/30" />
+          {HOSTS.join(' · ')} · 48 Nations · 104 Matches
+          <span className="h-px w-10 bg-grass-pop/30" />
         </div>
 
-        {/* ===== Middle: Massive Title ===== */}
-        <div>
-          <p className="hero-reveal text-xs md:text-sm text-tertiary tracking-[0.3em] uppercase font-semibold mb-8">
-            The Biggest Stage in Football
-          </p>
-
-          <h1 className="hero-reveal">
-            <span className="block font-display text-7xl md:text-[8rem] lg:text-[10rem] font-black tracking-[-0.04em] leading-[0.85] text-primary">
-              WORLD
-              <br />
-              <span className="text-gradient">CUP 26</span>
-            </span>
-          </h1>
-
-          <div className="hero-reveal flex items-center justify-center gap-4 mt-8">
-            <div className="accent-line" />
-            <p className="text-sm md:text-base text-secondary font-medium tracking-wide">
-              48 Nations · 16 Venues · 104 Matches · 1 Dream
-            </p>
-            <div className="accent-line" style={{ transform: 'rotate(180deg)' }} />
-          </div>
-        </div>
-
-        {/* ===== Bottom: Countdown CTA ===== */}
-        <div className="hero-cta text-center">
-          <p className="text-[11px] text-tertiary tracking-[0.25em] uppercase font-semibold mb-8">
-            Countdown to Kickoff
-          </p>
-
+        <div className="hero-countdown">
+          <p className="kicker kicker-green text-center mb-6">COUNTDOWN TO KICKOFF</p>
           <CountdownTimer targetDate="2026-06-11T12:00:00-05:00" />
-
-          {/* Quick actions */}
-          <div className="flex items-center gap-3 mt-10">
-            <a href="#today"
-              className="glass-card rounded-full px-6 py-3 text-sm font-semibold text-secondary hover:text-primary no-underline inline-flex items-center gap-2 transition-all duration-300">
-              <span className="w-2 h-2 rounded-full bg-emerald animate-pulse" />
-              今日赛程
-            </a>
-            <a href="#predict"
-              className="glass-card rounded-full px-6 py-3 text-sm font-semibold text-accent no-underline inline-flex items-center gap-2 transition-all duration-300 hover:bg-accent/10">
-              🎯 开始预测
-            </a>
-          </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
-          <span className="text-[9px] text-tertiary tracking-[0.2em] uppercase">Scroll</span>
-          <div className="w-[1px] h-8 bg-gradient-to-b from-white/30 to-transparent" />
+        <div className="hero-cta flex gap-3">
+          <a href="#today" className="btn-primary">📅 今日赛程</a>
+          <a href="/compare" className="btn-ghost">🎯 AI 预测</a>
         </div>
+      </div>
+
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-25">
+        <span className="text-[9px] text-muted tracking-[0.3em] uppercase">Scroll</span>
+        <div className="w-px h-10 bg-gradient-to-b from-grass-pop/30 to-transparent" />
       </div>
     </section>
   )
