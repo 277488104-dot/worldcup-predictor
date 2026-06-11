@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import type { Team, Match } from '@/types/worldcup'
-import { predictMatch } from '@/lib/prediction'
 import { savePrediction, getPredictionForMatch } from '@/lib/storage'
 
 interface PredictButtonProps {
