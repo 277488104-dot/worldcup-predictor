@@ -1,12 +1,12 @@
 import { getGroups, getTeamsByGroup } from '@/lib/data'
 import TeamCard from '@/components/teams/TeamCard'
-import PageTransitionWrapper from '@/components/layout/PageTransitionWrapper'
+
+
 
 export default function TeamsPage() {
   const groups = getGroups()
 
   return (
-    <PageTransitionWrapper>
     <main className="max-w-7xl mx-auto px-6 py-16">
       <h1 className="text-4xl font-bold mb-2">球队</h1>
       <p className="text-muted mb-12">48 支参赛队伍 · 12 个小组</p>
@@ -22,6 +22,5 @@ export default function TeamsPage() {
         </section>
       ))}
     </main>
-    </PageTransitionWrapper>
   )
 }

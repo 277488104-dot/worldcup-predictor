@@ -5,7 +5,8 @@ import gsap from 'gsap'
 import { getAllMatches } from '@/lib/data'
 import MatchCard from '@/components/matches/MatchCard'
 import MatchFilter from '@/components/matches/MatchFilter'
-import PageTransition from '@/components/layout/PageTransition'
+
+
 
 export default function MatchesPage() {
   const [stage, setStage] = useState('all')
@@ -35,7 +36,6 @@ export default function MatchesPage() {
   }, [])
 
   return (
-    <PageTransition>
     <main className="max-w-7xl mx-auto px-6 py-16">
       <h1 ref={titleRef} className="text-4xl font-bold mb-2">赛程</h1>
       <p className="text-muted mb-8">104 场比赛 · 小组赛至决赛</p>
@@ -58,6 +58,5 @@ export default function MatchesPage() {
         <p className="text-muted text-center py-12">无符合条件的比赛</p>
       )}
     </main>
-    </PageTransition>
   )
 }

@@ -6,10 +6,10 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 
 const NAV = [
-  { href: '/', label: '首页', emoji: '⚽' },
-  { href: '/matches', label: '赛程', emoji: '📅' },
-  { href: '/teams', label: '球队', emoji: '🏴' },
-  { href: '/venues', label: '场馆', emoji: '🏟️' },
+  { href: '/', label: '首页', icon: '⚽' },
+  { href: '/matches', label: '赛程', icon: '📅' },
+  { href: '/teams', label: '球队', icon: '🏴' },
+  { href: '/venues', label: '场馆', icon: '🏟️' },
 ]
 
 export default function Header() {
@@ -28,22 +28,17 @@ export default function Header() {
 
   return (
     <>
-      <header ref={headerRef}
-        className="fixed top-0 left-0 right-0 z-[100] glass-panel rounded-none border-x-0 border-t-0 mx-0"
-      >
+      <header ref={headerRef} className="fixed top-0 left-0 right-0 z-[100] glass-panel">
         <nav className="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 font-black text-lg tracking-tight no-underline group">
-            <div className="w-9 h-9 rounded-xl bg-accent/10 flex items-center justify-center text-accent text-base transition-all group-hover:bg-accent/20 group-hover:scale-110 group-hover:shadow-glow">
+          <Link href="/" className="flex items-center gap-2.5 font-bold text-lg no-underline group">
+            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[#4ade80] to-[#22c55e] flex items-center justify-center text-sm text-pitch font-black transition-all group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(74,222,128,.3)]">
               ⚽
             </div>
-            <span className="font-display">
-              <span className="text-primary">WC</span>
-              <span className="text-gradient">26</span>
+            <span className="font-display text-chalk">
+              WC<span className="text-grass-pop">26</span>
             </span>
           </Link>
 
-          {/* Desktop nav */}
           <ul className="hidden md:flex items-center gap-1">
             {NAV.map(item => {
               const active = pathname === item.href
@@ -52,11 +47,11 @@ export default function Header() {
                   <Link href={item.href}
                     className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
                       active
-                        ? 'bg-accent/10 text-accent shadow-glow'
-                        : 'text-secondary hover:text-primary hover:bg-hover'
+                        ? 'bg-[#4ade80]/10 text-grass-pop'
+                        : 'text-muted hover:text-chalk hover:bg-white/5'
                     }`}
                   >
-                    <span className="text-sm">{item.emoji}</span>
+                    <span>{item.icon}</span>
                     {item.label}
                   </Link>
                 </li>
@@ -64,9 +59,11 @@ export default function Header() {
             })}
           </ul>
 
-          {/* Mobile hamburger */}
-          <button className="md:hidden p-2 text-secondary hover:text-primary transition-colors"
-            onClick={() => setOpen(v => !v)} aria-label="菜单">
+          <Link href="/compare" className="hidden md:flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold text-gold bg-gold/5 hover:bg-gold/10 transition-all">
+            ⚡ 对比
+          </Link>
+
+          <button className="md:hidden p-2 text-muted hover:text-chalk" onClick={() => setOpen(v => !v)} aria-label="菜单">
             {open ? (
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             ) : (
@@ -76,11 +73,10 @@ export default function Header() {
         </nav>
       </header>
 
-      {/* Mobile drawer */}
       {open && (
         <div className="fixed inset-0 z-[99] md:hidden" onClick={() => setOpen(false)}>
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-          <div className="absolute top-0 right-0 h-full w-72 bg-deep border-l border-subtle p-6 pt-24 shadow-lg" onClick={e => e.stopPropagation()}>
+          <div className="absolute top-0 right-0 h-full w-72 bg-turf border-l border-white/5 p-6 pt-24" onClick={e => e.stopPropagation()}>
             <ul className="flex flex-col gap-2">
               {NAV.map(item => {
                 const active = pathname === item.href
@@ -88,14 +84,19 @@ export default function Header() {
                   <li key={item.href}>
                     <Link href={item.href}
                       className={`flex items-center gap-2 px-4 py-3.5 rounded-xl text-base font-semibold transition-all ${
-                        active ? 'bg-accent/10 text-accent' : 'text-secondary hover:text-primary hover:bg-hover'
+                        active ? 'bg-grass-pop/10 text-grass-pop' : 'text-muted hover:text-chalk hover:bg-white/5'
                       }`}
                     >
-                      <span>{item.emoji}</span> {item.label}
+                      <span>{item.icon}</span> {item.label}
                     </Link>
                   </li>
                 )
               })}
+              <li>
+                <Link href="/compare" className="flex items-center gap-2 px-4 py-3.5 rounded-xl text-base font-semibold text-gold bg-gold/5">
+                  ⚡ 对比
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
