@@ -1,5 +1,5 @@
 import type { Team, Venue } from '@/types/worldcup'
-import { getH2H, getPlayersByTeam } from '@/lib/data'
+import { getH2H } from '@/lib/data'
 
 // ==========================================
 // Rich analysis engine for match predictions
@@ -391,7 +391,6 @@ function predictScoreWithReasoning(
 
   // Generate detailed reasoning
   const dominantSide = gap > 5 ? 'home' : gap < -5 ? 'away' : 'neutral'
-  const dominantTeam = dominantSide === 'home' ? home.nameCn : dominantSide === 'away' ? away.nameCn : ''
   const homeAvg = (s.attack + s.defense + s.recentForm + s.experience + s.fitness) / 5
   const awayAvg = (o.attack + o.defense + o.recentForm + o.experience + o.fitness) / 5
 
@@ -407,8 +406,8 @@ function predictScoreWithReasoning(
 
     if (awayAvg > 60) {
       reasoning += `${away.nameCn} 并非毫无还手之力，他们在 ${away.stats.attack > away.stats.defense ? '进攻端具备一定威胁' : '防守端有一定韧性'}，可能会在某个时段给 ${home.nameCn} 制造麻烦并取得进球。`
-    } else if (hd > 75) {
-      reasoning += `${home.nameCn} 的防守端极为稳固（${hd}），${away.nameCn} 想要攻破他们的大门难度极大。零封的可能性不容忽视。`
+    } else if (s.defense > 75) {
+      reasoning += `${home.nameCn} 的防守端极为稳固（${s.defense}），${away.nameCn} 想要攻破他们的大门难度极大。零封的可能性不容忽视。`
     }
   } else if (dominantSide === 'away') {
     reasoning = `${away.nameCn} 在综合评分（${awayAvg.toFixed(1)} vs ${homeAvg.toFixed(1)}）等多个维度上占据优势。`

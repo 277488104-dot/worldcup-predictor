@@ -10960,5 +10960,275 @@
     "club": "Celtic",
     "number": 98,
     "teamId": "pan"
+  },
+  {
+    "id": "arg-26",
+    "name": "Leonardo Balerdi",
+    "pos": "DF",
+    "age": 27,
+    "club": "Olympique de Marseille",
+    "num": 2,
+    "teamId": "arg"
+  },
+  {
+    "id": "eng-26",
+    "name": "Nico O'Reilly",
+    "pos": "MF",
+    "age": 20,
+    "club": "Manchester City",
+    "num": 16,
+    "teamId": "eng"
+  },
+  {
+    "id": "ger-26",
+    "name": "Jamie Leweling",
+    "pos": "FW",
+    "age": 25,
+    "club": "Stuttgart",
+    "num": 25,
+    "teamId": "ger"
+  },
+  {
+    "id": "usa-25",
+    "name": "Matt Freese",
+    "pos": "GK",
+    "age": 27,
+    "club": "NYCFC",
+    "num": 1,
+    "teamId": "usa"
+  },
+  {
+    "id": "usa-26",
+    "name": "Auston Trusty",
+    "pos": "DF",
+    "age": 27,
+    "club": "Celtic",
+    "num": 16,
+    "teamId": "usa"
+  },
+  {
+    "id": "esp-25",
+    "name": "Pau Cubarsí",
+    "pos": "DF",
+    "age": 19,
+    "club": "Barcelona",
+    "num": 5,
+    "teamId": "esp"
+  },
+  {
+    "id": "esp-26",
+    "name": "Marc Pubill",
+    "pos": "DF",
+    "age": 22,
+    "club": "Atlético Madrid",
+    "num": 4,
+    "teamId": "esp"
+  },
+  {
+    "id": "por-25",
+    "name": "Pedro Neto",
+    "pos": "FW",
+    "age": 26,
+    "club": "Chelsea",
+    "num": 26,
+    "teamId": "por"
+  },
+  {
+    "id": "por-26",
+    "name": "Gonçalo Guedes",
+    "pos": "FW",
+    "age": 29,
+    "club": "Real Sociedad",
+    "num": 24,
+    "teamId": "por"
+  },
+  {
+    "id": "jpn-23",
+    "name": "Ao Tanaka",
+    "pos": "MF",
+    "age": 27,
+    "club": "Leeds United",
+    "num": 8,
+    "teamId": "jpn"
+  },
+  {
+    "id": "jpn-24",
+    "name": "Keito Nakamura",
+    "pos": "MF",
+    "age": 25,
+    "club": "Reims",
+    "num": 13,
+    "teamId": "jpn"
+  },
+  {
+    "id": "jpn-25",
+    "name": "Daizen Maeda",
+    "pos": "FW",
+    "age": 28,
+    "club": "Celtic",
+    "num": 19,
+    "teamId": "jpn"
+  },
+  {
+    "id": "jpn-26",
+    "name": "Koki Ogawa",
+    "pos": "FW",
+    "age": 28,
+    "club": "NEC Nijmegen",
+    "num": 24,
+    "teamId": "jpn"
+  },
+  {
+    "id": "kor-20",
+    "name": "Jung Seung-hyun",
+    "pos": "DF",
+    "age": 32,
+    "club": "Al-Wasl",
+    "num": 5,
+    "teamId": "kor"
+  },
+  {
+    "id": "kor-21",
+    "name": "Kwon Kyung-won",
+    "pos": "DF",
+    "age": 34,
+    "club": "Gamba Osaka",
+    "num": 20,
+    "teamId": "kor"
+  },
+  {
+    "id": "kor-22",
+    "name": "Paik Seung-ho",
+    "pos": "MF",
+    "age": 29,
+    "club": "Birmingham City",
+    "num": 14,
+    "teamId": "kor"
+  },
+  {
+    "id": "kor-23",
+    "name": "Jeong Woo-yeong",
+    "pos": "FW",
+    "age": 26,
+    "club": "Stuttgart",
+    "num": 22,
+    "teamId": "kor"
+  },
+  {
+    "id": "kor-24",
+    "name": "Eom Ji-sung",
+    "pos": "FW",
+    "age": 24,
+    "club": "Swansea City",
+    "num": 17,
+    "teamId": "kor"
+  },
+  {
+    "id": "kor-25",
+    "name": "Lee Seung-woo",
+    "pos": "FW",
+    "age": 28,
+    "club": "Suwon FC",
+    "num": 23,
+    "teamId": "kor"
+  },
+  {
+    "id": "kor-26",
+    "name": "Oh Se-hun",
+    "pos": "FW",
+    "age": 27,
+    "club": "Shimizu S-Pulse",
+    "num": 26,
+    "teamId": "kor"
+  },
+  {
+    "id": "cro-20",
+    "name": "Duje Caleta-Car",
+    "pos": "DF",
+    "age": 29,
+    "club": "Real Sociedad",
+    "num": 5,
+    "teamId": "cro"
+  },
+  {
+    "id": "cro-21",
+    "name": "Marin Pongracic",
+    "pos": "DF",
+    "age": 28,
+    "club": "Fiorentina",
+    "num": 22,
+    "teamId": "cro"
+  },
+  {
+    "id": "cro-22",
+    "name": "Luka Vuskovic",
+    "pos": "DF",
+    "age": 19,
+    "club": "Hamburg",
+    "num": 25,
+    "teamId": "cro"
+  },
+  {
+    "id": "cro-23",
+    "name": "Kristijan Jakic",
+    "pos": "MF",
+    "age": 29,
+    "club": "Augsburg",
+    "num": 11,
+    "teamId": "cro"
+  },
+  {
+    "id": "cro-24",
+    "name": "Petar Sucic",
+    "pos": "MF",
+    "age": 22,
+    "club": "Inter Milan",
+    "num": 14,
+    "teamId": "cro"
+  },
+  {
+    "id": "cro-25",
+    "name": "Igor Matanovic",
+    "pos": "FW",
+    "age": 23,
+    "club": "Freiburg",
+    "num": 26,
+    "teamId": "cro"
+  },
+  {
+    "id": "cro-26",
+    "name": "Toni Fruk",
+    "pos": "MF",
+    "age": 24,
+    "club": "Rijeka",
+    "num": 19,
+    "teamId": "cro"
+  },
+  {
+    "id": "mex-24",
+    "name": "Cesar Huerta",
+    "pos": "FW",
+    "age": 25,
+    "club": "Anderlecht",
+    "num": 14,
+    "teamId": "mex"
+  },
+  {
+    "id": "mex-25",
+    "name": "Luis Olivas",
+    "pos": "DF",
+    "age": 26,
+    "club": "Guadalajara",
+    "num": 16,
+    "teamId": "mex"
+  },
+  {
+    "id": "mex-26",
+    "name": "Fidel Ambriz",
+    "pos": "MF",
+    "age": 23,
+    "club": "Leon",
+    "num": 26,
+    "teamId": "mex"
   }
 ]
