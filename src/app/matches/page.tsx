@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { getAllMatches } from '@/lib/data'
 import MatchCard from '@/components/matches/MatchCard'
+import { MatchCardSkeleton } from '@/components/shared/Skeletons'
 
 const STAGES = [
   { value: 'all', label: '全部' },
@@ -18,6 +19,7 @@ const STAGES = [
 export default function MatchesPage() {
   const [stage, setStage] = useState('all')
   const [date, setDate] = useState('all')
+  const [loading, setLoading] = useState(true)
 
   const allMatches = getAllMatches()
   const dates = useMemo(() => {
@@ -32,6 +34,11 @@ export default function MatchesPage() {
       return true
     })
   }, [stage, date, allMatches])
+
+  useEffect(() => {
+    const t = requestAnimationFrame(() => setLoading(false))
+    return () => cancelAnimationFrame(t)
+  }, [])
 
   return (
     <main className="max-w-7xl mx-auto px-5 py-24">
@@ -73,13 +80,21 @@ export default function MatchesPage() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {filtered.map((match, i) => (
-          <MatchCard key={match.id} match={match} index={i} />
-        ))}
-      </div>
+      {loading ? (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <MatchCardSkeleton key={i} />
+          ))}
+        </div>
+      ) : (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {filtered.map((match, i) => (
+            <MatchCard key={match.id} match={match} index={i} />
+          ))}
+        </div>
+      )}
 
-      {filtered.length === 0 && (
+      {!loading && filtered.length === 0 && (
         <p className="text-muted text-center py-16">无符合条件的比赛</p>
       )}
     </main>
