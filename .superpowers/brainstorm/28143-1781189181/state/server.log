@@ -29,3 +29,4 @@
 {"source":"user-event","type":"click","text":"3. B2 淘汰赛晋级树 (4h)\n        新页面 /bracket，完整晋级路径 + 冠军概率\n        最复杂","choice":"b2","id":null,"timestamp":1781189703554}
 {"source":"user-event","type":"click","text":"1. D1 AI 球评 (1h)\n        模板引擎，5 段段落自动拼接。放在比赛详情页底部\n        最简单 · 今天上线","choice":"d1","id":null,"timestamp":1781189704071}
 {"source":"user-event","type":"click","text":"2. B1 模拟引擎 (2h)\n        蒙特卡洛 1000 次模拟 + 频次直方图。放在比赛详情页\n        中等难度","choice":"b1","id":null,"timestamp":1781189705279}
+{"type":"server-stopped","reason":"idle timeout"}
