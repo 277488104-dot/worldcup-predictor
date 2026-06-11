@@ -7,7 +7,7 @@ import PredictionCard from '@/components/matches/PredictionCard'
 import H2HTimeline from '@/components/matches/H2HTimeline'
 import VenueFactor from '@/components/matches/VenueFactor'
 import PostMatchReview from '@/components/matches/PostMatchReview'
-import { computeTeamScore, computeVenueFactor, predictMatch } from '@/lib/prediction'
+import { computeTeamScore, computeVenueFactor } from '@/lib/prediction'
 import type { Metadata } from 'next'
 
 export function generateStaticParams() {
