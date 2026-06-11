@@ -138,22 +138,37 @@ export default function PredictionCard({ homeTeam, awayTeam, venue }: { homeTeam
               <p className="text-sm leading-relaxed">{analysis.overview}</p>
             </div>
 
-            {/* Analysis points */}
+            {/* Upset alert */}
+            {analysis.upsetAlert && (
+              <div className="pred-row bg-cta/10 border border-cta/20 rounded-xl p-4">
+                <p className="text-sm font-semibold text-cta">{analysis.upsetAlert}</p>
+              </div>
+            )}
+
+            {/* Analysis points with score badges */}
             {analysis.points.map((pt, i) => (
               <div key={i} className="pred-row flex gap-3 items-start">
                 <span className="text-lg mt-0.5">{pt.icon}</span>
-                <div className="flex-1">
-                  <p className="text-sm font-semibold">{pt.title}</p>
-                  <p className="text-xs text-muted mt-0.5">{pt.detail}</p>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <p className="text-sm font-semibold">{pt.title}</p>
+                    <span className="text-[10px] px-1.5 py-0.5 rounded-full font-mono font-bold"
+                      style={{
+                        background: pt.score >= 7 ? 'rgba(255,107,53,.2)' : pt.score >= 4 ? 'rgba(240,192,64,.15)' : 'rgba(100,116,139,.15)',
+                        color: pt.score >= 7 ? '#ff6b35' : pt.score >= 4 ? '#f0c040' : '#8892b0',
+                      }}
+                    >{pt.score}/10</span>
+                  </div>
+                  <p className="text-xs text-muted leading-relaxed">{pt.detail}</p>
                 </div>
                 <span
-                  className="text-[10px] px-1.5 py-0.5 rounded-full font-medium"
+                  className="text-[10px] px-1.5 py-0.5 rounded-full font-medium flex-shrink-0"
                   style={{
                     background: isHome(pt.advantage) ? 'rgba(0,212,255,.15)' : isAway(pt.advantage) ? 'rgba(255,107,53,.15)' : 'rgba(100,116,139,.15)',
                     color: isHome(pt.advantage) ? '#00d4ff' : isAway(pt.advantage) ? '#ff6b35' : '#8892b0',
                   }}
                 >
-                  {isHome(pt.advantage) ? homeTeam.nameCn : isAway(pt.advantage) ? awayTeam.nameCn : '均等'}
+                  {isHome(pt.advantage) ? '↑ ' + homeTeam.nameCn : isAway(pt.advantage) ? '↑ ' + awayTeam.nameCn : '均等'}
                 </span>
               </div>
             ))}
@@ -162,6 +177,12 @@ export default function PredictionCard({ homeTeam, awayTeam, venue }: { homeTeam
             <div className="pred-row bg-surface-light/30 rounded-xl p-4">
               <p className="text-xs text-muted mb-1">战术建议</p>
               <p className="text-sm leading-relaxed">{analysis.tacticalNote}</p>
+            </div>
+
+            {/* Head-to-head summary */}
+            <div className="pred-row bg-surface-light/30 rounded-xl p-4">
+              <p className="text-xs text-muted mb-1">交锋记录</p>
+              <p className="text-sm leading-relaxed">{analysis.headToHeadNote}</p>
             </div>
           </div>
         )}
