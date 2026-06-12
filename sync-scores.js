@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 /**
- * Sync script: fetches 2026 matches from Zafronix API and updates matches.json.
- * If any scores changed, rebuilds and restarts.
+ * Sync script: fetches 2026 matches AND standings from Zafronix,
+ * writes both to public/data/*.json, rebuilds on change.
  *
- * Usage:   node sync-scores.js
- * Cron:    every 30 min via crontab
+ * Cron: */30 * * * * cd /opt/worldcup-predictor && ZAFRONIX_KEY=zwc_free_... node sync-scores.js >> /var/log/worldcup-sync.log 2>&1
  */
 
 const fs = require('fs')
@@ -13,6 +12,7 @@ const { execSync } = require('child_process')
 
 const ZAFRONIX_KEY = process.env.ZAFRONIX_KEY || ''
 const MATCHES_PATH = path.join(__dirname, 'public', 'data', 'matches.json')
+const STANDINGS_PATH = path.join(__dirname, 'public', 'data', 'standings.json')
 const BASE = 'https://api.zafronix.com/fifa/worldcup/v1'
 
 if (!ZAFRONIX_KEY) {
@@ -36,38 +36,26 @@ async function zfetch(endpoint) {
   }
 }
 
-async function main() {
-  console.log(`[sync] ${new Date().toISOString()} — starting`)
-
+async function syncMatches() {
   const data = await zfetch('/matches?year=2026')
   if (!data?.data || !Array.isArray(data.data)) {
-    console.log('[sync] no matches from API, skipping')
-    return
+    console.log('[sync] no matches from API')
+    return 0
   }
 
   const apiMatches = data.data
-  console.log(`[sync] got ${apiMatches.length} matches from API`)
-
-  // Read local matches
   const local = JSON.parse(fs.readFileSync(MATCHES_PATH, 'utf-8'))
   let changed = 0
 
   for (const apiMatch of apiMatches) {
-    // Map Zafronix ID format: "2026-001" → "match-001"
     const mappedId = apiMatch.id.replace(/^\d+-/, 'match-')
     const localMatch = local.find(m => m.id === mappedId)
-    if (!localMatch) {
-      console.log(`[sync] ${apiMatch.id} → ${mappedId}: not in local data, skipping`)
-      continue
-    }
+    if (!localMatch) continue
 
     const hasScore = apiMatch.homeScore !== null && apiMatch.awayScore !== null
     const oldScore = `${localMatch.homeScore ?? '?'}-${localMatch.awayScore ?? '?'}`
     const newScore = `${apiMatch.homeScore ?? '?'}-${apiMatch.awayScore ?? '?'}`
-
-    // Map API status to our status
-    let apiStatus = 'scheduled'
-    if (apiMatch.status === 'completed' || apiMatch.result) apiStatus = 'finished'
+    let apiStatus = apiMatch.status === 'completed' || apiMatch.result ? 'finished' : 'scheduled'
 
     if (hasScore && oldScore !== newScore) {
       console.log(`[sync] ${apiMatch.id} → ${mappedId}: ${oldScore} → ${newScore} (${apiStatus})`)
@@ -83,19 +71,52 @@ async function main() {
     }
   }
 
-  if (changed === 0) {
+  if (changed > 0) {
+    fs.writeFileSync(MATCHES_PATH, JSON.stringify(local, null, 2))
+    console.log(`[sync] wrote ${changed} match changes`)
+  }
+  return changed
+}
+
+async function syncStandings() {
+  const data = await zfetch('/standings?year=2026')
+  if (!data?.groups || Object.keys(data.groups).length === 0) {
+    console.log('[sync] no standings from API')
+    return 0
+  }
+
+  const old = fs.existsSync(STANDINGS_PATH) ? JSON.parse(fs.readFileSync(STANDINGS_PATH, 'utf-8')) : {}
+  const oldJson = JSON.stringify(old)
+  const newJson = JSON.stringify(data.groups)
+
+  if (oldJson === newJson) {
+    console.log('[sync] standings unchanged')
+    return 0
+  }
+
+  fs.writeFileSync(STANDINGS_PATH, JSON.stringify(data.groups, null, 2))
+  console.log('[sync] standings updated')
+  return 1
+}
+
+async function main() {
+  console.log(`[sync] ${new Date().toISOString()} — starting`)
+
+  const [matchChanged, standingsChanged] = await Promise.all([
+    syncMatches(),
+    syncStandings(),
+  ])
+
+  const totalChanged = matchChanged + standingsChanged
+  if (totalChanged === 0) {
     console.log('[sync] no changes detected')
     return
   }
 
-  // Write updated matches
-  fs.writeFileSync(MATCHES_PATH, JSON.stringify(local, null, 2))
-  console.log(`[sync] wrote ${changed} changes`)
-
   // Git commit
   try {
-    execSync('git add public/data/matches.json', { cwd: __dirname, stdio: 'pipe' })
-    execSync(`git commit -m "sync: update ${changed} match scores [auto]"`, { cwd: __dirname, stdio: 'pipe' })
+    execSync('git add public/data/matches.json public/data/standings.json', { cwd: __dirname, stdio: 'pipe' })
+    execSync(`git commit -m "sync: update scores & standings [auto]"`, { cwd: __dirname, stdio: 'pipe' })
     console.log('[sync] committed')
   } catch (err) {
     console.error('[sync] git commit note:', err.message)
