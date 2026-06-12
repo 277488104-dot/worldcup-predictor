@@ -113,7 +113,7 @@ export default function AIAnalysis({ homeTeam, awayTeam, venue, h2hSummary, home
             综合 <strong className="text-chalk">公式预测模型</strong> + <strong className="text-chalk">蒙特卡洛1000次模拟</strong> + <strong className="text-chalk">8因素分析</strong>，由 AI 给出完整分析报告。
           </p>
 
-          <div className="grid grid-cols-3 gap-3 sm:gap-4">
+          <div className="grid grid-cols-4 gap-3 sm:gap-4">
             {/* DeepSeek */}
             <button
               onClick={() => startAnalysis('/api/analyze')}
@@ -139,7 +139,7 @@ export default function AIAnalysis({ homeTeam, awayTeam, venue, h2hSummary, home
               </div>
               <div className="text-center">
                 <div className="text-xs sm:text-sm font-extrabold text-chalk group-hover:text-gold transition-colors">Claude</div>
-                <div className="text-[9px] sm:text-[10px] text-dim mt-0.5">Opus 4.5</div>
+                <div className="text-[9px] sm:text-[10px] text-dim mt-0.5">Sonnet 4.5</div>
               </div>
               <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gold/0 group-hover:ring-gold/8 transition-all" />
             </button>
@@ -157,6 +157,21 @@ export default function AIAnalysis({ homeTeam, awayTeam, venue, h2hSummary, home
                 <div className="text-[9px] sm:text-[10px] text-dim mt-0.5">5.5</div>
               </div>
               <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-emerald/0 group-hover:ring-emerald/8 transition-all" />
+            </button>
+
+            {/* Gemini */}
+            <button
+              onClick={() => startAnalysis('/api/relay-analyze', 'gemini')}
+              className="group relative flex flex-col items-center gap-3 p-4 sm:p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-blue-400/20 transition-all duration-300"
+            >
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#60a5fa]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="text-xl sm:text-2xl">💎</span>
+              </div>
+              <div className="text-center">
+                <div className="text-xs sm:text-sm font-extrabold text-chalk group-hover:text-blue-400 transition-colors">Gemini</div>
+                <div className="text-[9px] sm:text-[10px] text-dim mt-0.5">3.1 Pro</div>
+              </div>
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-blue-400/0 group-hover:ring-blue-400/8 transition-all" />
             </button>
           </div>
 

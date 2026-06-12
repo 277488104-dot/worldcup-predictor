@@ -10,7 +10,7 @@ const RELAY_KEY = process.env.RELAY_KEY || ''
 const MODELS: Record<string, string> = {
   'claude': '[鹿鹿2]claude-4.5-sonnet',
   'gpt': '[鹿鹿2]gpt-5.5',
-  'gemini': '[鹿鹿2]gemini-2.5-pro',
+  'gemini': '[鹿鹿10]gemini-3.1-pro-preview',
 }
 
 function buildPrompt(data: {
