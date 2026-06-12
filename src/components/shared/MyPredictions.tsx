@@ -18,7 +18,17 @@ export default function MyPredictions() {
     setPredictions(deletePrediction(matchId))
   }
 
-  if (!loaded) return null
+  if (!loaded) {
+    return (
+      <section className="py-24 px-5 text-center">
+        <div className="max-w-md mx-auto">
+          <span className="text-6xl block mb-6 opacity-15">🔮</span>
+          <h3 className="font-display text-2xl font-extrabold text-chalk mb-3">加载中...</h3>
+          <p className="text-sm text-muted mb-6">正在读取你的预测记录</p>
+        </div>
+      </section>
+    )
+  }
 
   if (predictions.length === 0) {
     return (

@@ -26,8 +26,6 @@ export default function LiveScoreBar() {
 
   if (!hasData) return null
 
-  if (matches.length === 0) return null
-
   const doubled = [...matches, ...matches]
 
   return (

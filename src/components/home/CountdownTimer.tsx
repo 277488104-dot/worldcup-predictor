@@ -8,6 +8,7 @@ interface CountdownTimerProps {
 
 export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
   const [time, setTime] = useState({ days: 0, hours: 0, mins: 0, secs: 0 })
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     const tick = () => {
@@ -21,9 +22,24 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
       })
     }
     tick()
+    setMounted(true)
     const interval = setInterval(tick, 1000)
     return () => clearInterval(interval)
   }, [targetDate])
+
+  // Render nothing on server, render fully on client to avoid hydration mismatch
+  if (!mounted) {
+    return (
+      <div className="flex gap-3 justify-center">
+        {['DAYS', 'HOURS', 'MINS', 'SECS'].map(label => (
+          <div key={label} className="bg-black/40 border border-white/5 rounded-xl min-w-[72px] py-3 px-4 text-center">
+            <div className="font-mono text-2xl md:text-3xl font-black text-grass-pop num-glow tabular-nums">00</div>
+            <div className="text-[8px] text-muted tracking-[0.2em] mt-1 font-bold">{label}</div>
+          </div>
+        ))}
+      </div>
+    )
+  }
 
   return (
     <div className="flex gap-3 justify-center">
