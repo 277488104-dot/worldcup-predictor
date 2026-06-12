@@ -4,7 +4,7 @@
  * If any scores changed, rebuilds and restarts.
  *
  * Usage:   node sync-scores.js
- * Cron:    */30 * * * * cd /opt/worldcup-predictor && ZAFRONIX_KEY=zwc_free_... node sync-scores.js >> /var/log/worldcup-sync.log 2>&1
+ * Cron:    every 30 min via crontab
  */
 
 const fs = require('fs')
