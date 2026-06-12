@@ -85,6 +85,7 @@ export default async function MatchDetailPage({ params }: { params: Promise<{ id
             venue={venue}
             homeScore={match.homeScore!}
             awayScore={match.awayScore!}
+            matchDetail={null}
           />
         </div>
       )}
