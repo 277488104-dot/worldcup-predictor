@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
- * Sync script: fetches finished/live matches from Zafronix API and updates
- * matches.json in the project. If any scores changed, rebuilds and restarts.
+ * Sync script: fetches 2026 matches from Zafronix API and updates matches.json.
+ * If any scores changed, rebuilds and restarts.
  *
- * Usage: node sync-scores.js
- * Designed for cron: */30 * * * * cd /opt/worldcup-predictor && node sync-scores.js
+ * Usage:   node sync-scores.js
+ * Cron:    */30 * * * * cd /opt/worldcup-predictor && ZAFRONIX_KEY=zwc_free_... node sync-scores.js >> /var/log/worldcup-sync.log 2>&1
  */
 
 const fs = require('fs')
@@ -13,7 +13,7 @@ const { execSync } = require('child_process')
 
 const ZAFRONIX_KEY = process.env.ZAFRONIX_KEY || ''
 const MATCHES_PATH = path.join(__dirname, 'public', 'data', 'matches.json')
-const BASE = 'https://api.zafronix.com/v1'
+const BASE = 'https://api.zafronix.com/fifa/worldcup/v1'
 
 if (!ZAFRONIX_KEY) {
   console.error('[sync] ZAFRONIX_KEY not set, exiting')
@@ -25,47 +25,28 @@ async function zfetch(endpoint) {
     const res = await fetch(`${BASE}${endpoint}`, {
       headers: { 'x-api-key': ZAFRONIX_KEY },
     })
-    if (!res.ok) return { matches: [] }
+    if (!res.ok) {
+      console.error(`[sync] fetch ${endpoint} → ${res.status}`)
+      return null
+    }
     return res.json()
   } catch (err) {
     console.error('[sync] fetch error:', err.message)
-    return { matches: [] }
-  }
-}
-
-function mapMatch(m) {
-  return {
-    id: String(m.id ?? ''),
-    home: String(m.home_team ?? m.home ?? ''),
-    away: String(m.away_team ?? m.away ?? ''),
-    homeScore: typeof m.home_score === 'number' ? m.home_score : null,
-    awayScore: typeof m.away_score === 'number' ? m.away_score : null,
-    status: String(m.status ?? 'scheduled'),
-    minute: typeof m.minute === 'number' ? m.minute : null,
-    stage: String(m.stage ?? ''),
-    date: String(m.date ?? ''),
+    return null
   }
 }
 
 async function main() {
-  console.log(`[sync] ${new Date().toISOString()} — starting sync`)
+  console.log(`[sync] ${new Date().toISOString()} — starting`)
 
-  // Fetch finished + live matches
-  const [finished, live] = await Promise.all([
-    zfetch('/matches?tournament=2026&status=finished&limit=30'),
-    zfetch('/matches?tournament=2026&status=live'),
-  ])
-
-  const apiMatches = []
-  if (finished?.matches) apiMatches.push(...finished.matches.map(mapMatch))
-  if (live?.matches) apiMatches.push(...live.matches.map(mapMatch))
-
-  if (apiMatches.length === 0) {
-    console.log('[sync] no results from API, skipping')
+  const data = await zfetch('/matches?year=2026')
+  if (!data?.data || !Array.isArray(data.data)) {
+    console.log('[sync] no matches from API, skipping')
     return
   }
 
-  console.log(`[sync] got ${apiMatches.length} matches from API (${finished?.matches?.length || 0} finished, ${live?.matches?.length || 0} live)`)
+  const apiMatches = data.data
+  console.log(`[sync] got ${apiMatches.length} matches from API`)
 
   // Read local matches
   const local = JSON.parse(fs.readFileSync(MATCHES_PATH, 'utf-8'))
@@ -73,29 +54,30 @@ async function main() {
 
   for (const apiMatch of apiMatches) {
     const localMatch = local.find(m => m.id === apiMatch.id)
-    if (!localMatch) continue
+    if (!localMatch) {
+      console.log(`[sync] ${apiMatch.id}: not in local data, skipping`)
+      continue
+    }
 
-    const hasNewScore = apiMatch.homeScore !== null && apiMatch.awayScore !== null
+    const hasScore = apiMatch.homeScore !== null && apiMatch.awayScore !== null
     const oldScore = `${localMatch.homeScore ?? '?'}-${localMatch.awayScore ?? '?'}`
     const newScore = `${apiMatch.homeScore ?? '?'}-${apiMatch.awayScore ?? '?'}`
 
-    if (hasNewScore && oldScore !== newScore) {
-      console.log(`[sync] ${apiMatch.id}: ${oldScore} → ${newScore} (${apiMatch.status})`)
+    // Map API status to our status
+    let apiStatus = 'scheduled'
+    if (apiMatch.status === 'completed' || apiMatch.result) apiStatus = 'finished'
+
+    if (hasScore && oldScore !== newScore) {
+      console.log(`[sync] ${apiMatch.id}: ${oldScore} → ${newScore} (${apiStatus})`)
       localMatch.homeScore = apiMatch.homeScore
       localMatch.awayScore = apiMatch.awayScore
       changed++
     }
 
-    if (apiMatch.status === 'finished' && localMatch.status !== 'finished') {
+    if (apiStatus === 'finished' && localMatch.status !== 'finished') {
       console.log(`[sync] ${apiMatch.id}: status ${localMatch.status} → finished`)
       localMatch.status = 'finished'
-      changed++
-    }
-
-    if (apiMatch.status === 'live' && localMatch.status !== 'live') {
-      console.log(`[sync] ${apiMatch.id}: status ${localMatch.status} → live`)
-      localMatch.status = 'live'
-      changed++
+      if (!changed || oldScore === newScore) changed++
     }
   }
 
@@ -106,22 +88,22 @@ async function main() {
 
   // Write updated matches
   fs.writeFileSync(MATCHES_PATH, JSON.stringify(local, null, 2))
-  console.log(`[sync] wrote ${changed} changes to matches.json`)
+  console.log(`[sync] wrote ${changed} changes`)
 
   // Git commit
   try {
-    execSync('git add public/data/matches.json', { cwd: __dirname })
-    execSync(`git commit -m "sync: update ${changed} match scores [auto]"`, { cwd: __dirname })
+    execSync('git add public/data/matches.json', { cwd: __dirname, stdio: 'pipe' })
+    execSync(`git commit -m "sync: update ${changed} match scores [auto]"`, { cwd: __dirname, stdio: 'pipe' })
     console.log('[sync] committed')
   } catch (err) {
-    console.error('[sync] git commit failed:', err.message)
+    console.error('[sync] git commit note:', err.message)
   }
 
   // Rebuild and restart
   console.log('[sync] rebuilding...')
   try {
-    execSync('npm run build', { cwd: __dirname, stdio: 'inherit' })
-    execSync('pm2 restart worldcup --update-env', { stdio: 'inherit' })
+    execSync('npm run build', { cwd: __dirname, stdio: 'pipe' })
+    execSync('pm2 restart worldcup --update-env', { stdio: 'pipe' })
     console.log('[sync] rebuild + restart done')
   } catch (err) {
     console.error('[sync] build/restart failed:', err.message)
