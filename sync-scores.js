@@ -3,7 +3,7 @@
  * Sync script: fetches 2026 matches AND standings from Zafronix,
  * writes both to public/data/*.json, rebuilds on change.
  *
- * Cron: */30 * * * * cd /opt/worldcup-predictor && ZAFRONIX_KEY=zwc_free_... node sync-scores.js >> /var/log/worldcup-sync.log 2>&1
+ * Cron: runs every 30 min via crontab
  */
 
 const fs = require('fs')
