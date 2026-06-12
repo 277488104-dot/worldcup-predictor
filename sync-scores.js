@@ -13,7 +13,76 @@ const { execSync } = require('child_process')
 const ZAFRONIX_KEY = process.env.ZAFRONIX_KEY || ''
 const MATCHES_PATH = path.join(__dirname, 'public', 'data', 'matches.json')
 const STANDINGS_PATH = path.join(__dirname, 'public', 'data', 'standings.json')
+const TEAMS_PATH = path.join(__dirname, 'public', 'data', 'teams.json')
 const BASE = 'https://api.zafronix.com/fifa/worldcup/v1'
+
+// Zafronix English team names → Chinese team names
+let NAME_MAP = {}
+
+function buildNameMap() {
+  if (Object.keys(NAME_MAP).length > 0) return
+  try {
+    const teams = JSON.parse(fs.readFileSync(TEAMS_PATH, 'utf-8'))
+    // Zafronix uses various English names; build fuzzy lookup
+    const extras = {
+      'korea republic': '韩国',
+      'south korea': '韩国',
+      'czechia': '捷克',
+      'czech republic': '捷克',
+      'united states': '美国',
+      'usa': '美国',
+      'bosnia and herzegovina': '波黑',
+      'bosnia': '波黑',
+      'turkey': '土耳其',
+      'ivory coast': '科特迪瓦',
+      'côte d\'ivoire': '科特迪瓦',
+      'cote d\'ivoire': '科特迪瓦',
+      'cape verde': '佛得角',
+      'cabo verde': '佛得角',
+      'ir iran': '伊朗',
+      'iran': '伊朗',
+      'congo dr': '民主刚果',
+      'dr congo': '民主刚果',
+      'saudi arabia': '沙特阿拉伯',
+      'netherlands': '荷兰',
+      'sweden': '瑞典',
+      'tunisia': '突尼斯',
+      'senegal': '塞内加尔',
+      'algeria': '阿尔及利亚',
+      'austria': '奥地利',
+      'jordan': '约旦',
+      'ghana': '加纳',
+      'panama': '巴拿马',
+      'england': '英格兰',
+      'croatia': '克罗地亚',
+      'portugal': '葡萄牙',
+      'uzbekistan': '乌兹别克斯坦',
+      'colombia': '哥伦比亚',
+      'france': '法国',
+      'iraq': '伊拉克',
+      'norway': '挪威',
+      'belgium': '比利时',
+      'egypt': '埃及',
+      'new zealand': '新西兰',
+      'uruguay': '乌拉圭',
+      'spain': '西班牙',
+    }
+    for (const t of teams) {
+      NAME_MAP[t.name.toLowerCase()] = t.nameCn
+      NAME_MAP[t.fifaCode.toLowerCase()] = t.nameCn
+      NAME_MAP[t.nameCn.toLowerCase()] = t.nameCn
+    }
+    Object.assign(NAME_MAP, extras)
+  } catch (err) {
+    console.error('[sync] failed to load teams:', err.message)
+  }
+}
+
+function toCN(name) {
+  buildNameMap()
+  const key = (name || '').toLowerCase().trim()
+  return NAME_MAP[key] || name
+}
 
 if (!ZAFRONIX_KEY) {
   console.error('[sync] ZAFRONIX_KEY not set, exiting')
@@ -85,16 +154,23 @@ async function syncStandings() {
     return 0
   }
 
+  buildNameMap()
+  // Translate team names to Chinese
+  const translated = {}
+  for (const [group, rows] of Object.entries(data.groups)) {
+    translated[group] = rows.map(r => ({ ...r, team: toCN(r.team) }))
+  }
+
   const old = fs.existsSync(STANDINGS_PATH) ? JSON.parse(fs.readFileSync(STANDINGS_PATH, 'utf-8')) : {}
   const oldJson = JSON.stringify(old)
-  const newJson = JSON.stringify(data.groups)
+  const newJson = JSON.stringify(translated)
 
   if (oldJson === newJson) {
     console.log('[sync] standings unchanged')
     return 0
   }
 
-  fs.writeFileSync(STANDINGS_PATH, JSON.stringify(data.groups, null, 2))
+  fs.writeFileSync(STANDINGS_PATH, JSON.stringify(translated, null, 2))
   console.log('[sync] standings updated')
   return 1
 }
