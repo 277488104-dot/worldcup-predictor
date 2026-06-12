@@ -53,9 +53,11 @@ async function main() {
   let changed = 0
 
   for (const apiMatch of apiMatches) {
-    const localMatch = local.find(m => m.id === apiMatch.id)
+    // Map Zafronix ID format: "2026-001" → "match-001"
+    const mappedId = apiMatch.id.replace(/^\d+-/, 'match-')
+    const localMatch = local.find(m => m.id === mappedId)
     if (!localMatch) {
-      console.log(`[sync] ${apiMatch.id}: not in local data, skipping`)
+      console.log(`[sync] ${apiMatch.id} → ${mappedId}: not in local data, skipping`)
       continue
     }
 
@@ -68,14 +70,14 @@ async function main() {
     if (apiMatch.status === 'completed' || apiMatch.result) apiStatus = 'finished'
 
     if (hasScore && oldScore !== newScore) {
-      console.log(`[sync] ${apiMatch.id}: ${oldScore} → ${newScore} (${apiStatus})`)
+      console.log(`[sync] ${apiMatch.id} → ${mappedId}: ${oldScore} → ${newScore} (${apiStatus})`)
       localMatch.homeScore = apiMatch.homeScore
       localMatch.awayScore = apiMatch.awayScore
       changed++
     }
 
     if (apiStatus === 'finished' && localMatch.status !== 'finished') {
-      console.log(`[sync] ${apiMatch.id}: status ${localMatch.status} → finished`)
+      console.log(`[sync] ${apiMatch.id} → ${mappedId}: status ${localMatch.status} → finished`)
       localMatch.status = 'finished'
       if (!changed || oldScore === newScore) changed++
     }
