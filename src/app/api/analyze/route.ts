@@ -96,9 +96,9 @@ ${awayTeam.nameCn} 核心: ${fmtPlayers(awayPlayers)}
 ══════════════════════════════════════
 【𝟛 比赛场地】
 ══════════════════════════════════════
-场馆: ${venue.name} | 城市: ${venue.city}, ${venue.country}
-容量: ${venue.capacity.toLocaleString()}人 | 海拔: ${venue.altitude}m
-气候: ${venue.climate} | 时区: ${venue.timezone}
+场馆: ${venue.name || "未知"} | 城市: ${venue.city}, ${venue.country}
+容量: ${venue.capacity?.toLocaleString()}人 | 海拔: ${venue.altitude}m
+气候: ${venue.climate || "温带"} | 时区: ${venue.timezone}
 
 ══════════════════════════════════════
 【𝟜 交锋历史】
@@ -137,7 +137,7 @@ ${factors}
 
 <section>
 <h3 style="color:#f5f5f0;font-size:16px;margin-bottom:10px;font-weight:700">🏟️ 三、场地与环境因素</h3>
-<p style="margin-bottom:10px;line-height:1.8;color:#d0d0c8">分析 ${venue.name} 的场地特征：海拔${venue.altitude}m对体能的影响、${venue.capacity.toLocaleString()}人容量的主场氛围、${venue.climate}气候对比赛节奏的影响、时区适应问题。结合两队洲联归属（${homeTeam.confederation} vs ${awayTeam.confederation}）判断谁更适应北美场地。</p>
+<p style="margin-bottom:10px;line-height:1.8;color:#d0d0c8">分析 ${venue.name || "未知"} 的场地特征：海拔${venue.altitude}m对体能的影响、${venue.capacity?.toLocaleString()}人容量的主场氛围、${venue.climate || "温带"}气候对比赛节奏的影响、时区适应问题。结合两队洲联归属（${homeTeam.confederation} vs ${awayTeam.confederation}）判断谁更适应北美场地。</p>
 </section>
 
 <section>
@@ -151,8 +151,14 @@ ${factors}
 </section>
 
 <section>
-<h3 style="color:#4ade80;font-size:16px;margin-bottom:10px;font-weight:700">🔮 六、综合结论</h3>
-<p style="margin-bottom:10px;line-height:1.8;color:#d0d0c8">给出最终判断。包含：推荐比分、比赛走势预判（开场节奏如何？谁可能先进球？下半场变数？）、关键胜负手（这场比赛最可能被什么决定？）、翻车预警（什么情况下预测会出错？）、一句话总结。</p>
+<h3 style="color:#4ade80;font-size:16px;margin-bottom:10px;font-weight:700">🔮 六、最终结论</h3>
+<p style="margin-bottom:10px;line-height:1.8;color:#d0d0c8">给出最终判断。包含以下内容：</p>
+<p style="margin-bottom:8px;line-height:1.8;color:#d0d0c8"><strong style="color:#4ade80">▸ 比赛走势预判：</strong>开场节奏如何？谁可能先进球？下半场变数？</p>
+<p style="margin-bottom:8px;line-height:1.8;color:#d0d0c8"><strong style="color:#f0c040">▸ 关键胜负手：</strong>这场比赛最可能被什么因素决定？</p>
+<p style="margin-bottom:8px;line-height:1.8;color:#d0d0c8"><strong style="color:#d0d0c8">▸ 翻车预警：</strong>什么情况下预测会出错？</p>
+<p style="margin-bottom:12px;line-height:1.8;color:#d0d0c8"><strong style="color:#4ade80">▸ 推荐比分一：X-X</strong>（概率最高）—— 为什么这个比分最可能？</p>
+<p style="margin-bottom:12px;line-height:1.8;color:#d0d0c8"><strong style="color:#f0c040">▸ 推荐比分二：X-X</strong>（次可能）—— 什么情况下会打出这个比分？</p>
+<p style="margin-bottom:10px;line-height:1.8;color:#d0d0c8"><strong style="color:#d0d0c8">▸ 一句话总结：</strong>用一句让你记住这场比赛的话收尾。</p>
 </section>
 
 【写作要求】
@@ -160,6 +166,7 @@ ${factors}
 - 主队数据用 <strong style="color:#4ade80">...</strong> 高亮，客队用 <strong style="color:#f0c040">...</strong>
 - 风格：专业足球评论员的深度分析，敢于做出判断
 - 6个因素必须全部覆盖：实力对比、球员阵容、场地环境、交锋心理、模型数据、综合结论
+- **两个推荐比分必须醒目展示**，用泊松模型 Top2 结果填入，并解释为什么
 - 只输出 HTML，不要 markdown 代码块，不要任何额外说明或前缀`
 }
 
