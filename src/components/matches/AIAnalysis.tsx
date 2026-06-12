@@ -20,17 +20,23 @@ export default function AIAnalysis({ homeTeam, awayTeam, venue, h2hSummary, home
   const [error, setError] = useState('')
   const abortRef = useRef<AbortController | null>(null)
 
-  const startAnalysis = useCallback(async () => {
+  const [activeModel, setActiveModel] = useState('')
+
+  const startAnalysis = useCallback(async (endpoint: string, model?: string) => {
     setStatus('loading')
     setHtml('')
     setError('')
+    setActiveModel(model || 'deepseek')
     abortRef.current = new AbortController()
 
     try {
-      const res = await fetch('/api/analyze', {
+      const body: Record<string, unknown> = { homeTeam, awayTeam, venue, h2hSummary, homePlayers, awayPlayers }
+      if (model) body.model = model
+
+      const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ homeTeam, awayTeam, venue, h2hSummary, homePlayers, awayPlayers }),
+        body: JSON.stringify(body),
         signal: abortRef.current.signal,
       })
 
@@ -100,22 +106,62 @@ export default function AIAnalysis({ homeTeam, awayTeam, venue, h2hSummary, home
         </div>
       </div>
 
-      {/* Idle state: big start button */}
+      {/* ===== IDLE STATE: Multi-model buttons ===== */}
       {status === 'idle' && (
-        <div className="py-8 sm:py-12 text-center">
-          <p className="text-xs sm:text-sm text-dim mb-6 leading-relaxed max-w-md mx-auto">
-            DeepSeek 将综合 <strong className="text-chalk">公式预测模型</strong>、<strong className="text-chalk">蒙特卡洛1000次模拟</strong> 和
-            <strong className="text-chalk">8因素分析</strong>，给出完整的 AI 分析报告。
+        <div className="py-6 sm:py-8">
+          <p className="text-xs sm:text-sm text-dim mb-6 leading-relaxed text-center">
+            综合 <strong className="text-chalk">公式预测模型</strong> + <strong className="text-chalk">蒙特卡洛1000次模拟</strong> + <strong className="text-chalk">8因素分析</strong>，由 AI 给出完整分析报告。
           </p>
-          <button
-            onClick={startAnalysis}
-            className="btn-primary inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-extrabold tracking-wider"
-          >
-            <span className="text-lg">🚀</span>
-            开始 AI 深度分析
-          </button>
-          <p className="text-[9px] sm:text-[10px] text-dim mt-4">
-            预计耗时 5-15 秒 · 流式实时输出
+
+          <div className="grid grid-cols-3 gap-3 sm:gap-4">
+            {/* DeepSeek */}
+            <button
+              onClick={() => startAnalysis('/api/analyze')}
+              className="group relative flex flex-col items-center gap-3 p-4 sm:p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-grass-pop/20 transition-all duration-300"
+            >
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#4ade80]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="text-xl sm:text-2xl">🧠</span>
+              </div>
+              <div className="text-center">
+                <div className="text-xs sm:text-sm font-extrabold text-chalk group-hover:text-grass-pop transition-colors">DeepSeek</div>
+                <div className="text-[9px] sm:text-[10px] text-dim mt-0.5">V4 自部署</div>
+              </div>
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-grass-pop/0 group-hover:ring-grass-pop/8 transition-all" />
+            </button>
+
+            {/* Claude */}
+            <button
+              onClick={() => startAnalysis('/api/relay-analyze', 'claude')}
+              className="group relative flex flex-col items-center gap-3 p-4 sm:p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-gold/20 transition-all duration-300"
+            >
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#f0c040]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="text-xl sm:text-2xl">🟠</span>
+              </div>
+              <div className="text-center">
+                <div className="text-xs sm:text-sm font-extrabold text-chalk group-hover:text-gold transition-colors">Claude</div>
+                <div className="text-[9px] sm:text-[10px] text-dim mt-0.5">Opus 4.5</div>
+              </div>
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gold/0 group-hover:ring-gold/8 transition-all" />
+            </button>
+
+            {/* GPT */}
+            <button
+              onClick={() => startAnalysis('/api/relay-analyze', 'gpt')}
+              className="group relative flex flex-col items-center gap-3 p-4 sm:p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-emerald/20 transition-all duration-300"
+            >
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#22c55e]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <span className="text-xl sm:text-2xl">⚡</span>
+              </div>
+              <div className="text-center">
+                <div className="text-xs sm:text-sm font-extrabold text-chalk group-hover:text-emerald transition-colors">GPT</div>
+                <div className="text-[9px] sm:text-[10px] text-dim mt-0.5">5.5</div>
+              </div>
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-emerald/0 group-hover:ring-emerald/8 transition-all" />
+            </button>
+          </div>
+
+          <p className="text-[9px] sm:text-[10px] text-dim mt-5 text-center">
+            点击任一 AI 模型开始流式分析 · 可分别调用看不同结果
           </p>
         </div>
       )}
@@ -124,7 +170,7 @@ export default function AIAnalysis({ homeTeam, awayTeam, venue, h2hSummary, home
       {status === 'loading' && (
         <div className="py-10 text-center">
           <div className="inline-block w-8 h-8 border-2 border-gold/30 border-t-gold rounded-full animate-spin mb-4" />
-          <p className="text-xs text-dim">正在连接 DeepSeek...</p>
+          <p className="text-xs text-dim">正在连接 {activeModel === 'claude' ? 'Claude' : activeModel === 'gpt' ? 'GPT' : 'DeepSeek'}...</p>
         </div>
       )}
 
@@ -149,7 +195,7 @@ export default function AIAnalysis({ homeTeam, awayTeam, venue, h2hSummary, home
             分析完成
           </span>
           <button
-            onClick={startAnalysis}
+            onClick={() => startAnalysis('/api/analyze')}
             className="text-[10px] text-dim hover:text-chalk transition-colors ml-auto"
           >
             🔄 重新分析
@@ -162,7 +208,7 @@ export default function AIAnalysis({ homeTeam, awayTeam, venue, h2hSummary, home
         <div className="py-8 text-center">
           <div className="text-3xl mb-3">⚠️</div>
           <p className="text-xs text-danger mb-4">{error}</p>
-          <button onClick={startAnalysis} className="text-xs text-grass-pop hover:underline">
+          <button onClick={() => startAnalysis('/api/analyze')} className="text-xs text-grass-pop hover:underline">
             🔄 重试
           </button>
         </div>
