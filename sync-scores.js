@@ -23,56 +23,32 @@ function buildNameMap() {
   if (Object.keys(NAME_MAP).length > 0) return
   try {
     const teams = JSON.parse(fs.readFileSync(TEAMS_PATH, 'utf-8'))
-    // Zafronix uses various English names; build fuzzy lookup
-    const extras = {
-      'korea republic': '韩国',
-      'south korea': '韩国',
-      'czechia': '捷克',
-      'czech republic': '捷克',
-      'united states': '美国',
-      'usa': '美国',
-      'bosnia and herzegovina': '波黑',
-      'bosnia': '波黑',
-      'turkey': '土耳其',
-      'ivory coast': '科特迪瓦',
-      'côte d\'ivoire': '科特迪瓦',
-      'cote d\'ivoire': '科特迪瓦',
-      'cape verde': '佛得角',
-      'cabo verde': '佛得角',
-      'ir iran': '伊朗',
-      'iran': '伊朗',
-      'congo dr': '民主刚果',
-      'dr congo': '民主刚果',
-      'saudi arabia': '沙特阿拉伯',
-      'netherlands': '荷兰',
-      'sweden': '瑞典',
-      'tunisia': '突尼斯',
-      'senegal': '塞内加尔',
-      'algeria': '阿尔及利亚',
-      'austria': '奥地利',
-      'jordan': '约旦',
-      'ghana': '加纳',
-      'panama': '巴拿马',
-      'england': '英格兰',
-      'croatia': '克罗地亚',
-      'portugal': '葡萄牙',
-      'uzbekistan': '乌兹别克斯坦',
-      'colombia': '哥伦比亚',
-      'france': '法国',
-      'iraq': '伊拉克',
-      'norway': '挪威',
-      'belgium': '比利时',
-      'egypt': '埃及',
-      'new zealand': '新西兰',
-      'uruguay': '乌拉圭',
-      'spain': '西班牙',
-    }
+    // Map to local team IDs
     for (const t of teams) {
-      NAME_MAP[t.name.toLowerCase()] = t.nameCn
-      NAME_MAP[t.fifaCode.toLowerCase()] = t.nameCn
-      NAME_MAP[t.nameCn.toLowerCase()] = t.nameCn
+      NAME_MAP[t.name.toLowerCase()] = t.id
+      NAME_MAP[t.fifaCode.toLowerCase()] = t.id
     }
-    Object.assign(NAME_MAP, extras)
+    Object.assign(NAME_MAP, {
+      'korea republic': 'kor', 'czechia': 'cze',
+      'united states': 'usa', 'bosnia and herzegovina': 'bih',
+      'turkey': 'tur', 'türkiye': 'tur',
+      'ivory coast': 'civ', 'cape verde': 'cpv',
+      'ir iran': 'irn', 'congo dr': 'cod',
+      'saudi arabia': 'ksa', 'netherlands': 'ned',
+      'sweden': 'swe', 'tunisia': 'tun',
+      'senegal': 'sen', 'algeria': 'alg',
+      'austria': 'aut', 'jordan': 'jor',
+      'ghana': 'gha', 'panama': 'pan',
+      'england': 'eng', 'croatia': 'cro',
+      'portugal': 'por', 'uzbekistan': 'uzb',
+      'colombia': 'col', 'france': 'fra',
+      'iraq': 'irq', 'norway': 'nor',
+      'belgium': 'bel', 'egypt': 'egy',
+      'new zealand': 'nzl', 'uruguay': 'uru',
+      'spain': 'esp', 'ecuador': 'ecu',
+      'paraguay': 'par', 'curaçao': 'cuw',
+      'haiti': 'hai', 'scotland': 'sco',
+    })
   } catch (err) {
     console.error('[sync] failed to load teams:', err.message)
   }
@@ -117,8 +93,14 @@ async function syncMatches() {
   let changed = 0
 
   for (const apiMatch of apiMatches) {
-    const mappedId = apiMatch.id.replace(/^\d+-/, 'match-')
-    const localMatch = local.find(m => m.id === mappedId)
+    const apiHome = (apiMatch.homeTeam || '').toLowerCase().trim()
+    const apiAway = (apiMatch.awayTeam || '').toLowerCase().trim()
+    const localHomeId = NAME_MAP[apiHome]
+    const localAwayId = NAME_MAP[apiAway]
+
+    if (!localHomeId || !localAwayId) continue
+
+    const localMatch = local.find(m => m.homeTeamId === localHomeId && m.awayTeamId === localAwayId)
     if (!localMatch) continue
 
     const hasScore = apiMatch.homeScore !== null && apiMatch.awayScore !== null
@@ -127,14 +109,14 @@ async function syncMatches() {
     let apiStatus = apiMatch.status === 'completed' || apiMatch.result ? 'finished' : 'scheduled'
 
     if (hasScore && oldScore !== newScore) {
-      console.log(`[sync] ${apiMatch.id} → ${mappedId}: ${oldScore} → ${newScore} (${apiStatus})`)
+      console.log(`[sync] ${apiMatch.id} → ${localMatch.id}: ${oldScore} → ${newScore} (${apiStatus})`)
       localMatch.homeScore = apiMatch.homeScore
       localMatch.awayScore = apiMatch.awayScore
       changed++
     }
 
     if (apiStatus === 'finished' && localMatch.status !== 'finished') {
-      console.log(`[sync] ${apiMatch.id} → ${mappedId}: status ${localMatch.status} → finished`)
+      console.log(`[sync] ${apiMatch.id} → ${localMatch.id}: status ${localMatch.status} → finished`)
       localMatch.status = 'finished'
       if (!changed || oldScore === newScore) changed++
     }
